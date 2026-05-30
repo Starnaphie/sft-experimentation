@@ -33,18 +33,20 @@ Key design decisions based on RapidFire AI internals
 Usage:
     python train.py
 
-Scaling up:
-    NUM_EPOCHS = 3   # more epochs
-    BASE_MODEL = "Qwen/Qwen2.5-1.5B-Instruct"   # bigger model
-    LORA_RANK  = 32
-    target_modules = ["q_proj", "k_proj", "v_proj", "o_proj"]
+Current config (v2):
+    NUM_EPOCHS = 3, num_chunks=1, BASE_MODEL = "Qwen/Qwen2.5-1.5B-Instruct"
+    LORA_RANK  = 16, target_modules = ["q_proj","k_proj","v_proj","o_proj"]
+    Rule: num_chunks must equal 1 whenever NUM_EPOCHS > 1.
 """
 
 import glob
 import json
 import os
 import shutil
+import time
 from pathlib import Path
+
+os.environ['MLFLOW_TRACKING_URI'] = f"file://{Path.home()}/rapidfireai/mlruns"
 
 from datasets import Dataset
 from rapidfireai import Experiment
@@ -52,15 +54,18 @@ from rapidfireai.automl import List, RFGridSearch, RFModelConfig, RFLoraConfig, 
 
 # ── Config knobs ──────────────────────────────────────────────────────────────
 SCHEMAS_DIR     = './schemas'
-TRAIN_JSON      = './train.json'
+TRAIN_JSON      = './augmented_train_10x.json'   # 3010 rows → 377 steps/epoch
 VAL_JSON        = './validation.json'
 ADAPTER_DIR     = './adapter'
-EXPERIMENT_NAME = 'schema-linking-baseline'
-BASE_MODEL      = 'Qwen/Qwen2.5-0.5B-Instruct'
-NUM_EPOCHS      = 1       # set to 3+ for a real run
-LORA_RANK       = 8
+EXP_PREFIX      = 'schema-linking-v2'
+BASE_MODEL      = 'Qwen/Qwen2.5-1.5B-Instruct'  # upgrade from 0.5B
+NUM_EPOCHS      = 3       # num_chunks=1 lets RF see all steps across epochs;
+                          # DO NOT use num_chunks>1 with NUM_EPOCHS>1 — RF will
+                          # compute total_steps=steps×epochs but each chunk only
+                          # covers steps/chunks, so the save threshold is never hit.
+LORA_RANK       = 16      # up from 8; add k_proj/o_proj for more capacity
 LR              = 2e-4
-BATCH_SIZE      = 4       # per-device; effective batch = BATCH_SIZE × grad_accum = 8
+BATCH_SIZE      = 2       # 2 for 1.5B model to fit in 24 GiB; effective batch = 2×grad_accum=4
 
 
 # ── Formatting function (must be fully self-contained) ────────────────────────
@@ -86,6 +91,17 @@ def formatting_function(row: dict) -> dict:
             schema[s['table_names_original'][tidx]].append(cname)
         return schema
 
+    def _prune_schema(schema, gold_tables, max_tables=20):
+        """Keep all gold tables; fill remaining slots with random non-gold tables."""
+        import random as _r
+        if len(schema) <= max_tables:
+            return schema
+        gold  = [t for t in schema if t in gold_tables]
+        other = [t for t in schema if t not in gold_tables]
+        _r.shuffle(other)
+        keep = set(gold + other[:max(0, max_tables - len(gold))])
+        return {t: schema[t] for t in schema if t in keep}
+
     def _serialize(schema):
         lines = []
         for table, cols in schema.items():
@@ -96,11 +112,13 @@ def formatting_function(row: dict) -> dict:
         "You are a database assistant. "
         "Given a database schema and a natural language question, output the schema links "
         "as a JSON object: {\"TableName\": [\"col1\", \"col2\"]}. "
+        "Use ONLY table and column names that appear in the given schema. "
         "Include only the tables and columns needed to answer the question. "
         "Output valid JSON only, with no extra text."
     )
 
-    schema       = _load_schema(row['db_id'])
+    schema = _load_schema(row['db_id'])
+    schema = _prune_schema(schema, set(row['schema_links'].keys()))
     user_content = f"{_serialize(schema)}\n\nQuestion: {row['question']}"
     answer       = _json.dumps(row['schema_links'], ensure_ascii=False)
 
@@ -128,11 +146,11 @@ def create_model(model_config: dict):
 
 # ── Checkpoint extraction ─────────────────────────────────────────────────────
 
-def find_final_checkpoint(experiment_name: str) -> Path | None:
-    """Return the most recently written non-empty final_checkpoint dir that
-    matches the given experiment name (exact or with _N suffix)."""
+def find_final_checkpoint(exp_prefix: str) -> Path | None:
+    """Return the most recently written non-empty final_checkpoint dir whose
+    experiment directory name starts with exp_prefix."""
     rf_dir = Path.home() / "rapidfireai" / "rapidfire_experiments"
-    candidates = glob.glob(str(rf_dir / f"{experiment_name}*"))
+    candidates = glob.glob(str(rf_dir / f"{exp_prefix}*"))
     best, best_mtime = None, 0.0
     for exp_dir in candidates:
         ckpt = Path(exp_dir) / "runs" / "1" / "checkpoints" / "final_checkpoint"
@@ -168,7 +186,7 @@ def main():
             r=LORA_RANK,
             lora_alpha=LORA_RANK * 2,
             lora_dropout=0.05,
-            target_modules=["q_proj", "v_proj"],
+            target_modules=["q_proj", "k_proj", "v_proj", "o_proj"],
             bias="none",
         )
     ])
@@ -191,6 +209,7 @@ def main():
                 eval_steps=10,
                 packing=False,
                 bf16=True,
+                gradient_checkpointing=True,   # recompute activations to save ~40% VRAM
                 report_to="none",
             ),
             model_type="causal_lm",
@@ -204,28 +223,29 @@ def main():
         )
     ])
 
+    experiment_name = f"{EXP_PREFIX}-{int(time.time())}"
     config_group = RFGridSearch(configs=config_set, trainer_type="SFT")
 
-    experiment = Experiment(experiment_name=EXPERIMENT_NAME, mode="fit")
+    experiment = Experiment(experiment_name=experiment_name, mode="fit")
     experiment.run_fit(
         config_group,
         create_model,
         train_dataset,
         eval_dataset,
-        num_chunks=4,
+        num_chunks=1,   # must be 1 when NUM_EPOCHS>1; see config comment above
         seed=42,
     )
     experiment.end()
 
     # ── Copy final checkpoint to ./adapter/ ───────────────────────────────────
-    ckpt = find_final_checkpoint(EXPERIMENT_NAME)
+    ckpt = find_final_checkpoint(EXP_PREFIX)
     if ckpt is not None:
         copy_checkpoint(ckpt, ADAPTER_DIR)
         print(f"\nAdapter saved: {ckpt} → {ADAPTER_DIR}/")
         print("Run main.py to use the fine-tuned model.")
     else:
         print(f"\nWARNING: No final checkpoint found under "
-              f"~/rapidfireai/rapidfire_experiments/{EXPERIMENT_NAME}*/")
+              f"~/rapidfireai/rapidfire_experiments/{EXP_PREFIX}*/")
         print("Training may not have completed enough steps.")
 
 
