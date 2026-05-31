@@ -1,7 +1,7 @@
 """
 main.py -- Schema linking inference.
 
-Uses the LoRA adapter produced by train.py / exp1.py / exp2.py when the
+Uses the LoRA adapter produced by train.py / exp1.py / exp2.py / exp3.py when the
 adapter directory contains adapter files; falls back to the keyword-matching
 baseline otherwise.
 
@@ -50,6 +50,16 @@ SYSTEM_PROMPT_ABBREV = (
     "Given a database schema (column types: T=text, N=number, R=real, TM=time, B=boolean) "
     "and a natural language question, output the schema links as a JSON object: "
     "{\"TableName\": [\"col1\", \"col2\"]}. "
+    "Use ONLY table and column names (without the :type suffix) from the schema. "
+    "Include only the tables and columns needed to answer the question. "
+    "Output valid JSON only, with no extra text."
+)
+
+SYSTEM_PROMPT_QHINT = (
+    "You are a database assistant. "
+    "Given a database schema (column types shown as col:type), a list of key terms "
+    "from the question, and the question itself, output the schema links as a JSON "
+    "object: {\"TableName\": [\"col1\", \"col2\"]}. "
     "Use ONLY table and column names (without the :type suffix) from the schema. "
     "Include only the tables and columns needed to answer the question. "
     "Output valid JSON only, with no extra text."
@@ -139,9 +149,12 @@ def serialize_schema(schema: dict, fmt: str = 'compact',
       fewshot_typed  — typed + one-shot example
       sql_ddl        — CREATE TABLE syntax
       markdown       — markdown headers
-      schema_abbrev  — abbreviated types (T/N/R/TM)   [exp2]
-      schema_sorted  — typed + alphabetical ordering   [exp2]
-      schema_top10   — typed + top-10 table pruning    [exp2]
+      schema_abbrev  — abbreviated types (T/N/R/TM)         [exp2]
+      schema_sorted  — typed + alphabetical ordering         [exp2]
+      schema_top10   — typed + top-10 table pruning          [exp2]
+      sorted_abbrev  — sorted + abbreviated types            [exp3]
+      question_hint  — typed + "Key terms:" hint line        [exp3]
+      col_filtered   — typed, cols filtered by question kws  [exp3]
     """
     # ── Legacy / non-compact formats ──
     if fmt == 'sql_ddl':
@@ -187,6 +200,82 @@ def serialize_schema(schema: dict, fmt: str = 'compact',
         lines  = []
         for table, cols in pruned.items():
             t_types  = col_types.get(table, {}) if col_types else {}
+            col_strs = [f"{c}:{t_types[c]}" if t_types.get(c) else c for c in cols]
+            lines.append(f"  {table}({', '.join(col_strs)})" if col_strs else f"  {table}")
+        return "Schema:\n" + "\n".join(lines)
+
+    # ── Exp3: sorted + abbreviated types ──
+    if fmt == 'sorted_abbrev':
+        lines = []
+        for table in sorted(schema.keys()):
+            cols    = sorted(schema[table])
+            t_types = col_types.get(table, {}) if col_types else {}
+            col_strs = []
+            for c in cols:
+                raw_type = t_types.get(c, '')
+                abbrev   = _TYPE_ABBREV.get(raw_type.lower(),
+                               raw_type[:2].upper() if raw_type else '')
+                col_strs.append(f"{c}:{abbrev}" if abbrev else c)
+            lines.append(f"  {table}({', '.join(col_strs)})" if col_strs else f"  {table}")
+        return "Schema:\n" + "\n".join(lines)
+
+    # ── Exp3: typed schema + key terms hint line (question embedded in output) ──
+    if fmt == 'question_hint':
+        lines = []
+        for table, cols in schema.items():
+            t_types  = col_types.get(table, {}) if col_types else {}
+            col_strs = [f"{c}:{t_types[c]}" if t_types.get(c) else c for c in cols]
+            lines.append(f"  {table}({', '.join(col_strs)})" if col_strs else f"  {table}")
+        schema_text = "Schema:\n" + "\n".join(lines)
+        # extract key terms: schema identifiers that overlap with question keywords
+        q_words = set(re.findall(r'[a-z]{2,}', question.lower()))
+        matched, seen = [], set()
+        for table, cols in schema.items():
+            if _split_id(table) & q_words and table not in seen:
+                matched.append(table); seen.add(table)
+            for col in cols:
+                if _split_id(col) & q_words and col not in seen:
+                    matched.append(col); seen.add(col)
+        hint_line = f"Key terms: {', '.join(matched[:10])}" if matched else ""
+        if hint_line:
+            return f"{schema_text}\n{hint_line}\nQuestion: {question}"
+        return f"{schema_text}\n\nQuestion: {question}"
+
+    # ── Exp3: typed schema with per-table column filtering ──
+    if fmt == 'col_filtered':
+        MAX_COLS = 8
+        q_words  = set(re.findall(r'[a-z]{2,}', question.lower()))
+        lines = []
+        for table, cols in schema.items():
+            relevant = [c for c in cols if _split_id(c) & q_words]
+            # pad with original-order cols if under MAX_COLS
+            keep = relevant[:]
+            for c in cols:
+                if c not in set(keep):
+                    keep.append(c)
+                if len(keep) >= MAX_COLS:
+                    break
+            t_types  = col_types.get(table, {}) if col_types else {}
+            col_strs = [f"{c}:{t_types[c]}" if t_types.get(c) else c for c in keep]
+            lines.append(f"  {table}({', '.join(col_strs)})" if col_strs else f"  {table}")
+        return "Schema:\n" + "\n".join(lines)
+
+    # ── Exp4: reverse-sorted typed schema ──
+    if fmt == 'sorted_desc':
+        lines = []
+        for table in sorted(schema.keys(), reverse=True):
+            cols    = sorted(schema[table], reverse=True)
+            t_types = col_types.get(table, {}) if col_types else {}
+            col_strs = [f"{c}:{t_types[c]}" if t_types.get(c) else c for c in cols]
+            lines.append(f"  {table}({', '.join(col_strs)})" if col_strs else f"  {table}")
+        return "Schema:\n" + "\n".join(lines)
+
+    # ── Exp4: sorted schema, structured two-line output at inference ──
+    if fmt == 'col_hint_output':
+        lines = []
+        for table in sorted(schema.keys()):
+            cols    = sorted(schema[table])
+            t_types = col_types.get(table, {}) if col_types else {}
             col_strs = [f"{c}:{t_types[c]}" if t_types.get(c) else c for c in cols]
             lines.append(f"  {table}({', '.join(col_strs)})" if col_strs else f"  {table}")
         return "Schema:\n" + "\n".join(lines)
@@ -249,9 +338,23 @@ def _parse_json(text: str) -> dict:
 
 def _get_system_prompt(schema_format: str) -> str:
     """Return the correct system prompt for a given schema format."""
-    if schema_format == 'schema_abbrev':
+    if schema_format in ('schema_abbrev', 'sorted_abbrev'):
         return SYSTEM_PROMPT_ABBREV
-    if schema_format in ('typed', 'fewshot_typed', 'schema_sorted', 'schema_top10'):
+    if schema_format == 'question_hint':
+        return SYSTEM_PROMPT_QHINT
+    if schema_format == 'col_hint_output':
+        return (
+            "You are a database assistant. "
+            "Given a database schema (column types shown as col:type) and a natural language "
+            "question, first output the relevant table names as a JSON array on one line, "
+            "then output the full schema links as a JSON object on the next line: "
+            "{\"TableName\": [\"col1\", \"col2\"]}. "
+            "Use ONLY table and column names (without the :type suffix) from the schema. "
+            "Include only the tables and columns needed to answer the question. "
+            "Output exactly two lines: the Tables array, then the JSON object. No extra text."
+        )
+    if schema_format in ('typed', 'fewshot_typed', 'schema_sorted', 'schema_top10',
+                         'col_filtered', 'sorted_desc', 'sorted_5ep'):
         return SYSTEM_PROMPT_TYPED
     return SYSTEM_PROMPT
 
@@ -293,12 +396,17 @@ class ModelPredictor:
 
     def predict(self, question: str, schema: dict, debug: bool = False,
                 col_types: dict = None) -> dict:
-        sys_prompt = _get_system_prompt(self.schema_format)
+        sys_prompt  = _get_system_prompt(self.schema_format)
         schema_text = serialize_schema(schema, self.schema_format,
                                        col_types=col_types, question=question)
+        # question_hint embeds the question inside schema_text already
+        if self.schema_format == 'question_hint':
+            user_content = schema_text
+        else:
+            user_content = f"{schema_text}\n\nQuestion: {question}"
         messages = [
             {"role": "system", "content": sys_prompt},
-            {"role": "user",   "content": f"{schema_text}\n\nQuestion: {question}"},
+            {"role": "user",   "content": user_content},
         ]
         input_ids = self.tokenizer.apply_chat_template(
             messages, add_generation_prompt=True, return_tensors="pt"
@@ -316,6 +424,12 @@ class ModelPredictor:
                                     skip_special_tokens=True)
         if debug:
             print(f"    [raw] {repr(raw[:500])}")
+        # col_hint_output produces two lines: "Tables: [...]" then "{...json...}"
+        # strip the Tables line and parse only the JSON line
+        if self.schema_format == 'col_hint_output':
+            lines = [l.strip() for l in raw.strip().splitlines() if l.strip()]
+            json_lines = [l for l in lines if l.startswith('{')]
+            raw = json_lines[0] if json_lines else raw
         return _parse_json(raw)
 
 
@@ -365,15 +479,15 @@ def predict_schema_links(question: str, db_id: str, schemas_dir: str,
     if predictor is not None:
         col_types = None
         if predictor.schema_format in ('typed', 'fewshot_typed',
-                                       'schema_abbrev', 'schema_sorted', 'schema_top10'):
+                                       'schema_abbrev', 'schema_sorted', 'schema_top10',
+                                       'sorted_abbrev', 'question_hint', 'col_filtered',
+                                       'sorted_desc', 'col_hint_output', 'sorted_5ep'):
             col_types = load_col_types(db_id, schemas_dir)
 
-        # schema_top10 does its own pruning inside serialize_schema;
-        # other formats use the standard cap.
-        if predictor.schema_format != 'schema_top10':
+        if predictor.schema_format not in ('schema_top10', 'question_hint'):
             pruned = prune_schema(question, schema, max_tables=MAX_SCHEMA_TABLES)
         else:
-            pruned = schema   # pass full schema; pruning happens in serialize_schema
+            pruned = schema   # pass full schema; handled in serialize_schema
 
         raw = predictor.predict(question, pruned, debug=debug, col_types=col_types)
         return filter_against_schema(raw, schema)   # validate against full schema
@@ -393,7 +507,9 @@ def main():
     ap.add_argument('--schema_format', default='compact',
                     choices=['compact', 'sql_ddl', 'markdown',
                              'fewshot', 'typed', 'fewshot_typed',
-                             'schema_abbrev', 'schema_sorted', 'schema_top10'],
+                             'schema_abbrev', 'schema_sorted', 'schema_top10',
+                             'sorted_abbrev', 'question_hint', 'col_filtered',
+                             'sorted_desc', 'col_hint_output', 'sorted_5ep'],
                     help='Schema serialization format — must match what was used at training time')
     ap.add_argument('--debug', type=int, default=0, metavar='N',
                     help='Print raw model output for the first N predictions (0 = off)')
