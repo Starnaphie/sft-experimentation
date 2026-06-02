@@ -186,32 +186,41 @@ def run_experiment(name, base_model, schema_format, lora_r, lora_alpha,
         remove_unused_columns=False,
     )
 
-    # TRL 0.21.0 SFTTrainer — uses DataCollatorForCompletionOnlyLM for completion-only loss.
-    # response_template selects where the assistant answer begins.
+    # TRL 0.21.0 renamed `tokenizer` → `processing_class`.
+    # DataCollatorForCompletionOnlyLM was also moved; skip gracefully if absent.
     response_template = "<|im_start|>assistant\n"
-    try:
-        from trl import DataCollatorForCompletionOnlyLM
-        collator = DataCollatorForCompletionOnlyLM(
-            response_template=response_template, tokenizer=tokenizer)
-        collator_ok = True
-    except Exception as e:
-        print(f"  [warn] DataCollatorForCompletionOnlyLM unavailable ({e}); training on all tokens")
-        collator = None
-        collator_ok = False
+    collator = None
+    for mod_path in ["trl", "trl.trainer.utils", "trl.data_utils"]:
+        try:
+            import importlib
+            m = importlib.import_module(mod_path)
+            DCRL = getattr(m, "DataCollatorForCompletionOnlyLM")
+            collator = DCRL(response_template=response_template, tokenizer=tokenizer)
+            print(f"  Using DataCollatorForCompletionOnlyLM from {mod_path}")
+            break
+        except Exception:
+            pass
+    if collator is None:
+        print("  [info] DataCollatorForCompletionOnlyLM not found; training on all tokens")
 
     trainer_kwargs = dict(
         model=model,
-        tokenizer=tokenizer,
+        processing_class=tokenizer,   # TRL 0.21.0+ uses processing_class
         train_dataset=dataset,
         args=training_args,
         peft_config=lora_config,
         dataset_text_field="text",
         max_seq_length=1024,
     )
-    if collator_ok:
+    if collator is not None:
         trainer_kwargs["data_collator"] = collator
 
-    trainer = SFTTrainer(**trainer_kwargs)
+    # Older TRL might still use 'tokenizer'; fall back if processing_class is rejected
+    try:
+        trainer = SFTTrainer(**trainer_kwargs)
+    except TypeError:
+        trainer_kwargs["tokenizer"] = trainer_kwargs.pop("processing_class")
+        trainer = SFTTrainer(**trainer_kwargs)
     trainer.train()
 
     print(f"Saving adapter → {adapter_dir}")
