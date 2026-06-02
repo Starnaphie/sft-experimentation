@@ -55,6 +55,16 @@ SYSTEM_PROMPT_ABBREV = (
     "Output valid JSON only, with no extra text."
 )
 
+SYSTEM_PROMPT_PKFK = (
+    "You are a database assistant. "
+    "Given a database schema (column types shown as col:type; [PK]=primary key, [FK]=foreign key) "
+    "and a natural language question, output the schema links as a JSON object: "
+    "{\"TableName\": [\"col1\", \"col2\"]}. "
+    "Use ONLY table and column names (without type/key suffixes) from the schema. "
+    "Include only the tables and columns needed to answer the question. "
+    "Output valid JSON only, with no extra text."
+)
+
 SYSTEM_PROMPT_QHINT = (
     "You are a database assistant. "
     "Given a database schema (column types shown as col:type), a list of key terms "
@@ -128,6 +138,43 @@ def load_col_types(db_id: str, schemas_dir: str) -> dict:
         ctype = col_types[i] if i < len(col_types) else ''
         types[table_names[tidx]][cname] = ctype
     return types
+
+
+def load_pkfk(db_id: str, schemas_dir: str) -> dict:
+    """Return {table: {col: 'PK'|'FK'|''}} for PK/FK annotations."""
+    fname = db_id.replace(' ', '_').replace('/', '_') + '.json'
+    with open(os.path.join(schemas_dir, fname)) as f:
+        s = json.load(f)
+    table_names = s['table_names_original']
+    col_info    = s['column_names_original']
+    pk_indices  = set(s.get('primary_keys', []))
+    fk_indices  = set()
+    for pair in s.get('foreign_keys', []):
+        fk_indices.update(pair)
+    flags = {t: {} for t in table_names}
+    for i, (tidx, cname) in enumerate(col_info):
+        if tidx == -1:
+            continue
+        t = table_names[tidx]
+        if i in pk_indices:
+            flags[t][cname] = 'PK'
+        elif i in fk_indices:
+            flags[t][cname] = 'FK'
+        else:
+            flags[t][cname] = ''
+    return flags
+
+
+def merge_type_pkfk(col_types: dict, pkfk: dict) -> dict:
+    """Return {table: {col: 'type[PK]'/'type[FK]'/'type'}} for schema_sorted_pkfk."""
+    merged = {}
+    for table, cols in col_types.items():
+        merged[table] = {}
+        flags = pkfk.get(table, {})
+        for col, typ in cols.items():
+            flag = flags.get(col, '')
+            merged[table][col] = f"{typ}[{flag}]" if (typ and flag) else (typ or (f"[{flag}]" if flag else ''))
+    return merged
 
 
 def _split_id(name: str) -> set:
@@ -270,6 +317,18 @@ def serialize_schema(schema: dict, fmt: str = 'compact',
             lines.append(f"  {table}({', '.join(col_strs)})" if col_strs else f"  {table}")
         return "Schema:\n" + "\n".join(lines)
 
+    # ── schema_sorted_pkfk: sorted + col:type[PK/FK] annotations ──
+    # col_types should already be the merged {table:{col:"type[PK]"}} dict
+    # (built by merge_type_pkfk() before calling serialize_schema).
+    if fmt == 'schema_sorted_pkfk':
+        lines = []
+        for table in sorted(schema.keys()):
+            cols     = sorted(schema[table])
+            t_ann    = col_types.get(table, {}) if col_types else {}
+            col_strs = [f"{c}:{t_ann[c]}" if t_ann.get(c) else c for c in cols]
+            lines.append(f"  {table}({', '.join(col_strs)})" if col_strs else f"  {table}")
+        return "Schema:\n" + "\n".join(lines)
+
     # ── Exp5: tables sorted A→Z, columns in original schema order ──
     if fmt == 'sorted_table_orig_col':
         lines = []
@@ -400,6 +459,8 @@ def _get_system_prompt(schema_format: str) -> str:
             "Include only the tables and columns needed to answer the question. "
             "Output exactly two lines: the Tables array, then the JSON object. No extra text."
         )
+    if schema_format == 'schema_sorted_pkfk':
+        return SYSTEM_PROMPT_PKFK
     if schema_format in ('typed', 'fewshot_typed', 'schema_sorted', 'schema_top10',
                          'col_filtered', 'sorted_desc', 'sorted_5ep',
                          'sorted_table_orig_col'):
@@ -441,6 +502,7 @@ class ModelPredictor:
         self.model.eval()
         self._torch = torch
         self.schema_format = schema_format
+        self._base_model   = base_model   # kept for Qwen3 detection
 
     def _build_input(self, question: str, schema: dict, col_types: dict):
         sys_prompt  = _get_system_prompt(self.schema_format)
@@ -452,10 +514,17 @@ class ModelPredictor:
             {"role": "system", "content": sys_prompt},
             {"role": "user",   "content": user_content},
         ]
-        result = self.tokenizer.apply_chat_template(
-            messages, add_generation_prompt=True, return_tensors="pt"
-        )
-        # transformers 5.x returns BatchEncoding (UserDict subclass, not dict);
+        kwargs = dict(add_generation_prompt=True, return_tensors="pt")
+        # Qwen3 emits <think> blocks by default; disable for structured output
+        if 'qwen3' in self._base_model.lower():
+            try:
+                result = self.tokenizer.apply_chat_template(
+                    messages, enable_thinking=False, **kwargs)
+            except TypeError:
+                result = self.tokenizer.apply_chat_template(messages, **kwargs)
+        else:
+            result = self.tokenizer.apply_chat_template(messages, **kwargs)
+        # transformers 5.x returns BatchEncoding (UserDict, not dict subclass);
         # older versions return a plain tensor
         ids = result.input_ids if hasattr(result, 'input_ids') else result
         return ids.to(self.model.device)
@@ -544,8 +613,9 @@ def _adapter_ready(adapter_dir: str) -> bool:
 _TYPED_FORMATS = frozenset({
     'typed', 'fewshot_typed', 'schema_abbrev', 'schema_sorted', 'schema_top10',
     'sorted_abbrev', 'question_hint', 'col_filtered', 'sorted_desc',
-    'col_hint_output', 'sorted_5ep', 'sorted_table_orig_col',
+    'col_hint_output', 'sorted_5ep', 'sorted_table_orig_col', 'schema_sorted_pkfk',
 })
+_PKFK_FORMATS = frozenset({'schema_sorted_pkfk'})
 _FULL_SCHEMA_FORMATS = frozenset({'schema_top10', 'question_hint'})
 
 
@@ -557,6 +627,8 @@ def predict_schema_links(question: str, db_id: str, schemas_dir: str,
     if predictor is not None:
         col_types = load_col_types(db_id, schemas_dir) \
                     if predictor.schema_format in _TYPED_FORMATS else None
+        if predictor.schema_format in _PKFK_FORMATS and col_types is not None:
+            col_types = merge_type_pkfk(col_types, load_pkfk(db_id, schemas_dir))
 
         pruned = schema if predictor.schema_format in _FULL_SCHEMA_FORMATS \
                  else prune_schema(question, schema, max_tables=MAX_SCHEMA_TABLES)
@@ -588,7 +660,7 @@ def main():
                              'schema_abbrev', 'schema_sorted', 'schema_top10',
                              'sorted_abbrev', 'question_hint', 'col_filtered',
                              'sorted_desc', 'col_hint_output', 'sorted_5ep',
-                             'sorted_table_orig_col'],
+                             'sorted_table_orig_col', 'schema_sorted_pkfk'],
                     help='Schema serialization format — must match what was used at training time')
     ap.add_argument('--debug', type=int, default=0, metavar='N',
                     help='Print raw model output for the first N predictions (0 = off)')
