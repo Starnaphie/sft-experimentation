@@ -22,7 +22,7 @@ import re
 # Must match train.py exactly.
 BASE_MODEL     = 'Qwen/Qwen2.5-1.5B-Instruct'
 ADAPTER_DIR    = './adapter'
-MAX_NEW_TOKENS = 512
+MAX_NEW_TOKENS = 768
 
 # ── System prompts ─────────────────────────────────────────────────────────────
 
@@ -270,6 +270,16 @@ def serialize_schema(schema: dict, fmt: str = 'compact',
             lines.append(f"  {table}({', '.join(col_strs)})" if col_strs else f"  {table}")
         return "Schema:\n" + "\n".join(lines)
 
+    # ── Exp5: tables sorted A→Z, columns in original schema order ──
+    if fmt == 'sorted_table_orig_col':
+        lines = []
+        for table in sorted(schema.keys()):
+            cols    = schema[table]           # original order preserved
+            t_types = col_types.get(table, {}) if col_types else {}
+            col_strs = [f"{c}:{t_types[c]}" if t_types.get(c) else c for c in cols]
+            lines.append(f"  {table}({', '.join(col_strs)})" if col_strs else f"  {table}")
+        return "Schema:\n" + "\n".join(lines)
+
     # ── Exp4: sorted schema, structured two-line output at inference ──
     if fmt == 'col_hint_output':
         lines = []
@@ -320,19 +330,56 @@ def filter_against_schema(links: dict, schema: dict) -> dict:
 
 # ── Model-based predictor ─────────────────────────────────────────────────────
 
+def _repair_json(text: str) -> str:
+    """Close unclosed JSON brackets/braces to recover from truncated output."""
+    # Strip trailing comma (incomplete array/object entry)
+    text = re.sub(r',\s*$', '', text.rstrip())
+    depth_brace = depth_bracket = 0
+    in_str = esc = False
+    for c in text:
+        if esc:
+            esc = False; continue
+        if c == '\\' and in_str:
+            esc = True; continue
+        if c == '"':
+            in_str = not in_str; continue
+        if in_str:
+            continue
+        depth_brace   += (c == '{') - (c == '}')
+        depth_bracket += (c == '[') - (c == ']')
+    suffix = ('"' if in_str else '') + (']' * max(0, depth_bracket)) + ('}' * max(0, depth_brace))
+    return text + suffix
+
+
 def _parse_json(text: str) -> dict:
-    """Extract a JSON dict from raw model output; fall back to {} on failure."""
+    """Extract a JSON dict from raw model output with multi-stage fallback."""
     text = text.strip()
+    # Stage 1: direct parse
     try:
-        return json.loads(text)
+        obj = json.loads(text)
+        if isinstance(obj, dict):
+            return obj
     except json.JSONDecodeError:
         pass
-    m = re.search(r'\{.*\}', text, re.DOTALL)
-    if m:
+    # Stage 2: find outermost {...} span and parse
+    start = text.find('{')
+    if start == -1:
+        return {}
+    end = text.rfind('}')
+    if end > start:
         try:
-            return json.loads(m.group())
+            obj = json.loads(text[start:end + 1])
+            if isinstance(obj, dict):
+                return obj
         except json.JSONDecodeError:
             pass
+    # Stage 3: repair truncated JSON (close unclosed brackets)
+    try:
+        obj = json.loads(_repair_json(text[start:]))
+        if isinstance(obj, dict):
+            return obj
+    except json.JSONDecodeError:
+        pass
     return {}
 
 
@@ -354,7 +401,8 @@ def _get_system_prompt(schema_format: str) -> str:
             "Output exactly two lines: the Tables array, then the JSON object. No extra text."
         )
     if schema_format in ('typed', 'fewshot_typed', 'schema_sorted', 'schema_top10',
-                         'col_filtered', 'sorted_desc', 'sorted_5ep'):
+                         'col_filtered', 'sorted_desc', 'sorted_5ep',
+                         'sorted_table_orig_col'):
         return SYSTEM_PROMPT_TYPED
     return SYSTEM_PROMPT
 
@@ -394,24 +442,37 @@ class ModelPredictor:
         self._torch = torch
         self.schema_format = schema_format
 
-    def predict(self, question: str, schema: dict, debug: bool = False,
-                col_types: dict = None) -> dict:
+    def _build_input(self, question: str, schema: dict, col_types: dict):
         sys_prompt  = _get_system_prompt(self.schema_format)
         schema_text = serialize_schema(schema, self.schema_format,
                                        col_types=col_types, question=question)
-        # question_hint embeds the question inside schema_text already
-        if self.schema_format == 'question_hint':
-            user_content = schema_text
-        else:
-            user_content = f"{schema_text}\n\nQuestion: {question}"
+        user_content = schema_text if self.schema_format == 'question_hint' \
+                       else f"{schema_text}\n\nQuestion: {question}"
         messages = [
             {"role": "system", "content": sys_prompt},
             {"role": "user",   "content": user_content},
         ]
-        input_ids = self.tokenizer.apply_chat_template(
+        result = self.tokenizer.apply_chat_template(
             messages, add_generation_prompt=True, return_tensors="pt"
-        ).to(self.model.device)
+        )
+        # transformers 5.x returns BatchEncoding (UserDict subclass, not dict);
+        # older versions return a plain tensor
+        ids = result.input_ids if hasattr(result, 'input_ids') else result
+        return ids.to(self.model.device)
 
+    def _decode(self, out, input_len: int) -> dict:
+        raw = self.tokenizer.decode(out[0][input_len:], skip_special_tokens=True)
+        if self.schema_format == 'col_hint_output':
+            lines = [l.strip() for l in raw.strip().splitlines() if l.strip()]
+            raw = next((l for l in lines if l.startswith('{')), raw)
+        return raw, _parse_json(raw)
+
+    def predict(self, question: str, schema: dict, debug: bool = False,
+                col_types: dict = None) -> dict:
+        input_ids = self._build_input(question, schema, col_types)
+        input_len = input_ids.shape[-1]
+
+        # First pass: greedy decoding
         with self._torch.no_grad():
             out = self.model.generate(
                 input_ids,
@@ -419,18 +480,26 @@ class ModelPredictor:
                 do_sample=False,
                 pad_token_id=self.tokenizer.eos_token_id,
             )
-
-        raw = self.tokenizer.decode(out[0][input_ids.shape[-1]:],
-                                    skip_special_tokens=True)
+        raw, result = self._decode(out, input_len)
         if debug:
-            print(f"    [raw] {repr(raw[:500])}")
-        # col_hint_output produces two lines: "Tables: [...]" then "{...json...}"
-        # strip the Tables line and parse only the JSON line
-        if self.schema_format == 'col_hint_output':
-            lines = [l.strip() for l in raw.strip().splitlines() if l.strip()]
-            json_lines = [l for l in lines if l.startswith('{')]
-            raw = json_lines[0] if json_lines else raw
-        return _parse_json(raw)
+            print(f"    [raw greedy] {repr(raw[:400])}")
+
+        # Second pass: temperature sampling when greedy gave nothing
+        if not result:
+            with self._torch.no_grad():
+                out = self.model.generate(
+                    input_ids,
+                    max_new_tokens=MAX_NEW_TOKENS,
+                    do_sample=True,
+                    temperature=0.4,
+                    top_p=0.95,
+                    pad_token_id=self.tokenizer.eos_token_id,
+                )
+            raw2, result = self._decode(out, input_len)
+            if debug:
+                print(f"    [raw sample] {repr(raw2[:400])}")
+
+        return result
 
 
 # ── Keyword-matching fallback ─────────────────────────────────────────────────
@@ -472,25 +541,34 @@ def _adapter_ready(adapter_dir: str) -> bool:
 
 # ── Per-question entry point ──────────────────────────────────────────────────
 
+_TYPED_FORMATS = frozenset({
+    'typed', 'fewshot_typed', 'schema_abbrev', 'schema_sorted', 'schema_top10',
+    'sorted_abbrev', 'question_hint', 'col_filtered', 'sorted_desc',
+    'col_hint_output', 'sorted_5ep', 'sorted_table_orig_col',
+})
+_FULL_SCHEMA_FORMATS = frozenset({'schema_top10', 'question_hint'})
+
+
 def predict_schema_links(question: str, db_id: str, schemas_dir: str,
-                         predictor=None, debug: bool = False) -> dict:
+                         predictor=None, debug: bool = False,
+                         hybrid_fallback: bool = True) -> dict:
     schema = load_schema(db_id, schemas_dir)
 
     if predictor is not None:
-        col_types = None
-        if predictor.schema_format in ('typed', 'fewshot_typed',
-                                       'schema_abbrev', 'schema_sorted', 'schema_top10',
-                                       'sorted_abbrev', 'question_hint', 'col_filtered',
-                                       'sorted_desc', 'col_hint_output', 'sorted_5ep'):
-            col_types = load_col_types(db_id, schemas_dir)
+        col_types = load_col_types(db_id, schemas_dir) \
+                    if predictor.schema_format in _TYPED_FORMATS else None
 
-        if predictor.schema_format not in ('schema_top10', 'question_hint'):
-            pruned = prune_schema(question, schema, max_tables=MAX_SCHEMA_TABLES)
-        else:
-            pruned = schema   # pass full schema; handled in serialize_schema
+        pruned = schema if predictor.schema_format in _FULL_SCHEMA_FORMATS \
+                 else prune_schema(question, schema, max_tables=MAX_SCHEMA_TABLES)
 
         raw = predictor.predict(question, pruned, debug=debug, col_types=col_types)
-        return filter_against_schema(raw, schema)   # validate against full schema
+        result = filter_against_schema(raw, schema)
+
+        # If the model returned nothing, fall back to keyword matching
+        if not result and hybrid_fallback:
+            result = _keyword_predict(question, schema)
+
+        return result
 
     return _keyword_predict(question, schema)
 
@@ -504,23 +582,27 @@ def main():
     ap.add_argument('--schemas_dir', default='./schemas')
     ap.add_argument('--adapter_dir', default=ADAPTER_DIR)
     ap.add_argument('--base_model',    default=BASE_MODEL)
-    ap.add_argument('--schema_format', default='compact',
+    ap.add_argument('--schema_format', default='schema_sorted',
                     choices=['compact', 'sql_ddl', 'markdown',
                              'fewshot', 'typed', 'fewshot_typed',
                              'schema_abbrev', 'schema_sorted', 'schema_top10',
                              'sorted_abbrev', 'question_hint', 'col_filtered',
-                             'sorted_desc', 'col_hint_output', 'sorted_5ep'],
+                             'sorted_desc', 'col_hint_output', 'sorted_5ep',
+                             'sorted_table_orig_col'],
                     help='Schema serialization format — must match what was used at training time')
     ap.add_argument('--debug', type=int, default=0, metavar='N',
                     help='Print raw model output for the first N predictions (0 = off)')
+    ap.add_argument('--no_hybrid_fallback', action='store_true',
+                    help='Disable keyword-matching fallback when model returns empty output')
     args = ap.parse_args()
+    hybrid = not args.no_hybrid_fallback
 
     if _adapter_ready(args.adapter_dir):
-        print(f"[mode] fine-tuned model  (schema_format={args.schema_format})")
+        print(f"[mode] fine-tuned model  (schema_format={args.schema_format}, hybrid={hybrid})")
         predictor = ModelPredictor(args.base_model, args.adapter_dir, args.schema_format)
     else:
         print(f"[mode] keyword-matching baseline  "
-              f"(no adapter at '{args.adapter_dir}' — run train.py first)")
+              f"(no adapter at '{args.adapter_dir}' — run train_v2.py first)")
         predictor = None
 
     with open(args.input) as f:
@@ -533,7 +615,7 @@ def main():
             print(f"\n[debug q{it['question_id']}] {it['question']}")
         links = predict_schema_links(
             it['question'], it['db_id'], args.schemas_dir, predictor,
-            debug=debug_this)
+            debug=debug_this, hybrid_fallback=hybrid)
         if debug_this:
             print(f"    [parsed] {links}")
         preds.append({'question_id': it['question_id'], 'schema_links': links})

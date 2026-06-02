@@ -1,0 +1,6395 @@
+[
+  {
+    "question_id": 1,
+    "schema_links": {
+      "ECM1": [
+        "ParamValue"
+      ],
+      "SRA2": [
+        "ActionCode"
+      ],
+      "SRA1": [
+        "ActionCode",
+        "KeyNumber",
+        "ValNumber"
+      ],
+      "OFLT": [
+        "ShowZero",
+        "CutByObj",
+        "ShowLeads",
+        "SplitByBin",
+        "SplitBySnb",
+        "LotNumberF",
+        "LotNumberT"
+      ],
+      "SRA3": [
+        "ActionCode",
+        "SendEmail",
+        "Email",
+        "Number",
+        "ShowResult"
+      ],
+      "RDOC": [
+        "ShowGrid",
+        "ScreenFont",
+        "SwpInEmail",
+        "EmailFont",
+        "ForMobile"
+      ],
+      "RITM": [
+        "FontName",
+        "FontSize",
+        "ShowDescr"
+      ]
+    }
+  },
+  {
+    "question_id": 2,
+    "schema_links": {}
+  },
+  {
+    "question_id": 3,
+    "schema_links": {
+      "CRASH": [
+        "VEHICLES"
+      ],
+      "VPICDECODE": [
+        "CrashImminentBrakingID",
+        "CrashImminentBraking",
+        "AutomaticCrashNotificationId",
+        "AutomaticCrashNotification"
+      ]
+    }
+  },
+  {
+    "question_id": 4,
+    "schema_links": {
+      "Observer_LU": [
+        "SSMA_TimeStamp"
+      ],
+      "tblAbundance_LU": [
+        "AbundanceID",
+        "SSMA_TimeStamp"
+      ],
+      "tblCultivation_LU": [
+        "SSMA_TimeStamp"
+      ],
+      "tblEventDataHerps": [
+        "EventID",
+        "ContactID",
+        "SSMA_TimeStamp"
+      ],
+      "tblEvents": [
+        "EventID",
+        "StartTime",
+        "EndTime"
+      ],
+      "tblFieldDataAmphibianCallCounts": [
+        "RecordID",
+        "LocationID",
+        "EventID",
+        "SSMA_TimeStamp"
+      ],
+      "tblFieldDataCoverBoard": [
+        "RecordID",
+        "LocationID",
+        "EventID",
+        "SnakeID",
+        "SSMA_TimeStamp"
+      ],
+      "tblFieldDataGreenCardObservations": [
+        "RecordID",
+        "LocationID",
+        "EventID",
+        "SSMA_TimeStamp"
+      ],
+      "tblFieldDataMinnowTrapSurveys": [
+        "RecordID",
+        "LocationID",
+        "EventID",
+        "SSMA_TimeStamp"
+      ],
+      "tblFieldDataSnakeDataCollection": [
+        "RecordID",
+        "LocationID",
+        "EventID",
+        "SnakeID",
+        "SSMA_TimeStamp"
+      ],
+      "tblFieldDataTimeConstrainedSearches": [
+        "RecordID",
+        "LocationID",
+        "EventID",
+        "SnakeID",
+        "SSMA_TimeStamp"
+      ],
+      "tblFieldDataTurtleMeasurements": [
+        "RecordID",
+        "LocationID",
+        "EventID",
+        "SSMA_TimeStamp"
+      ],
+      "tblFieldDataTurtleTrapSurveys": [
+        "RecordID",
+        "LocationID",
+        "EventID",
+        "SSMA_TimeStamp"
+      ],
+      "tblFieldDataWaterProperties": [
+        "RecordID",
+        "LocationID",
+        "EventID",
+        "SSMA_TimeStamp"
+      ],
+      "tblLocations": [
+        "LocationID",
+        "SiteID",
+        "SSMA_TimeStamp"
+      ],
+      "tblLocationsPoints": [
+        "LocationID",
+        "PointID",
+        "SSMA_TimeStamp"
+      ],
+      "tblNativity_LU": [
+        "NativityID",
+        "SSMA_TimeStamp"
+      ],
+      "tblParkStatus_LU": [
+        "ParkStatusID",
+        "SSMA_TimeStamp"
+      ],
+      "tblResidency_LU": [
+        "ResidencyID",
+        "SSMA_TimeStamp"
+      ],
+      "tlinkObservers": [
+        "EventID"
+      ],
+      "tluHabitat": [
+        "SSMA_TimeStamp"
+      ],
+      "tluMicroHabitat": [
+        "SSMA_TimeStamp"
+      ],
+      "tluWeather": [
+        "SortID"
+      ],
+      "sysdiagrams": [
+        "principal_id",
+        "diagram_id"
+      ]
+    }
+  },
+  {
+    "question_id": 5,
+    "schema_links": {
+      "CRASH": [
+        "VEHICLES"
+      ],
+      "VPICDECODE": [
+        "AdaptiveDrivingBeamId",
+        "AdaptiveDrivingBeam",
+        "AdaptiveCruiseControlId",
+        "AdaptiveCruiseControl"
+      ]
+    }
+  },
+  {
+    "question_id": 6,
+    "schema_links": {
+      "tbl_Deadwood": [
+        "Data_ID",
+        "Event_ID"
+      ],
+      "tbl_Events": [
+        "Event_ID",
+        "Location_ID"
+      ],
+      "tbl_Locations": [
+        "Location_ID",
+        "Plot_ID",
+        "SiteDescription",
+        "PlaceNameID",
+        "GIS_Location_ID",
+        "Unit_Code"
+      ],
+      "tbl_Nests": [
+        "Nest_ID",
+        "Event_ID",
+        "SpCode",
+        "Cover"
+      ],
+      "tbl_Overstory": [
+        "Overstory_ID",
+        "Event_ID",
+        "SpCode"
+      ],
+      "tbl_Saplings": [
+        "Saplings_ID",
+        "Event_ID"
+      ],
+      "sysdiagrams": [
+        "principal_id",
+        "diagram_id"
+      ],
+      "tbl_Seedlings": [
+        "Seedlings_ID",
+        "Event_ID",
+        "SpCode"
+      ],
+      "tbl_Tree_Tags": [
+        "Tree_Tag_ID",
+        "Location_ID",
+        "SpCode"
+      ],
+      "tbl_WitnessTrees": [
+        "WitnessTree_ID",
+        "Location_ID",
+        "Witness_SpCode"
+      ],
+      "tlu_Cover_Cls": [
+        "CoverClass_Num",
+        "CoverClass_Text"
+      ],
+      "tlu_DecayStage": [
+        "DecayStage_ID"
+      ],
+      "tlu_Live_Dead": [
+        "Cond_Text"
+      ],
+      "tlu_PlaceNames": [
+        "ID"
+      ],
+      "tlu_PlantSpecies": [
+        "species",
+        "SpeciesCode",
+        "SpeciesNotes"
+      ],
+      "tlu_Presence": [
+        "Pres_Text"
+      ],
+      "tlu_R1_RestOfPlot": [
+        "Pres_Text"
+      ],
+      "tlu_Roads_and_Trails": [],
+      "tlu_topo_position": [
+        "ID"
+      ],
+      "tlu_Tree_Cond": [
+        "TreeCond_Text"
+      ],
+      "tsys_App_Defaults": [
+        "Release_ID"
+      ],
+      "tsys_App_Releases": [
+        "Release_ID"
+      ],
+      "tsys_Bug_Reports": [
+        "Bug_ID",
+        "Release_ID"
+      ]
+    }
+  },
+  {
+    "question_id": 7,
+    "schema_links": {
+      "tbl_Events": []
+    }
+  },
+  {
+    "question_id": 8,
+    "schema_links": {
+      "INVERTEBRATES": [
+        "OBS_TYPE",
+        "Observer"
+      ],
+      "VERTEBRATES": [
+        "OBS_TYPE",
+        "Observer"
+      ]
+    }
+  },
+  {
+    "question_id": 9,
+    "schema_links": {
+      "tbl_Events": [
+        "Location_ID",
+        "Event_Notes"
+      ],
+      "tbl_Locations": [
+        "Location_ID",
+        "Logging",
+        "Other_Disturbance",
+        "Loc_Notes",
+        "Eco_Notes",
+        "GIS_Location_ID",
+        "Accuracy_Notes"
+      ],
+      "tbl_Overstory": [
+        "notes"
+      ],
+      "tbl_Tree_Tags": [
+        "Location_ID",
+        "Notes"
+      ],
+      "tbl_WitnessTrees": [
+        "Location_ID"
+      ],
+      "tlu_PlantSpecies": [
+        "SpeciesNotes"
+      ],
+      "tlu_Roads_and_Trails": [
+        "Notes"
+      ],
+      "tsys_App_Releases": [
+        "Release_notes"
+      ]
+    }
+  },
+  {
+    "question_id": 10,
+    "schema_links": {
+      "sysdiagrams": [
+        "name"
+      ],
+      "ACC_EM_Chronic_Absenteeism": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME",
+        "ABSENT_RATE",
+        "DATA_REP_FLAG",
+        "PARTIAL_DATA_FLAG"
+      ],
+      "ACC_EM_Core_and_Weighted_Performance": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_EM_ELP": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME",
+        "PROGRESS_RATE"
+      ],
+      "ACC_EM_NYSESLAT_for_Participation": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "ACC_EM_Participation_Rate": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME",
+        "RATE"
+      ],
+      "ACC_HS_Chronic_Absenteeism": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME",
+        "ABSENT_RATE",
+        "DATA_REP_FLAG",
+        "PARTIAL_DATA_FLAG"
+      ],
+      "ACC_HS_Core_and_Weighted_Performance": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_ELP": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME",
+        "PROGRESS_RATE"
+      ],
+      "ACC_HS_Graduation_Rate": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME",
+        "GRAD_RATE"
+      ],
+      "ACC_HS_Participation_Rate": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME",
+        "RATE"
+      ],
+      "Accountability_Levels": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Accountability_Status": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Accountability_Status_by_Subgroup": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SCHOOL_TYPE",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_EM_ELA": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "ASSESSMENT_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_EM_MATH": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "ASSESSMENT_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_EM_SCIENCE": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "ASSESSMENT_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_NYSAA": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_NYSESLAT": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_Regents_Exams": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "BOCES_and_N/RC": [
+        "ENTITY_CD",
+        "SCHOOL_NAME",
+        "DISTRICT_NAME",
+        "BOCES_NAME",
+        "COUNTY_NAME"
+      ],
+      "Expenditures_per_Pupil": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "DATA_REPORTED_ENR",
+        "DATA_REPORTED_EXP"
+      ],
+      "Inexperienced_Teachers_and_Principals": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "TEACH_DATA_REP_FLAG",
+        "PRIN_DATA_REP_FLAG"
+      ],
+      "Institution_Grouping": [
+        "GROUP_NAME",
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Postsecondary_Enrollment": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Teachers_Teaching_Out_of_Certification": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "OUT_OF_CERT_DATA_REP_FLAG"
+      ],
+      "Total_Cohort_Regents_Exams": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ]
+    }
+  },
+  {
+    "question_id": 11,
+    "schema_links": {
+      "Invert_Family": [
+        "Invert_Family"
+      ],
+      "INVERTEBRATES": [
+        "Family",
+        "OBS_TYPE"
+      ],
+      "VERTEBRATES": [
+        "OBS_TYPE"
+      ]
+    }
+  },
+  {
+    "question_id": 12,
+    "schema_links": {
+      "APM8": [
+        "OpenAmtAP",
+        "OpenAmtAR"
+      ],
+      "UIC2": [
+        "TableName"
+      ],
+      "PMG8": [
+        "OpenAmtAP",
+        "OpenAmtAR"
+      ],
+      "PMG1": [
+        "OpenAmtAR",
+        "OpenAmtAP"
+      ],
+      "APH1": [
+        "OpenAmtAR",
+        "OpenAmtAP"
+      ],
+      "ONCP": [
+        "Name"
+      ],
+      "OKPS": [
+        "KpsName"
+      ],
+      "OHFC": [
+        "FuncName"
+      ],
+      "OPMG": [
+        "NAME"
+      ],
+      "OHMM": [
+        "ModelName"
+      ],
+      "ODAB": [
+        "DashbdName",
+        "ProcName",
+        "JobName"
+      ],
+      "OCIP": [
+        "Name"
+      ],
+      "APM2": [
+        "REMARKS",
+        "SOLUTION"
+      ],
+      "HMM1": [
+        "ViewName"
+      ],
+      "KPS1": [
+        "KpiName"
+      ],
+      "APMG": [
+        "NAME"
+      ],
+      "PHA8": [
+        "OpenAmtAP",
+        "OpenAmtAR"
+      ],
+      "DAB1": [
+        "QryName"
+      ],
+      "PMC3": [
+        "Name"
+      ],
+      "PMC4": [
+        "Name"
+      ],
+      "APM1": [
+        "OpenAmtAR",
+        "OpenAmtAP"
+      ],
+      "OPAC": [
+        "PACName"
+      ],
+      "APHA": [
+        "NAME",
+        "ProjectID"
+      ],
+      "PMC6": [
+        "Name"
+      ],
+      "OBOB": [
+        "TableName"
+      ],
+      "OSRC": [
+        "SysRptName",
+        "CusRptName"
+      ],
+      "ORSC": [
+        "ResName",
+        "FrgnName",
+        "IssueMthd",
+        "validFor",
+        "frozenFor",
+        "PicturName"
+      ],
+      "PMG2": [
+        "REMARKS",
+        "SOLUTION"
+      ],
+      "OUGR": [
+        "GroupName"
+      ],
+      "OPHA": [
+        "NAME",
+        "ProjectID"
+      ],
+      "CFN1": [
+        "Name"
+      ],
+      "OSSG": [
+        "Name"
+      ],
+      "RSC6": [
+        "Remarks"
+      ],
+      "OCPT": [
+        "Name"
+      ],
+      "APH8": [
+        "OpenAmtAP",
+        "OpenAmtAR"
+      ],
+      "OBOL": [
+        "TableName",
+        "ColumnName"
+      ],
+      "OWDT": [
+        "Name"
+      ],
+      "PMC2": [
+        "Name"
+      ],
+      "UICU": [
+        "TPLName"
+      ],
+      "PHA1": [
+        "OpenAmtAR",
+        "OpenAmtAP"
+      ],
+      "OWPK": [
+        "PackagName",
+        "ViewName"
+      ]
+    }
+  },
+  {
+    "question_id": 13,
+    "schema_links": {
+      "VPICDECODE": [
+        "DoorsCount",
+        "WheelsCount",
+        "SeatsCount",
+        "SeatRowsCount",
+        "AxlesCount",
+        "EngineCylindersCount"
+      ]
+    }
+  },
+  {
+    "question_id": 14,
+    "schema_links": {
+      "tbl_Locations": [
+        "SiteDescription"
+      ],
+      "tbl_Overstory": [
+        "Overstory_ID",
+        "TreeTag",
+        "TreeCond"
+      ],
+      "tbl_Saplings": [
+        "Condition"
+      ],
+      "tbl_Tree_Tags": [
+        "Tree_Tag_ID"
+      ],
+      "tbl_WitnessTrees": [
+        "WitnessTree_ID"
+      ],
+      "tlu_R1_RestOfPlot": [],
+      "tlu_Roads_and_Trails": [],
+      "tlu_Tree_Cond": [
+        "TreeCond_Num",
+        "TreeCond_Text"
+      ]
+    }
+  },
+  {
+    "question_id": 15,
+    "schema_links": {
+      "tbl_Locations": [
+        "Elevation",
+        "Subwatershed"
+      ]
+    }
+  },
+  {
+    "question_id": 16,
+    "schema_links": {
+      "ACC_EM_Chronic_Absenteeism": [
+        "LEVEL"
+      ],
+      "ACC_EM_Core_and_Weighted_Performance": [
+        "CORE_LEVEL",
+        "WGT_LEVEL"
+      ],
+      "ACC_EM_ELP": [
+        "LEVEL"
+      ],
+      "ACC_EM_NYSESLAT_for_Participation": [],
+      "ACC_EM_Participation_Rate": [
+        "MET_95_PERCENT"
+      ],
+      "ACC_HS_Chronic_Absenteeism": [
+        "LEVEL"
+      ],
+      "ACC_HS_Core_and_Weighted_Performance": [
+        "CORE_LEVEL",
+        "WGT_LEVEL"
+      ],
+      "ACC_HS_ELP": [
+        "LEVEL"
+      ],
+      "ACC_HS_Graduation_Rate": [
+        "COHORT_LEVEL"
+      ],
+      "ACC_HS_Participation_Rate": [
+        "MET_95_PERCENT"
+      ],
+      "Accountability_Levels": [
+        "LEVEL"
+      ],
+      "Accountability_Status_by_Subgroup": [
+        "SCHOOL_TYPE"
+      ],
+      "Annual_EM_ELA": [
+        "ASSESSMENT_NAME",
+        "NOT_TESTED",
+        "PCT_NOT_TESTED",
+        "NUM_TESTED",
+        "PCT_TESTED",
+        "LEVEL1_%TESTED",
+        "LEVEL2_%TESTED",
+        "LEVEL3_%TESTED",
+        "LEVEL4_%TESTED",
+        "TOTAL_SCALE_SCORES"
+      ],
+      "Annual_EM_MATH": [
+        "ASSESSMENT_NAME",
+        "NOT_TESTED",
+        "PCT_NOT_TESTED",
+        "NUM_TESTED",
+        "PCT_TESTED",
+        "LEVEL1_%TESTED",
+        "LEVEL2_%TESTED",
+        "LEVEL3_%TESTED",
+        "LEVEL4_%TESTED",
+        "LEVEL5_%TESTED",
+        "TOTAL_SCALE_SCORES"
+      ],
+      "Annual_EM_SCIENCE": [
+        "ASSESSMENT_NAME",
+        "NOT_TESTED",
+        "PCT_NOT_TESTED",
+        "NUM_TESTED",
+        "PCT_TESTED",
+        "LEVEL1_%TESTED",
+        "LEVEL2_%TESTED",
+        "LEVEL3_%TESTED",
+        "LEVEL4_%TESTED",
+        "TOTAL_SCALE_SCORES"
+      ],
+      "Annual_NYSAA": [
+        "NOT_TESTED",
+        "NOT_TESTED_PER",
+        "TESTED",
+        "PER_TESTED"
+      ],
+      "Annual_NYSESLAT": [
+        "NOT_TESTED",
+        "TESTED"
+      ],
+      "Annual_Regents_Exams": [
+        "TESTED"
+      ],
+      "BOCES_and_N/RC": [
+        "SCHOOL_NAME"
+      ],
+      "Inexperienced_Teachers_and_Principals": []
+    }
+  },
+  {
+    "question_id": 17,
+    "schema_links": {
+      "tblEventDataHerps": [
+        "WaterTemp",
+        "Substrate_Temperature"
+      ],
+      "tblFieldDataTurtleMeasurements": [
+        "Substrate_Temperature"
+      ],
+      "tblFieldDataWaterProperties": [],
+      "tblLocations": [],
+      "tblLocationsPoints": []
+    }
+  },
+  {
+    "question_id": 18,
+    "schema_links": {
+      "OCC": [
+        "AGE",
+        "HEIGHT"
+      ],
+      "VPICDECODE": [
+        "TrackWidthIN",
+        "GrossVehicleWeightRatingFromId",
+        "GrossVehicleWeightRatingFrom",
+        "GrossVehicleWeightRatingToId",
+        "GrossVehicleWeightRatingTo",
+        "GrossCombWeightRatingFromId",
+        "GrossCombWeightRatingFrom",
+        "GrossCombWeightRatingToId",
+        "GrossCombWeightRatingTo",
+        "WheelBaseIN_from",
+        "WheelBaseIN_to",
+        "WheelSizeFrontIN",
+        "WheelSizeRearIN",
+        "TruckBedLengthIN",
+        "BatteryKWh_from",
+        "BatteryKWh_to",
+        "BatteryV_from",
+        "BatteryV_to",
+        "BatteryA_from",
+        "BatteryA_to",
+        "EngineBrakeHP_from",
+        "EngineBrakeHP_to",
+        "SAEAutomationLevel_from",
+        "SAEAutomationLevel_to"
+      ]
+    }
+  },
+  {
+    "question_id": 19,
+    "schema_links": {
+      "tbl_Edit_Log": [
+        "Table"
+      ],
+      "tbl_Locations": [
+        "Species",
+        "Rnd_Plt_In"
+      ],
+      "tlu_Species_CRLA": [
+        "Species",
+        "Park"
+      ],
+      "tlu_Species_LABE": [
+        "Species",
+        "Park"
+      ],
+      "tlu_Species_LAVO": [
+        "Species",
+        "Park"
+      ],
+      "tlu_Species_ORCA": [
+        "Species",
+        "Park"
+      ],
+      "tlu_Species_REDW": [
+        "Species",
+        "Park"
+      ],
+      "tlu_Species_WHIS": [
+        "Species",
+        "Park"
+      ]
+    }
+  },
+  {
+    "question_id": 20,
+    "schema_links": {
+      "tbl_Edit_Log": [
+        "Table"
+      ],
+      "tbl_Locations": [
+        "Species",
+        "Rnd_Plt_In"
+      ],
+      "tlu_Species_CRLA": [
+        "Species",
+        "SampleYear"
+      ],
+      "tlu_Species_LABE": [
+        "Species",
+        "SampleYear"
+      ],
+      "tlu_Species_LAVO": [
+        "Species",
+        "SampleYear"
+      ],
+      "tlu_Species_ORCA": [
+        "Species",
+        "SampleYear"
+      ],
+      "tlu_Species_REDW": [
+        "Species",
+        "SampleYear"
+      ],
+      "tlu_Species_WHIS": [
+        "Species",
+        "SampleYear"
+      ]
+    }
+  },
+  {
+    "question_id": 21,
+    "schema_links": {
+      "tbl_Stations": [],
+      "tbl_Stations_Updates": [],
+      "tbl_Stations_UTMs": []
+    }
+  },
+  {
+    "question_id": 22,
+    "schema_links": {
+      "OFPR": [
+        "DataSource"
+      ],
+      "UTX1": [
+        "SrcArrType",
+        "StaType",
+        "TaxType",
+        "LnDataNum"
+      ],
+      "AACS": [
+        "AssetType",
+        "LimitFrom",
+        "DataSource"
+      ],
+      "OTAX": [
+        "SrcObjType"
+      ],
+      "OPRJ": [
+        "DataSource",
+        "ValidFrom"
+      ],
+      "ACQ1": [
+        "ObjType",
+        "TransType"
+      ],
+      "OFAA": [
+        "DataSource"
+      ],
+      "ORCR": [
+        "DataSource"
+      ],
+      "AFPR": [
+        "DataSource"
+      ],
+      "OFRC": [
+        "SumType",
+        "ExtFromBS",
+        "ExtData"
+      ],
+      "AADT": [
+        "DataSource"
+      ],
+      "OACG": [
+        "Source",
+        "DateSource"
+      ],
+      "OCFT": [
+        "FCCurrency",
+        "TransType"
+      ],
+      "FAA1": [
+        "FieldType"
+      ],
+      "ACQ2": [
+        "ObjType"
+      ],
+      "RCR1": [
+        "Currency",
+        "TaxType",
+        "StaType"
+      ],
+      "OJET": [
+        "JEType",
+        "DataSource"
+      ],
+      "OUTX": [
+        "SrcObjType"
+      ],
+      "ACQ3": [
+        "ObjType"
+      ],
+      "OACT": [
+        "RateTrans",
+        "ActType",
+        "OverType",
+        "PrevYear",
+        "RateDifAct",
+        "DataSource",
+        "ObjType",
+        "ValidFor",
+        "ValidFrom",
+        "FrozenFor",
+        "FrozenFrom",
+        "ExchRate",
+        "AlloweFrom"
+      ],
+      "OGAR": [
+        "FinancYear",
+        "Year",
+        "SubType",
+        "FromDate"
+      ],
+      "OASG": [
+        "Type"
+      ],
+      "OACQ": [
+        "ObjType",
+        "Currency",
+        "DocRate",
+        "SysRate",
+        "DataSource",
+        "TransType",
+        "CurSource",
+        "DocType",
+        "ManDprType",
+        "GdsMovType"
+      ],
+      "ODTP": [
+        "ValidFrom",
+        "DataSource"
+      ],
+      "ODRN": [
+        "TransType"
+      ],
+      "OJDT": [
+        "TransType",
+        "TransRate",
+        "DataSource",
+        "ObjType",
+        "RevSource",
+        "DocType",
+        "MatType",
+        "SPSrcType",
+        "FolNumFrom"
+      ],
+      "OFRT": [
+        "DocType"
+      ],
+      "OFIX": [
+        "SrcObjType"
+      ],
+      "OACS": [
+        "AssetType",
+        "LimitFrom",
+        "DataSource"
+      ],
+      "ORTT": [
+        "RateDate",
+        "Currency",
+        "Rate",
+        "DataSource"
+      ],
+      "OADT": [
+        "DataSource"
+      ],
+      "FIX1": [
+        "DprType",
+        "TransType",
+        "ReTranType"
+      ],
+      "AACT": [
+        "RateTrans",
+        "ActType",
+        "OverType",
+        "PrevYear",
+        "RateDifAct",
+        "DataSource",
+        "ObjType",
+        "ValidFor",
+        "ValidFrom",
+        "FrozenFor",
+        "FrozenFrom",
+        "ExchRate",
+        "AlloweFrom"
+      ],
+      "OBGS": [
+        "InitRate",
+        "FinancYear",
+        "DataSource"
+      ],
+      "TAX1": [
+        "SrcArrType",
+        "StaType",
+        "TaxType",
+        "LnDataNum"
+      ],
+      "OCFW": [
+        "RateDifCFW",
+        "DataSource"
+      ],
+      "ODPA": [
+        "AreaType",
+        "DataSource",
+        "TaxType"
+      ],
+      "OACP": [
+        "FinancYear",
+        "Year",
+        "SubType",
+        "DfltRateDi"
+      ],
+      "OBGD": [
+        "DataSource"
+      ],
+      "OBGT": [
+        "FinancYear"
+      ],
+      "JDT1": [
+        "FCCurrency",
+        "SourceID",
+        "SourceLine",
+        "TransType",
+        "SystemRate",
+        "RelType",
+        "VatRate",
+        "RevSource",
+        "ObjType",
+        "LineType",
+        "TaxType",
+        "StaType",
+        "ValidFrom",
+        "MatType",
+        "PstngType",
+        "EquVatRate",
+        "ExpOPType",
+        "DocType",
+        "DocSubType"
+      ],
+      "ODPV": [
+        "FromDate"
+      ],
+      "AACP": [
+        "FinancYear",
+        "Year",
+        "SubType",
+        "DfltRateDi"
+      ],
+      "ADTP": [
+        "ValidFrom",
+        "DataSource"
+      ]
+    }
+  },
+  {
+    "question_id": 23,
+    "schema_links": {
+      "INVERTEBRATES": [
+        "Genus_species",
+        "Number"
+      ],
+      "Month": [],
+      "Paste_Errors": [
+        "Species"
+      ],
+      "Roadkill": [
+        "Year",
+        "Month",
+        "Species",
+        "number_killed"
+      ],
+      "VERTEBRATES": [
+        "Species",
+        "Number"
+      ],
+      "WILDLIFE_MASTERLIST": [
+        "SPECIES"
+      ]
+    }
+  },
+  {
+    "question_id": 24,
+    "schema_links": {
+      "Paste_Errors": [
+        "Comments"
+      ],
+      "Roadkill": [
+        "Comments"
+      ]
+    }
+  },
+  {
+    "question_id": 25,
+    "schema_links": {
+      "ACC_EM_Chronic_Absenteeism": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "ACC_EM_Core_and_Weighted_Performance": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "ACC_EM_ELP": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "ACC_EM_NYSESLAT_for_Participation": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "ACC_EM_Participation_Rate": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "ACC_HS_Chronic_Absenteeism": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "ACC_HS_Core_and_Weighted_Performance": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "ACC_HS_ELP": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "ACC_HS_Graduation_Rate": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "ACC_HS_Participation_Rate": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Accountability_Levels": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Accountability_Status": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Accountability_Status_by_Subgroup": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Annual_EM_ELA": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Annual_EM_MATH": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Annual_EM_SCIENCE": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Annual_NYSAA": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Annual_NYSESLAT": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Annual_Regents_Exams": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "BOCES_and_N/RC": [
+        "ENTITY_CD"
+      ],
+      "Expenditures_per_Pupil": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Inexperienced_Teachers_and_Principals": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Institution_Grouping": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Postsecondary_Enrollment": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Teachers_Teaching_Out_of_Certification": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "OUT_OF_CERT_DATA_REP_FLAG"
+      ],
+      "Total_Cohort_Regents_Exams": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ]
+    }
+  },
+  {
+    "question_id": 26,
+    "schema_links": {
+      "GV": [
+        "MAKE"
+      ],
+      "VPICDECODE": [
+        "VehicleDescriptor",
+        "VehicleTypeId",
+        "VehicleType",
+        "MakeId",
+        "Make",
+        "DoorsCount",
+        "GrossVehicleWeightRatingFromId",
+        "GrossVehicleWeightRatingFrom",
+        "GrossVehicleWeightRatingToId",
+        "GrossVehicleWeightRatingTo",
+        "WheelsCount",
+        "SeatsCount",
+        "SeatRowsCount",
+        "AxlesCount",
+        "BatteryPacksPerVehicle",
+        "EngineCylindersCount"
+      ]
+    }
+  },
+  {
+    "question_id": 27,
+    "schema_links": {
+      "OCTT": [
+        "CreateDate",
+        "ResponseV",
+        "ResponseU"
+      ],
+      "OINS": [
+        "manufDate",
+        "dlvryDate",
+        "createDate",
+        "updateDate"
+      ],
+      "OSCD": [
+        "ServiceCD"
+      ],
+      "OCTR": [
+        "StartDate",
+        "EndDate",
+        "CreateDate",
+        "TermDate",
+        "ResponseV",
+        "ResponseU",
+        "UpdateDate"
+      ],
+      "ASC5": [
+        "CreateDate",
+        "UpdateDate"
+      ],
+      "QUE2": [
+        "createDate"
+      ],
+      "SCL5": [
+        "CreateDate",
+        "UpdateDate"
+      ],
+      "OSGP": [
+        "ServiceGrp",
+        "UpdateDate"
+      ],
+      "ASC6": [
+        "StartDate",
+        "EndDate",
+        "RemDate",
+        "ChkInDate",
+        "ChkOutDate"
+      ],
+      "SCL2": [
+        "CreateDate",
+        "UpdateDate"
+      ],
+      "SCL3": [
+        "CreateDate",
+        "UpdateDate"
+      ],
+      "ACT1": [
+        "StartDate",
+        "EndDate",
+        "TermDate"
+      ],
+      "OSLT": [
+        "DateCreate",
+        "DateUpdate"
+      ],
+      "OSCL": [
+        "cntrctDate",
+        "resolDate",
+        "createDate",
+        "closeDate",
+        "updateDate",
+        "resolOnDat",
+        "resolOnTim",
+        "respByDate",
+        "respOnDate",
+        "respOnTime",
+        "AssignDate",
+        "StartDate",
+        "EndDate",
+        "RemDate"
+      ],
+      "REQ1": [
+        "MsgDate"
+      ],
+      "ASC3": [
+        "CreateDate",
+        "UpdateDate"
+      ],
+      "ASGP": [
+        "ServiceGrp",
+        "UpdateDate"
+      ],
+      "SCL6": [
+        "StartDate",
+        "EndDate",
+        "RemDate",
+        "ChkInDate",
+        "ChkOutDate"
+      ],
+      "SCL4": [
+        "DocPstDate",
+        "CreateDate",
+        "UpdateDate"
+      ],
+      "OISR": [
+        "Open_Date"
+      ],
+      "ASC4": [
+        "DocPstDate",
+        "CreateDate",
+        "UpdateDate"
+      ],
+      "CTR1": [
+        "StartDate",
+        "EndDate",
+        "TermDate"
+      ],
+      "OREQ": [
+        "CreateDate",
+        "LstUpdDate"
+      ],
+      "SCL1": [
+        "createDate",
+        "updateDate"
+      ],
+      "ACTR": [
+        "StartDate",
+        "EndDate",
+        "CreateDate",
+        "TermDate",
+        "ResponseV",
+        "ResponseU",
+        "UpdateDate"
+      ],
+      "ASCL": [
+        "cntrctDate",
+        "resolDate",
+        "createDate",
+        "closeDate",
+        "updateDate",
+        "resolOnDat",
+        "resolOnTim",
+        "respByDate",
+        "respOnDate",
+        "respOnTime",
+        "AssignDate",
+        "StartDate",
+        "EndDate",
+        "RemDate"
+      ]
+    }
+  },
+  {
+    "question_id": 28,
+    "schema_links": {
+      "~TMPCLP650861": [
+        "Noted_Canopy_Spp_Common",
+        "Noted_Canopy_Spp_Scientific"
+      ],
+      "tbl_Db_Meta": [
+        "Updated_By"
+      ],
+      "tbl_Events": [
+        "Entered_by",
+        "Updated_by",
+        "Verified_by",
+        "Certified_by"
+      ],
+      "tbl_Habitat": [
+        "Noted_Canopy_Spp_Common",
+        "Noted_Canopy_Spp_Scientific"
+      ],
+      "tbl_Observations": [
+        "Species_ID"
+      ],
+      "tbl_Stations": [
+        "Updated_by"
+      ],
+      "tbl_Stations_Updates": [
+        "Updated_by"
+      ],
+      "tbl_Stations_UTMs": [
+        "Updated_by"
+      ],
+      "tbl_Transect": [
+        "Updated_by"
+      ],
+      "tlu_Species": [
+        "Species_ID",
+        "Scientific_Name",
+        "Common_Name",
+        "Species_Code"
+      ],
+      "xref_Species_Alternate_Names": [
+        "Species_ID",
+        "Update_By"
+      ]
+    }
+  },
+  {
+    "question_id": 29,
+    "schema_links": {
+      "GV": [
+        "MAKE"
+      ],
+      "TIRE": [],
+      "VPICDECODE": [
+        "VehicleDescriptor",
+        "VINDecodedOn",
+        "VehicleTypeId",
+        "VehicleType",
+        "MakeId",
+        "Make",
+        "GrossVehicleWeightRatingFromId",
+        "GrossVehicleWeightRatingFrom",
+        "GrossVehicleWeightRatingToId",
+        "GrossVehicleWeightRatingTo",
+        "WheelSizeFrontIN",
+        "WheelSizeRearIN",
+        "BatteryPacksPerVehicle",
+        "AirBagLocFrontId",
+        "AirBagLocFront"
+      ]
+    }
+  },
+  {
+    "question_id": 30,
+    "schema_links": {
+      "tblFieldDataSnakeDataCollection": [
+        "Sex"
+      ],
+      "tblFieldDataTimeConstrainedSearches": [
+        "Sex"
+      ],
+      "tblFieldDataTurtleMeasurements": [
+        "Sex"
+      ],
+      "tblFieldDataTurtleTrapSurveys": [
+        "Sex"
+      ]
+    }
+  },
+  {
+    "question_id": 31,
+    "schema_links": {
+      "UIC1": [
+        "TPLId",
+        "FormId",
+        "MenuId"
+      ],
+      "APM8": [
+        "LineID",
+        "ActICCost",
+        "ActRCCost",
+        "ActAddCost",
+        "ActPrCost",
+        "ActBPrCost"
+      ],
+      "UIC2": [
+        "TPLId",
+        "FormId",
+        "ItemId",
+        "TableName"
+      ],
+      "PMG8": [
+        "LineID",
+        "ActICCost",
+        "ActRCCost",
+        "ActAddCost",
+        "ActPrCost",
+        "ActBPrCost"
+      ],
+      "PMG1": [
+        "LineID",
+        "StageID",
+        "StDp1Type",
+        "StDp2Type",
+        "StDp3Type",
+        "StDp4Type",
+        "UniqueID"
+      ],
+      "APH1": [
+        "LineID",
+        "StageID",
+        "StDp1Type",
+        "StDp2Type",
+        "StDp3Type",
+        "StDp4Type",
+        "UniqueID"
+      ],
+      "ORSB": [
+        "ResType",
+        "CostName1",
+        "CostVal1",
+        "CostName2",
+        "CostVal2",
+        "CostName3",
+        "CostVal3",
+        "CostName4",
+        "CostVal4",
+        "CostName5",
+        "CostVal5",
+        "CostName6",
+        "CostVal6",
+        "CostName7",
+        "CostVal7",
+        "CostName8",
+        "CostVal8",
+        "CostName9",
+        "CostVal9",
+        "CostName10",
+        "CostVal10"
+      ],
+      "HFC1": [
+        "FuncID",
+        "PanelID",
+        "ActionType"
+      ],
+      "ONCP": [
+        "Name",
+        "GroupId",
+        "IsPublic",
+        "Type"
+      ],
+      "OKPS": [
+        "KpsCode",
+        "KpsName",
+        "KpsType"
+      ],
+      "OHFC": [
+        "FuncName",
+        "Type"
+      ],
+      "OPMG": [
+        "NAME",
+        "EMPLOYEE",
+        "WithPhases"
+      ],
+      "HFC2": [
+        "FuncID",
+        "ActionType"
+      ],
+      "OHMM": [
+        "ModelName",
+        "TaskId"
+      ],
+      "ODAB": [
+        "DashbdCode",
+        "DashbdName",
+        "JobType",
+        "ProcName",
+        "JobName"
+      ],
+      "OCIP": [
+        "Code",
+        "Name",
+        "DsplID",
+        "IsEnable"
+      ],
+      "APM2": [
+        "LineID",
+        "StageID"
+      ],
+      "HMM1": [
+        "ViewType",
+        "ViewName"
+      ],
+      "APM6": [
+        "LineID",
+        "StageID"
+      ],
+      "OBVL": [
+        "DocType",
+        "BaseType",
+        "ActionType",
+        "AccumType",
+        "ItemCode",
+        "CostQty",
+        "Cost"
+      ],
+      "OCMM": [
+        "CommCode"
+      ],
+      "HMM2": [
+        "VerType"
+      ],
+      "ORCJ": [
+        "Id",
+        "ResCode",
+        "WhsCode",
+        "CapType",
+        "SrcObjType",
+        "ActionType"
+      ],
+      "KPS1": [
+        "KpsCode",
+        "KpiName"
+      ],
+      "APMG": [
+        "NAME",
+        "EMPLOYEE",
+        "WithPhases"
+      ],
+      "HMM3": [
+        "LangCode"
+      ],
+      "PHA8": [
+        "LineID",
+        "ActICCost",
+        "ActRCCost",
+        "ActAddCost",
+        "ActPrCost",
+        "ActBPrCost"
+      ],
+      "PMG4": [
+        "LineID",
+        "StageID",
+        "DocType"
+      ],
+      "DAB1": [
+        "QryName"
+      ],
+      "PMC3": [
+        "AreaID",
+        "Name"
+      ],
+      "PMC4": [
+        "PriorityID",
+        "Name"
+      ],
+      "APM1": [
+        "LineID",
+        "StageID",
+        "StDp1Type",
+        "StDp2Type",
+        "StDp3Type",
+        "StDp4Type",
+        "UniqueID"
+      ],
+      "OPAC": [
+        "PACCode",
+        "PACName"
+      ],
+      "OCFN": [
+        "CockpitID"
+      ],
+      "APHA": [
+        "NAME",
+        "ParentID",
+        "ProjectID",
+        "Code",
+        "COST"
+      ],
+      "PMC6": [
+        "TaskID",
+        "Name"
+      ],
+      "RSC1": [
+        "ResCode",
+        "WhsCode",
+        "ObjType"
+      ],
+      "OBOB": [
+        "ObjectId",
+        "TableName",
+        "DeviceType"
+      ],
+      "ODRC": [
+        "DmcId"
+      ],
+      "PMG6": [
+        "LineID",
+        "StageID"
+      ],
+      "OSRC": [
+        "Code",
+        "SysRptName",
+        "CusRptName"
+      ],
+      "NCP1": [
+        "Type",
+        "WidgetId"
+      ],
+      "ORSC": [
+        "ResCode",
+        "VisResCode",
+        "CodeBars",
+        "ResName",
+        "FrgnName",
+        "ResType",
+        "UnitOfMsr",
+        "CardCode",
+        "QueryGroup",
+        "PicturName",
+        "ObjType"
+      ],
+      "ODW1": [
+        "DocType"
+      ],
+      "PMG2": [
+        "LineID",
+        "StageID"
+      ],
+      "RSC4": [
+        "ResCode",
+        "EmpID"
+      ],
+      "OUGR": [
+        "GroupId",
+        "GroupName",
+        "GroupDec",
+        "TPLId",
+        "GroupType",
+        "CockpitId"
+      ],
+      "APM4": [
+        "LineID",
+        "StageID",
+        "DocType"
+      ],
+      "OPHA": [
+        "NAME",
+        "ParentID",
+        "ProjectID",
+        "Code",
+        "COST"
+      ],
+      "CFN1": [
+        "Name"
+      ],
+      "OSSG": [
+        "Code",
+        "Name",
+        "CustGroup",
+        "AdBoardId"
+      ],
+      "RSC6": [
+        "ResCode"
+      ],
+      "OCPT": [
+        "Code",
+        "Name",
+        "IsDefault",
+        "IsPublic",
+        "Type"
+      ],
+      "PUTR1": [
+        "TestID"
+      ],
+      "APH8": [
+        "LineID",
+        "ActICCost",
+        "ActRCCost",
+        "ActAddCost",
+        "ActPrCost",
+        "ActBPrCost"
+      ],
+      "OBOL": [
+        "TableName",
+        "ColumnName"
+      ],
+      "OWDT": [
+        "Name"
+      ],
+      "OODW": [
+        "CockpitID"
+      ],
+      "PMC2": [
+        "StageID",
+        "Name"
+      ],
+      "UICU": [
+        "TPLId",
+        "TPLName",
+        "UserID",
+        "IsTemplate"
+      ],
+      "PHA1": [
+        "LineID",
+        "StageID",
+        "StDp1Type",
+        "StDp2Type",
+        "StDp3Type",
+        "StDp4Type",
+        "UniqueID"
+      ],
+      "OWPK": [
+        "PackagCode",
+        "PackagName",
+        "IsSystem",
+        "PackagType",
+        "StraType",
+        "SourceType",
+        "ViewName"
+      ]
+    }
+  },
+  {
+    "question_id": 32,
+    "schema_links": {
+      "AHE6": [
+        "empID",
+        "roleID"
+      ],
+      "HEM2": [
+        "empID",
+        "type"
+      ],
+      "AHE7": [
+        "empID",
+        "ConName",
+        "BankName"
+      ],
+      "HET1": [
+        "TransferID",
+        "empID"
+      ],
+      "OHET": [
+        "TransferID"
+      ],
+      "AHEM": [
+        "empID",
+        "lastName",
+        "firstName",
+        "middleName",
+        "type",
+        "userId",
+        "govID",
+        "AddrTypeW",
+        "AddrTypeH",
+        "NamePos",
+        "TaxOName",
+        "HeaInsName",
+        "HeaInsType",
+        "StatusOfP",
+        "StatusOfE",
+        "FNameSP",
+        "FatherName",
+        "IDType",
+        "BPLId",
+        "EnGovID"
+      ],
+      "HEM4": [
+        "empID"
+      ],
+      "OHPS": [
+        "posID",
+        "name"
+      ],
+      "OHTM": [
+        "teamID",
+        "name"
+      ],
+      "OHST": [
+        "statusID",
+        "name"
+      ],
+      "OHTR": [
+        "reasonID",
+        "name"
+      ],
+      "OHED": [
+        "edType",
+        "name"
+      ],
+      "OHTY": [
+        "typeID",
+        "name"
+      ],
+      "HEM7": [
+        "empID",
+        "ConName",
+        "BankName"
+      ],
+      "OIDT": [
+        "IDType"
+      ],
+      "HTM1": [
+        "teamID",
+        "empID"
+      ],
+      "HEM1": [
+        "empID",
+        "type"
+      ],
+      "HEM6": [
+        "empID",
+        "roleID"
+      ],
+      "HEM3": [
+        "empID"
+      ],
+      "AHE1": [
+        "empID",
+        "type"
+      ],
+      "OHEM": [
+        "empID",
+        "lastName",
+        "firstName",
+        "middleName",
+        "type",
+        "userId",
+        "govID",
+        "AddrTypeW",
+        "AddrTypeH",
+        "NamePos",
+        "TaxOName",
+        "HeaInsName",
+        "HeaInsType",
+        "StatusOfP",
+        "StatusOfE",
+        "FNameSP",
+        "FatherName",
+        "IDType",
+        "BPLId",
+        "EnGovID"
+      ],
+      "AHE2": [
+        "empID",
+        "type"
+      ],
+      "HEM10": [
+        "empID",
+        "BPLId"
+      ],
+      "AHE3": [
+        "empID"
+      ],
+      "HEM5": [
+        "empID"
+      ],
+      "AHE4": [
+        "empID"
+      ]
+    }
+  },
+  {
+    "question_id": 33,
+    "schema_links": {
+      "AIRBAG": [
+        "CATEGORY"
+      ],
+      "CHILDSEAT": [
+        "CATEGORY"
+      ],
+      "CRASH": [
+        "CATEGORY"
+      ],
+      "CDC": [
+        "CATEGORY"
+      ],
+      "EVENT": [
+        "CATEGORY"
+      ],
+      "EDRPRECRASH": [
+        "CATEGORY"
+      ],
+      "GV": [
+        "CATEGORY"
+      ],
+      "EDRREST": [
+        "CATEGORY"
+      ],
+      "FIRE": [
+        "CATEGORY"
+      ],
+      "INTERIOR": [
+        "CATEGORY"
+      ],
+      "FUEL": [
+        "CATEGORY"
+      ],
+      "EDRPOSTCRASH": [
+        "CATEGORY"
+      ],
+      "OCC": [
+        "CATEGORY",
+        "MORTALITY"
+      ],
+      "INJURY": [
+        "CATEGORY"
+      ],
+      "ICS": [
+        "CATEGORY"
+      ],
+      "LOCALIZER": [
+        "CATEGORY"
+      ],
+      "EJECT": [
+        "CATEGORY"
+      ],
+      "INTEGRITY": [
+        "CATEGORY"
+      ],
+      "EMSCARE": [
+        "CATEGORY"
+      ],
+      "GLAZING": [
+        "CATEGORY"
+      ],
+      "OCCONTACT": [
+        "CATEGORY"
+      ],
+      "ADAPT": [
+        "CATEGORY"
+      ],
+      "PRE_FHE": [
+        "CATEGORY"
+      ],
+      "INTRUSION": [
+        "CATEGORY"
+      ],
+      "SEATXBAG": [
+        "CATEGORY"
+      ],
+      "JKWGT": [
+        "CATEGORY"
+      ],
+      "TIRE": [
+        "CATEGORY"
+      ],
+      "SEAT": [
+        "CATEGORY"
+      ],
+      "TIREDAMAGE": [
+        "CATEGORY"
+      ],
+      "DISTRACT": [
+        "CATEGORY"
+      ],
+      "TIREPLAC": [
+        "CATEGORY"
+      ],
+      "EDRCOLLECT": [
+        "CATEGORY"
+      ],
+      "VEHMEAS": [
+        "CATEGORY"
+      ],
+      "EDRSUMM": [
+        "CATEGORY"
+      ],
+      "VEHSPEC": [
+        "CATEGORY"
+      ],
+      "EDREVENT": [
+        "CATEGORY"
+      ],
+      "VPICDECODE": [
+        "CATEGORY",
+        "SeatBeltTypeId",
+        "SeatBeltType"
+      ],
+      "AVOID": [
+        "CATEGORY"
+      ]
+    }
+  },
+  {
+    "question_id": 34,
+    "schema_links": {
+      "CRASH": [
+        "EVENTS",
+        "VEHICLES",
+        "SUMMARY"
+      ],
+      "EVENT": [],
+      "VPICDECODE": [
+        "VehicleDescriptor",
+        "VehicleTypeId",
+        "VehicleType",
+        "TrackWidthIN",
+        "GrossVehicleWeightRatingFromId",
+        "GrossVehicleWeightRatingFrom",
+        "GrossVehicleWeightRatingToId",
+        "GrossVehicleWeightRatingTo",
+        "WheelBaseIN_from",
+        "WheelBaseIN_to",
+        "WheelSizeFrontIN",
+        "WheelSizeRearIN",
+        "TruckBedLengthIN",
+        "BatteryPacksPerVehicle",
+        "EventDataRecorderId",
+        "EventDataRecorder"
+      ]
+    }
+  },
+  {
+    "question_id": 35,
+    "schema_links": {
+      "GV": [
+        "MAKE",
+        "MODEL"
+      ],
+      "VPICDECODE": [
+        "VehicleDescriptor",
+        "VehicleTypeId",
+        "VehicleType",
+        "MakeId",
+        "Make",
+        "ModelId",
+        "Model",
+        "ModelYear",
+        "GrossVehicleWeightRatingFromId",
+        "GrossVehicleWeightRatingFrom",
+        "GrossVehicleWeightRatingToId",
+        "GrossVehicleWeightRatingTo",
+        "BatteryPacksPerVehicle",
+        "EngineModel"
+      ]
+    }
+  },
+  {
+    "question_id": 36,
+    "schema_links": {
+      "tlu_R1_RestOfPlot": [],
+      "tlu_Roads_and_Trails": [
+        "Layer"
+      ],
+      "tsys_App_Releases": [
+        "Release_by"
+      ],
+      "tsys_Bug_Reports": [
+        "Found_by",
+        "Reported_by",
+        "Fixed_by"
+      ]
+    }
+  },
+  {
+    "question_id": 37,
+    "schema_links": {
+      "tbl_Events": [],
+      "tbl_Locations": [
+        "SiteDescription"
+      ],
+      "tlu_R1_RestOfPlot": []
+    }
+  },
+  {
+    "question_id": 38,
+    "schema_links": {
+      "AHEM": [
+        "workStreet",
+        "workBlock",
+        "workZip",
+        "workCity",
+        "workCounty",
+        "workCountr",
+        "workState",
+        "salesPrson",
+        "officeTel",
+        "officeExt",
+        "homeTel",
+        "homeStreet",
+        "homeBlock",
+        "homeZip",
+        "homeCity",
+        "homeCounty",
+        "homeCountr",
+        "homeState",
+        "WorkBuild",
+        "HomeBuild",
+        "MunKey",
+        "StatusOfP",
+        "StatusOfE"
+      ],
+      "OHTM": [
+        "teamID"
+      ],
+      "HTM1": [
+        "teamID"
+      ],
+      "OHEM": [
+        "workStreet",
+        "workBlock",
+        "workZip",
+        "workCity",
+        "workCounty",
+        "workCountr",
+        "workState",
+        "salesPrson",
+        "officeTel",
+        "officeExt",
+        "homeTel",
+        "homeStreet",
+        "homeBlock",
+        "homeZip",
+        "homeCity",
+        "homeCounty",
+        "homeCountr",
+        "homeState",
+        "WorkBuild",
+        "HomeBuild",
+        "MunKey",
+        "StatusOfP",
+        "StatusOfE"
+      ],
+      "HEM5": [
+        "Team"
+      ]
+    }
+  },
+  {
+    "question_id": 39,
+    "schema_links": {
+      "tbl_Deadwood": [
+        "Data_ID",
+        "Event_ID"
+      ],
+      "tbl_Events": [
+        "Event_ID",
+        "Location_ID",
+        "Event_Date",
+        "Event_Notes"
+      ],
+      "tbl_Locations": [
+        "Location_ID",
+        "Plot_ID",
+        "SiteDescription",
+        "PlaceNameID",
+        "GIS_Location_ID"
+      ],
+      "tbl_Nests": [
+        "Nest_ID",
+        "Event_ID",
+        "Cover"
+      ],
+      "tbl_Overstory": [
+        "Overstory_ID",
+        "Event_ID"
+      ],
+      "tbl_Saplings": [
+        "Saplings_ID",
+        "Event_ID"
+      ],
+      "tbl_Seedlings": [
+        "Seedlings_ID",
+        "Event_ID"
+      ],
+      "tbl_Tree_Tags": [
+        "Tree_Tag_ID",
+        "Location_ID"
+      ],
+      "tbl_WitnessTrees": [
+        "WitnessTree_ID",
+        "Location_ID"
+      ],
+      "tlu_Cover_Cls": [
+        "CoverClass_Num",
+        "CoverClass_Text"
+      ],
+      "tlu_DecayStage": [
+        "DecayStage_ID"
+      ],
+      "tlu_Live_Dead": [
+        "Cond_Text"
+      ],
+      "tlu_PlaceNames": [
+        "ID"
+      ],
+      "tlu_Presence": [
+        "Pres_Text"
+      ],
+      "tlu_R1_RestOfPlot": [
+        "Pres_Text"
+      ],
+      "tlu_topo_position": [
+        "ID"
+      ],
+      "tlu_Tree_Cond": [
+        "TreeCond_Text"
+      ],
+      "tsys_App_Defaults": [
+        "Release_ID"
+      ],
+      "tsys_App_Releases": [
+        "Release_ID"
+      ],
+      "tsys_Bug_Reports": [
+        "Bug_ID",
+        "Release_ID"
+      ],
+      "sysdiagrams": [
+        "principal_id",
+        "diagram_id"
+      ]
+    }
+  },
+  {
+    "question_id": 40,
+    "schema_links": {
+      "CRASH": [
+        "VEHICLES"
+      ]
+    }
+  },
+  {
+    "question_id": 41,
+    "schema_links": {
+      "CHO1": [
+        "LineId",
+        "LineDitail",
+        "LineMoney",
+        "LineCurr",
+        "LineAcct",
+        "Line_A_C",
+        "TotalLine",
+        "LineMnyLC",
+        "LineMnySC",
+        "LineMnyFC",
+        "TotLineLC",
+        "TotLineSC",
+        "TotLineFC"
+      ],
+      "PWZ4": [
+        "IdEntry",
+        "LineType"
+      ],
+      "TPW2": [
+        "AbsEntry",
+        "LineNumber"
+      ],
+      "PDF3": [
+        "LineID"
+      ],
+      "DSC1": [
+        "Account",
+        "GLAccount",
+        "MaxChkLine",
+        "AbsEntry",
+        "AccountChk",
+        "PreNumber"
+      ],
+      "PWZ5": [
+        "IdEntry",
+        "ErrorLine",
+        "LineType"
+      ],
+      "OVPM": [
+        "DocEntry",
+        "PaymentRef",
+        "WtAccount",
+        "MIEntry",
+        "AtcEntry"
+      ],
+      "OPEX": [
+        "AbsEntry",
+        "LineType",
+        "PONumber"
+      ],
+      "ORCT": [
+        "DocEntry",
+        "PaymentRef",
+        "WtAccount",
+        "MIEntry",
+        "AtcEntry"
+      ],
+      "VPM1": [
+        "LineID"
+      ],
+      "OIST": [
+        "AbsEntry"
+      ],
+      "OPYD": [
+        "ArePayMeth"
+      ],
+      "RCT2": [
+        "DocEntry",
+        "DocLine",
+        "MIEntry"
+      ],
+      "OCHO": [
+        "AtcEntry"
+      ],
+      "TMP8": [
+        "LineNum",
+        "DocEntry",
+        "DocLine",
+        "PaidEntry",
+        "PaidLine"
+      ],
+      "RCT3": [
+        "LineID"
+      ],
+      "PDF2": [
+        "DocEntry",
+        "DocLine",
+        "MIEntry"
+      ],
+      "ODPS": [
+        "AtcEntry"
+      ],
+      "VPM2": [
+        "DocEntry",
+        "DocLine",
+        "MIEntry"
+      ],
+      "ODSC": [
+        "AbsEntry"
+      ],
+      "PWZ3": [
+        "IdEntry",
+        "FatherLine",
+        "LineRate",
+        "DeductPer",
+        "Line_ID",
+        "LinePrjCod",
+        "LineType",
+        "PONumber",
+        "ReasonLine"
+      ],
+      "ITR1": [
+        "LineSeq",
+        "Account",
+        "MIEntry"
+      ],
+      "OPWZ": [
+        "IdNumber"
+      ],
+      "PEX1": [
+        "AbsEntry",
+        "LineId",
+        "PymTermPer"
+      ],
+      "OCRH": [
+        "RcptLineId"
+      ],
+      "OIPO": [
+        "AbsEntry"
+      ],
+      "OCHH": [
+        "RcptLineId"
+      ],
+      "PWZ1": [
+        "IdEntry"
+      ],
+      "OPYM": [
+        "DflAccount",
+        "GLAccount"
+      ],
+      "PWZ2": [
+        "IdEntry",
+        "BnkAccount"
+      ],
+      "RCT1": [
+        "LineID"
+      ],
+      "TPW1": [
+        "AbsEntry"
+      ],
+      "VPM3": [
+        "LineID"
+      ]
+    }
+  },
+  {
+    "question_id": 42,
+    "schema_links": {
+      "AOC1": [
+        "PrcAmount",
+        "updateDate"
+      ],
+      "APRC": [
+        "DataSource",
+        "UpdateDate"
+      ],
+      "OPRC": [
+        "DataSource",
+        "UpdateDate"
+      ],
+      "OPR1": [
+        "OpenDate",
+        "CloseDate",
+        "ClosePrcnt"
+      ],
+      "AOCR": [
+        "DataSource",
+        "updateDate"
+      ],
+      "ACEM": [
+        "CreateDate",
+        "UpdateDate",
+        "DataSource"
+      ],
+      "OOCR": [
+        "DataSource",
+        "updateDate"
+      ],
+      "OCMT": [
+        "DataSource"
+      ],
+      "OCEM": [
+        "CreateDate",
+        "UpdateDate",
+        "DataSource"
+      ],
+      "AOPR": [
+        "OpenDate",
+        "PredDate",
+        "CloseDate",
+        "UpdateDate",
+        "CreateDate"
+      ],
+      "OOPR": [
+        "OpenDate",
+        "PredDate",
+        "CloseDate",
+        "UpdateDate",
+        "CreateDate"
+      ],
+      "OOST": [
+        "SalesStage"
+      ],
+      "OCR1": [
+        "PrcAmount",
+        "updateDate"
+      ]
+    }
+  },
+  {
+    "question_id": 43,
+    "schema_links": {
+      "Observer_LU": [
+        "Agency/Title"
+      ],
+      "tblFieldDataMinnowTrapSurveys": [
+        "Count"
+      ],
+      "tblFieldDataTurtleMeasurements": [],
+      "tblFieldDataTurtleTrapSurveys": []
+    }
+  },
+  {
+    "question_id": 44,
+    "schema_links": {
+      "INJURY": [],
+      "VPICDECODE": [
+        "VehicleDescriptor",
+        "VehicleTypeId",
+        "VehicleType",
+        "GrossVehicleWeightRatingFromId",
+        "GrossVehicleWeightRatingFrom",
+        "GrossVehicleWeightRatingToId",
+        "GrossVehicleWeightRatingTo",
+        "BatteryPacksPerVehicle"
+      ]
+    }
+  },
+  {
+    "question_id": 45,
+    "schema_links": {
+      "tbl_Deadwood": [
+        "Data_ID",
+        "Event_ID"
+      ],
+      "tbl_Events": [
+        "Event_ID",
+        "Location_ID"
+      ],
+      "tbl_Locations": [
+        "Location_ID",
+        "Plot_ID",
+        "PlaceNameID",
+        "GIS_Location_ID",
+        "Unit_Code"
+      ],
+      "tbl_Nests": [
+        "Nest_ID",
+        "Event_ID",
+        "SpCode"
+      ],
+      "tbl_Overstory": [
+        "Overstory_ID",
+        "Event_ID",
+        "TreeTag",
+        "SpCode",
+        "TreeCond"
+      ],
+      "tbl_Saplings": [
+        "Saplings_ID",
+        "Event_ID"
+      ],
+      "sysdiagrams": [
+        "principal_id",
+        "diagram_id"
+      ],
+      "tbl_Seedlings": [
+        "Seedlings_ID",
+        "Event_ID",
+        "SpCode"
+      ],
+      "tbl_Tree_Tags": [
+        "Tree_Tag_ID",
+        "Location_ID",
+        "Tag",
+        "SpCode"
+      ],
+      "tbl_WitnessTrees": [
+        "WitnessTree_ID",
+        "Location_ID",
+        "Witness_SpCode"
+      ],
+      "tlu_DecayStage": [
+        "DecayStage_ID"
+      ],
+      "tlu_PlaceNames": [
+        "ID"
+      ],
+      "tlu_PlantSpecies": [
+        "species",
+        "SpeciesCode",
+        "SpeciesNotes"
+      ],
+      "tlu_R1_RestOfPlot": [],
+      "tlu_Roads_and_Trails": [],
+      "tlu_topo_position": [
+        "ID"
+      ],
+      "tlu_Tree_Cond": [
+        "TreeCond_Num",
+        "TreeCond_Text"
+      ],
+      "tsys_App_Defaults": [
+        "Release_ID"
+      ],
+      "tsys_App_Releases": [
+        "Release_ID"
+      ],
+      "tsys_Bug_Reports": [
+        "Bug_ID",
+        "Release_ID"
+      ]
+    }
+  },
+  {
+    "question_id": 46,
+    "schema_links": {
+      "tbl_Deadwood": [
+        "Data_ID",
+        "Event_ID"
+      ],
+      "tbl_Events": [
+        "Event_ID",
+        "Location_ID"
+      ],
+      "tbl_Locations": [
+        "Location_ID",
+        "Plot_ID",
+        "PlaceNameID",
+        "GIS_Location_ID",
+        "Unit_Code"
+      ],
+      "tbl_Nests": [
+        "Nest_ID",
+        "Event_ID",
+        "SpCode"
+      ],
+      "tbl_Overstory": [
+        "Overstory_ID",
+        "Event_ID",
+        "TreeTag",
+        "SpCode",
+        "TreeCond"
+      ],
+      "tbl_Saplings": [
+        "Saplings_ID",
+        "Event_ID"
+      ],
+      "sysdiagrams": [
+        "principal_id",
+        "diagram_id"
+      ],
+      "tbl_Seedlings": [
+        "Seedlings_ID",
+        "Event_ID",
+        "SpCode"
+      ],
+      "tbl_Tree_Tags": [
+        "Tree_Tag_ID",
+        "Location_ID",
+        "SpCode"
+      ],
+      "tbl_WitnessTrees": [
+        "WitnessTree_ID",
+        "Location_ID",
+        "Witness_SpCode",
+        "Witness_Azimuth",
+        "Witness_DBH",
+        "Witness_stake"
+      ],
+      "tlu_DecayStage": [
+        "DecayStage_ID"
+      ],
+      "tlu_PlaceNames": [
+        "ID"
+      ],
+      "tlu_PlantSpecies": [
+        "species",
+        "SpeciesCode",
+        "SpeciesNotes"
+      ],
+      "tlu_R1_RestOfPlot": [],
+      "tlu_Roads_and_Trails": [],
+      "tlu_topo_position": [
+        "ID"
+      ],
+      "tlu_Tree_Cond": [
+        "TreeCond_Num",
+        "TreeCond_Text"
+      ],
+      "tsys_App_Defaults": [
+        "Release_ID"
+      ],
+      "tsys_App_Releases": [
+        "Release_ID"
+      ],
+      "tsys_Bug_Reports": [
+        "Bug_ID",
+        "Release_ID"
+      ]
+    }
+  },
+  {
+    "question_id": 47,
+    "schema_links": {
+      "Accountability_Status_by_Subgroup": [
+        "SCHOOL_TYPE"
+      ],
+      "Annual_EM_ELA": [
+        "ASSESSMENT_NAME"
+      ],
+      "Annual_EM_MATH": [
+        "ASSESSMENT_NAME"
+      ],
+      "Annual_EM_SCIENCE": [
+        "ASSESSMENT_NAME"
+      ],
+      "BOCES_and_N/RC": [
+        "SCHOOL_NAME"
+      ],
+      "Institution_Grouping": [
+        "GROUP_CODE",
+        "GROUP_NAME"
+      ]
+    }
+  },
+  {
+    "question_id": 48,
+    "schema_links": {
+      "tblFieldDataSnakeDataCollection": [
+        "Weight"
+      ],
+      "tblFieldDataTurtleMeasurements": [
+        "Weight"
+      ]
+    }
+  },
+  {
+    "question_id": 49,
+    "schema_links": {
+      "OFLT": [
+        "MemoIn"
+      ],
+      "OUQR": [
+        "QCategory"
+      ],
+      "RDOC": [
+        "SwpInEmail",
+        "Category"
+      ],
+      "RITM": [
+        "SumInWords",
+        "DupRpttAre",
+        "LnsRpttAre"
+      ],
+      "OQCN": [
+        "CategoryId"
+      ]
+    }
+  },
+  {
+    "question_id": 50,
+    "schema_links": {
+      "Breeding_Codes": [
+        "Definition"
+      ],
+      "HABITAT_CODES": [
+        "Definition"
+      ],
+      "sysdiagrams": [
+        "definition"
+      ]
+    }
+  },
+  {
+    "question_id": 51,
+    "schema_links": {
+      "ACC_EM_Chronic_Absenteeism": [
+        "YEAR"
+      ],
+      "ACC_EM_Core_and_Weighted_Performance": [
+        "YEAR"
+      ],
+      "ACC_EM_ELP": [
+        "YEAR"
+      ],
+      "ACC_EM_NYSESLAT_for_Participation": [
+        "YEAR"
+      ],
+      "ACC_EM_Participation_Rate": [
+        "YEAR"
+      ],
+      "ACC_HS_Chronic_Absenteeism": [
+        "YEAR"
+      ],
+      "ACC_HS_Core_and_Weighted_Performance": [
+        "YEAR"
+      ],
+      "ACC_HS_ELP": [
+        "YEAR"
+      ],
+      "ACC_HS_Graduation_Rate": [
+        "YEAR"
+      ],
+      "ACC_HS_Participation_Rate": [
+        "YEAR"
+      ],
+      "Accountability_Levels": [
+        "YEAR"
+      ],
+      "Accountability_Status": [
+        "YEAR",
+        "OVERALL_STATUS"
+      ],
+      "Accountability_Status_by_Subgroup": [
+        "YEAR",
+        "SCHOOL_TYPE",
+        "OVERALL_STATUS"
+      ],
+      "Annual_EM_ELA": [
+        "YEAR"
+      ],
+      "Annual_EM_MATH": [
+        "YEAR"
+      ],
+      "Annual_EM_SCIENCE": [
+        "YEAR"
+      ],
+      "Annual_NYSAA": [
+        "YEAR"
+      ],
+      "Annual_NYSESLAT": [
+        "YEAR"
+      ],
+      "Annual_Regents_Exams": [
+        "YEAR"
+      ],
+      "BOCES_and_N/RC": [
+        "SCHOOL_NAME",
+        "YEAR"
+      ],
+      "Expenditures_per_Pupil": [
+        "YEAR"
+      ],
+      "Inexperienced_Teachers_and_Principals": [
+        "YEAR"
+      ],
+      "Postsecondary_Enrollment": [
+        "YEAR"
+      ],
+      "Teachers_Teaching_Out_of_Certification": [
+        "YEAR"
+      ]
+    }
+  },
+  {
+    "question_id": 52,
+    "schema_links": {
+      "tbl_Events": [],
+      "tbl_MacroHabitat": [
+        "MacroHab",
+        "Hydrology",
+        "Slope"
+      ],
+      "tbl_MicroHabitat": []
+    }
+  },
+  {
+    "question_id": 53,
+    "schema_links": {
+      "tblFieldDataCoverBoard": [
+        "SnakeID"
+      ],
+      "tblFieldDataSnakeDataCollection": [
+        "SnakeID",
+        "Sex",
+        "TLength",
+        "Weight"
+      ],
+      "tblFieldDataTimeConstrainedSearches": [
+        "Sex",
+        "SnakeID"
+      ],
+      "tblFieldDataTurtleMeasurements": [
+        "Sex",
+        "Carapace_Length",
+        "Plastron_Length",
+        "Weight"
+      ],
+      "tblFieldDataTurtleTrapSurveys": [
+        "Sex"
+      ]
+    }
+  },
+  {
+    "question_id": 54,
+    "schema_links": {
+      "tbl_Locations": [],
+      "tlu_Roads_and_Trails": []
+    }
+  },
+  {
+    "question_id": 55,
+    "schema_links": {
+      "AIRBAG": [
+        "CATEGORY"
+      ],
+      "CHILDSEAT": [
+        "CATEGORY"
+      ],
+      "CRASH": [
+        "CATEGORY",
+        "VEHICLES"
+      ],
+      "CDC": [
+        "CATEGORY"
+      ],
+      "EVENT": [
+        "CATEGORY"
+      ],
+      "EDRPRECRASH": [
+        "CATEGORY"
+      ],
+      "GV": [
+        "CATEGORY"
+      ],
+      "EDRREST": [
+        "CATEGORY"
+      ],
+      "FIRE": [
+        "CATEGORY"
+      ],
+      "INTERIOR": [
+        "CATEGORY"
+      ],
+      "FUEL": [
+        "CATEGORY"
+      ],
+      "EDRPOSTCRASH": [
+        "CATEGORY"
+      ],
+      "OCC": [
+        "CATEGORY"
+      ],
+      "INJURY": [
+        "CATEGORY"
+      ],
+      "ICS": [
+        "CATEGORY"
+      ],
+      "LOCALIZER": [
+        "CATEGORY"
+      ],
+      "EJECT": [
+        "CATEGORY"
+      ],
+      "INTEGRITY": [
+        "CATEGORY"
+      ],
+      "EMSCARE": [
+        "CATEGORY"
+      ],
+      "GLAZING": [
+        "CATEGORY"
+      ],
+      "OCCONTACT": [
+        "CATEGORY"
+      ],
+      "ADAPT": [
+        "CATEGORY"
+      ],
+      "PRE_FHE": [
+        "CATEGORY"
+      ],
+      "INTRUSION": [
+        "CATEGORY"
+      ],
+      "SEATXBAG": [
+        "CATEGORY"
+      ],
+      "JKWGT": [
+        "CATEGORY"
+      ],
+      "TIRE": [
+        "CATEGORY"
+      ],
+      "SEAT": [
+        "CATEGORY"
+      ],
+      "TIREDAMAGE": [
+        "CATEGORY",
+        "DAMAGE"
+      ],
+      "DISTRACT": [
+        "CATEGORY"
+      ],
+      "TIREPLAC": [
+        "CATEGORY"
+      ],
+      "EDRCOLLECT": [
+        "CATEGORY"
+      ],
+      "VEHMEAS": [
+        "CATEGORY"
+      ],
+      "EDRSUMM": [
+        "CATEGORY"
+      ],
+      "VEHSPEC": [
+        "CATEGORY"
+      ],
+      "EDREVENT": [
+        "CATEGORY"
+      ],
+      "VPICDECODE": [
+        "CATEGORY",
+        "DoorsCount",
+        "WheelsCount",
+        "SeatsCount",
+        "SeatRowsCount",
+        "AxlesCount",
+        "EngineCylindersCount"
+      ],
+      "AVOID": [
+        "CATEGORY"
+      ]
+    }
+  },
+  {
+    "question_id": 56,
+    "schema_links": {
+      "Teachers_Teaching_Out_of_Certification": [
+        "OUT_OF_CERT_DATA_REP_FLAG"
+      ]
+    }
+  },
+  {
+    "question_id": 57,
+    "schema_links": {
+      "OCPN": [
+        "StartDate",
+        "FinishDate",
+        "UpdateDate",
+        "CreateDate"
+      ],
+      "OEGP": [
+        "EmlGrpCode"
+      ],
+      "OTGG": [
+        "TargetCode"
+      ],
+      "OBPP": [
+        "PrioCode"
+      ],
+      "OCRD": [
+        "CardCode",
+        "GroupCode",
+        "ZipCode",
+        "CommGrCode",
+        "SlpCode",
+        "BankCode",
+        "CreateDate",
+        "UpdateDate",
+        "ExportCode",
+        "validFor",
+        "frozenFor",
+        "FormCode",
+        "PymCode",
+        "DunnDate",
+        "AgentCode",
+        "DeferrTax",
+        "FromDate",
+        "ToDate",
+        "ExpireDate",
+        "WTCode",
+        "HldCode",
+        "Business",
+        "WTTaxCat",
+        "IsDomestic",
+        "IsResident",
+        "ITWTCode",
+        "LangCode",
+        "BCACode",
+        "TaxRndRule",
+        "Number",
+        "TaxIdIdent",
+        "DateFrom",
+        "DateTill",
+        "RelCode",
+        "KBKCode",
+        "OwnerCode",
+        "SignDate",
+        "eZipCode",
+        "RepFisCode",
+        "IPACodePA"
+      ],
+      "OCRW": [
+        "CardCode"
+      ],
+      "TGG1": [
+        "TargetCode",
+        "CardCode",
+        "GroupCode",
+        "validFor",
+        "ZipCode"
+      ],
+      "OCOG": [
+        "GroupCode"
+      ],
+      "OCLS": [
+        "Code"
+      ],
+      "ACR1": [
+        "CardCode",
+        "ZipCode",
+        "TaxCode",
+        "AltTaxId",
+        "TaxOffice",
+        "CreateDate"
+      ],
+      "ACRD": [
+        "CardCode",
+        "GroupCode",
+        "ZipCode",
+        "CommGrCode",
+        "SlpCode",
+        "BankCode",
+        "CreateDate",
+        "UpdateDate",
+        "ExportCode",
+        "validFor",
+        "frozenFor",
+        "FormCode",
+        "PymCode",
+        "DunnDate",
+        "AgentCode",
+        "DeferrTax",
+        "FromDate",
+        "ToDate",
+        "ExpireDate",
+        "WTCode",
+        "HldCode",
+        "Business",
+        "WTTaxCat",
+        "IsDomestic",
+        "IsResident",
+        "ITWTCode",
+        "LangCode",
+        "BCACode",
+        "TaxRndRule",
+        "Number",
+        "TaxIdIdent",
+        "DateFrom",
+        "DateTill",
+        "RelCode",
+        "KBKCode",
+        "OwnerCode",
+        "SignDate",
+        "eZipCode",
+        "RepFisCode",
+        "IPACodePA"
+      ],
+      "OOAT": [
+        "BpCode",
+        "CntctCode",
+        "StartDate",
+        "EndDate",
+        "TermDate",
+        "UpdtDate",
+        "CreateDate",
+        "SignDate",
+        "Number",
+        "TrnspCode"
+      ],
+      "OCLG": [
+        "ClgCode",
+        "CardCode",
+        "CntctDate",
+        "CloseDate",
+        "CntctCode",
+        "SlpCode",
+        "RemDate",
+        "endDate",
+        "OrigDate",
+        "IsRemoved",
+        "NextDate",
+        "OwnerCode",
+        "ResCode",
+        "UpdateDate",
+        "CreateDate"
+      ],
+      "ACPR": [
+        "CntctCode",
+        "CardCode",
+        "BirthDate",
+        "updateDate",
+        "EmlGrpCode",
+        "FiscalCode",
+        "CtyFsnCode",
+        "CreateDate"
+      ],
+      "OBPL": [
+        "Business",
+        "UpdateDate",
+        "DflTaxCode",
+        "TaxIdNum",
+        "TaxIdNum2",
+        "TaxIdNum3",
+        "ProfTax",
+        "ZipCode",
+        "DateOfInc",
+        "TaxRptFrm"
+      ],
+      "OCLT": [
+        "Code"
+      ],
+      "CRD9": [
+        "CardCode",
+        "ISTransMod",
+        "ISIncoterm",
+        "ISState",
+        "ISNatTrans",
+        "ISStatProc",
+        "ISCustProc",
+        "ISPort",
+        "ISDomFrgld",
+        "ISRelevant"
+      ],
+      "WTD3": [
+        "WTCode",
+        "DateFrom",
+        "DateTo",
+        "UpdateDate"
+      ],
+      "ODDT": [
+        "CardCode",
+        "TrcCode",
+        "DateFrom",
+        "DateTo"
+      ],
+      "ORPT": [
+        "IsActived"
+      ],
+      "OTBP": [
+        "CardCode",
+        "ZipCode"
+      ],
+      "WTD4": [
+        "WTCode",
+        "ItemCode",
+        "DateFrom",
+        "DateTo",
+        "UpdateDate"
+      ],
+      "OSLP": [
+        "SlpCode",
+        "GroupCode"
+      ],
+      "ACRB": [
+        "CardCode",
+        "BankCode",
+        "ZipCode",
+        "SignDate",
+        "MandatDate",
+        "IsPrenot"
+      ],
+      "OCPR": [
+        "CntctCode",
+        "CardCode",
+        "BirthDate",
+        "updateDate",
+        "EmlGrpCode",
+        "FiscalCode",
+        "CtyFsnCode",
+        "CreateDate"
+      ],
+      "WTD5": [
+        "WTCode",
+        "ExpnsCode",
+        "DateFrom",
+        "DateTo",
+        "UpdateDate"
+      ],
+      "OSCN": [
+        "ItemCode",
+        "CardCode",
+        "IsDefault"
+      ],
+      "OCRB": [
+        "CardCode",
+        "BankCode",
+        "ZipCode",
+        "SignDate",
+        "MandatDate",
+        "IsPrenot"
+      ],
+      "CRD2": [
+        "CardCode",
+        "PymCode"
+      ],
+      "OCLO": [
+        "Code"
+      ],
+      "ACR2": [
+        "CardCode",
+        "PymCode"
+      ],
+      "OCRG": [
+        "GroupCode"
+      ],
+      "OCQG": [
+        "GroupCode"
+      ],
+      "USR6": [
+        "UserCode"
+      ],
+      "CRD1": [
+        "CardCode",
+        "ZipCode",
+        "TaxCode",
+        "AltTaxId",
+        "TaxOffice",
+        "CreateDate"
+      ]
+    }
+  },
+  {
+    "question_id": 58,
+    "schema_links": {
+      "tbl_Locations": [
+        "QuadName",
+        "PlaceNameID"
+      ],
+      "tbl_Overstory": [
+        "Overstory_ID",
+        "TreeTag",
+        "TreeCond"
+      ],
+      "tbl_Saplings": [
+        "Saplings_ID"
+      ],
+      "tbl_Tree_Tags": [
+        "Tree_Tag_ID"
+      ],
+      "tbl_WitnessTrees": [
+        "WitnessTree_ID"
+      ],
+      "tlu_Can_Pos": [
+        "CanPos_Name"
+      ],
+      "tlu_PlaceNames": [
+        "Name"
+      ],
+      "tlu_PlantSpecies": [
+        "species",
+        "SpeciesCode",
+        "CommonName",
+        "SpeciesNotes"
+      ],
+      "tlu_Roads_and_Trails": [
+        "ListedName",
+        "ValidName"
+      ],
+      "tlu_Tree_Cond": [
+        "TreeCond_Num",
+        "TreeCond_Text"
+      ],
+      "tsys_App_Defaults": [
+        "User_name"
+      ],
+      "tsys_App_Releases": [
+        "File_name",
+        "Author_org_name"
+      ],
+      "sysdiagrams": [
+        "name"
+      ]
+    }
+  },
+  {
+    "question_id": 59,
+    "schema_links": {
+      "VPICDECODE": [
+        "VehicleDescriptor",
+        "VehicleTypeId",
+        "VehicleType",
+        "GrossVehicleWeightRatingFromId",
+        "GrossVehicleWeightRatingFrom",
+        "GrossVehicleWeightRatingToId",
+        "GrossVehicleWeightRatingTo",
+        "GrossCombWeightRatingToId",
+        "GrossCombWeightRatingTo",
+        "WheelBaseIN_to",
+        "BatteryKWh_to",
+        "BatteryV_to",
+        "BatteryA_to",
+        "BatteryPacksPerVehicle",
+        "EngineBrakeHP_to",
+        "TopSpeedMPH",
+        "ForwardCollisionWarningId",
+        "ForwardCollisionWarning",
+        "SAEAutomationLevel_to"
+      ]
+    }
+  },
+  {
+    "question_id": 60,
+    "schema_links": {
+      "~TMPCLP650861": [
+        "Noted_Canopy_Spp_Common"
+      ],
+      "tbl_Habitat": [
+        "Noted_Canopy_Spp_Common"
+      ],
+      "tlu_Species": [
+        "Family",
+        "Common_Name"
+      ],
+      "xref_Species_Alternate_Names": [
+        "Alternate_Name",
+        "Alternate_Type"
+      ]
+    }
+  },
+  {
+    "question_id": 61,
+    "schema_links": {
+      "tblFieldDataCoverBoard": [
+        "SnakeID"
+      ],
+      "tblFieldDataSnakeDataCollection": [
+        "SnakeID",
+        "TLength"
+      ],
+      "tblFieldDataTimeConstrainedSearches": [
+        "SnakeID"
+      ],
+      "tblFieldDataTurtleMeasurements": [
+        "Carapace_Length",
+        "Plastron_Length"
+      ]
+    }
+  },
+  {
+    "question_id": 62,
+    "schema_links": {
+      "OINS": [
+        "customer"
+      ],
+      "OQUE": [
+        "email"
+      ],
+      "ASC6": [
+        "AddressId",
+        "Address"
+      ],
+      "ORCI": [
+        "IsMultiple"
+      ],
+      "OSCL": [
+        "customer",
+        "isEntitled",
+        "isQueue"
+      ],
+      "SCL6": [
+        "AddressId",
+        "Address"
+      ],
+      "ASCL": [
+        "customer",
+        "isEntitled",
+        "isQueue"
+      ]
+    }
+  },
+  {
+    "question_id": 63,
+    "schema_links": {
+      "tbl_Observations": [],
+      "tbl_Stations": [
+        "In_protocol"
+      ],
+      "tbl_Stations_UTMs": [
+        "In_protocol"
+      ]
+    }
+  },
+  {
+    "question_id": 64,
+    "schema_links": {
+      "ACC_EM_Chronic_Absenteeism": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "ABSENT_RATE"
+      ],
+      "ACC_EM_Core_and_Weighted_Performance": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "ACC_EM_ELP": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "PROGRESS_RATE"
+      ],
+      "ACC_EM_NYSESLAT_for_Participation": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "ACC_EM_Participation_Rate": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "RATE"
+      ],
+      "ACC_HS_Chronic_Absenteeism": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "ABSENT_RATE"
+      ],
+      "ACC_HS_Core_and_Weighted_Performance": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "ACC_HS_ELP": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "PROGRESS_RATE"
+      ],
+      "ACC_HS_Graduation_Rate": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "GRAD_RATE"
+      ],
+      "ACC_HS_Participation_Rate": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "RATE"
+      ],
+      "Accountability_Levels": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Accountability_Status": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Accountability_Status_by_Subgroup": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SCHOOL_TYPE"
+      ],
+      "Annual_EM_ELA": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "NOT_TESTED",
+        "PCT_NOT_TESTED"
+      ],
+      "Annual_EM_MATH": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "NOT_TESTED",
+        "PCT_NOT_TESTED"
+      ],
+      "Annual_EM_SCIENCE": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "NOT_TESTED",
+        "PCT_NOT_TESTED"
+      ],
+      "Annual_NYSAA": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "NOT_TESTED",
+        "NOT_TESTED_PER"
+      ],
+      "Annual_NYSESLAT": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "NOT_TESTED"
+      ],
+      "Annual_Regents_Exams": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "BOCES_and_N/RC": [
+        "ENTITY_CD",
+        "SCHOOL_NAME"
+      ],
+      "Expenditures_per_Pupil": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Inexperienced_Teachers_and_Principals": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "TOT_TEACH_HIGH",
+        "NUM_TEACH_HIGH",
+        "PER_TEACH_HIGH",
+        "TOT_PRINC_HIGH",
+        "NUM_PRINC_HIGH",
+        "PER_PRINC_HIGH"
+      ],
+      "Institution_Grouping": [
+        "GROUP_CODE",
+        "GROUP_NAME",
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Postsecondary_Enrollment": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Teachers_Teaching_Out_of_Certification": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "TOT_OUT_CERT_HIGH",
+        "NUM_OUT_CERT_HIGH",
+        "PER_OUT_CERT_HIGH"
+      ],
+      "Total_Cohort_Regents_Exams": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ]
+    }
+  },
+  {
+    "question_id": 65,
+    "schema_links": {
+      "VPICDECODE": [
+        "EventDataRecorderId",
+        "EventDataRecorder"
+      ]
+    }
+  },
+  {
+    "question_id": 66,
+    "schema_links": {
+      "tblAbundance_LU": [
+        "AbundanceID"
+      ],
+      "tblEventDataHerps": [
+        "EventID",
+        "ContactID"
+      ],
+      "tblEvents": [
+        "EventID"
+      ],
+      "tblFieldDataAmphibianCallCounts": [
+        "RecordID",
+        "LocationID",
+        "EventID"
+      ],
+      "tblFieldDataCoverBoard": [
+        "RecordID",
+        "LocationID",
+        "EventID",
+        "SnakeID"
+      ],
+      "tblFieldDataGreenCardObservations": [
+        "RecordID",
+        "LocationID",
+        "EventID"
+      ],
+      "tblFieldDataMinnowTrapSurveys": [
+        "RecordID",
+        "LocationID",
+        "EventID"
+      ],
+      "tblFieldDataSnakeDataCollection": [
+        "RecordID",
+        "LocationID",
+        "EventID",
+        "SnakeID"
+      ],
+      "tblFieldDataTimeConstrainedSearches": [
+        "RecordID",
+        "LocationID",
+        "EventID",
+        "SnakeID"
+      ],
+      "tblFieldDataTurtleMeasurements": [
+        "RecordID",
+        "LocationID",
+        "EventID"
+      ],
+      "tblFieldDataTurtleTrapSurveys": [
+        "RecordID",
+        "LocationID",
+        "EventID"
+      ],
+      "tblFieldDataWaterProperties": [
+        "RecordID",
+        "LocationID",
+        "EventID"
+      ],
+      "tblLocations": [
+        "LocationID",
+        "SiteID"
+      ],
+      "tblLocationsPoints": [
+        "LocationID",
+        "PointID"
+      ],
+      "tblNativity_LU": [
+        "NativityID"
+      ],
+      "tblParkStatus_LU": [
+        "ParkStatusID"
+      ],
+      "tblResidency_LU": [
+        "ResidencyID"
+      ],
+      "tlinkObservers": [
+        "EventID"
+      ],
+      "tluWeather": [
+        "SortID"
+      ],
+      "sysdiagrams": [
+        "principal_id",
+        "diagram_id"
+      ]
+    }
+  },
+  {
+    "question_id": 67,
+    "schema_links": {
+      "VPICDECODE": [
+        "HeadlampLightSourceID",
+        "HeadlampLightSource"
+      ]
+    }
+  },
+  {
+    "question_id": 68,
+    "schema_links": {
+      "ACC_EM_Chronic_Absenteeism": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_EM_Core_and_Weighted_Performance": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_EM_ELP": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_EM_NYSESLAT_for_Participation": [
+        "INSTITUTION_ID",
+        "YEAR"
+      ],
+      "ACC_EM_Participation_Rate": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_Chronic_Absenteeism": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_Core_and_Weighted_Performance": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_ELP": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_Graduation_Rate": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_Participation_Rate": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "Accountability_Levels": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "Accountability_Status": [
+        "INSTITUTION_ID",
+        "YEAR"
+      ],
+      "Accountability_Status_by_Subgroup": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SCHOOL_TYPE",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_EM_ELA": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_EM_MATH": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_EM_SCIENCE": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_NYSAA": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_NYSESLAT": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_Regents_Exams": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "BOCES_and_N/RC": [
+        "INSTITUTION_ID",
+        "SCHOOL_NAME",
+        "YEAR"
+      ],
+      "Expenditures_per_Pupil": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "STATE_LOCAL_EXP",
+        "PER_STATE_LOCAL_EXP",
+        "FED_STATE_LOCAL_EXP",
+        "PER_FED_STATE_LOCAL_EXP"
+      ],
+      "Inexperienced_Teachers_and_Principals": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "TOT_TEACH_HIGH",
+        "NUM_TEACH_HIGH",
+        "PER_TEACH_HIGH",
+        "TOT_PRINC_HIGH",
+        "NUM_PRINC_HIGH",
+        "PER_PRINC_HIGH"
+      ],
+      "Institution_Grouping": [
+        "INSTITUTION_ID"
+      ],
+      "Postsecondary_Enrollment": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "OUT_2_YR_CNT",
+        "PER_OUT_2_YR",
+        "OUT_4_YR_CNT",
+        "PER_OUT_4_YR"
+      ],
+      "Teachers_Teaching_Out_of_Certification": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "NUM_OUT_CERT",
+        "PER_OUT_CERT",
+        "TOT_OUT_CERT_LOW",
+        "NUM_OUT_CERT_LOW",
+        "PER_OUT_CERT_LOW",
+        "TOT_OUT_CERT_HIGH",
+        "NUM_OUT_CERT_HIGH",
+        "PER_OUT_CERT_HIGH",
+        "OUT_OF_CERT_DATA_REP_FLAG"
+      ],
+      "Total_Cohort_Regents_Exams": [
+        "INSTITUTION_ID",
+        "SUBGROUP_NAME"
+      ]
+    }
+  },
+  {
+    "question_id": 69,
+    "schema_links": {
+      "tbl_Locations": [
+        "Association_observed"
+      ],
+      "tbl_Overstory": [
+        "TreeTag",
+        "TreeCond"
+      ],
+      "tbl_Tree_Tags": [
+        "Tree_Tag_ID"
+      ],
+      "tbl_WitnessTrees": [
+        "WitnessTree_ID"
+      ],
+      "tlu_PlaceNames": [],
+      "tlu_PlantSpecies": [
+        "species",
+        "SpeciesCode",
+        "CommonName",
+        "SpeciesNotes"
+      ],
+      "tlu_Tree_Cond": [
+        "TreeCond_Num",
+        "TreeCond_Text"
+      ]
+    }
+  },
+  {
+    "question_id": 70,
+    "schema_links": {
+      "Class": [
+        "Class"
+      ],
+      "INVERTEBRATES": [
+        "Class"
+      ],
+      "VERTEBRATES": [
+        "CLASS"
+      ]
+    }
+  },
+  {
+    "question_id": 71,
+    "schema_links": {
+      "tbl_Deadwood": [
+        "Decay"
+      ],
+      "tbl_Events": [],
+      "tbl_Locations": [
+        "Association_observed"
+      ],
+      "tlu_DecayStage": [
+        "DecayStage_ID",
+        "DecayStage_Descr"
+      ],
+      "tlu_R1_RestOfPlot": []
+    }
+  },
+  {
+    "question_id": 72,
+    "schema_links": {
+      "VPICDECODE": [
+        "VehicleDescriptor",
+        "VehicleTypeId",
+        "VehicleType",
+        "GrossVehicleWeightRatingFromId",
+        "GrossVehicleWeightRatingFrom",
+        "GrossVehicleWeightRatingToId",
+        "GrossVehicleWeightRatingTo",
+        "GrossCombWeightRatingToId",
+        "GrossCombWeightRatingTo",
+        "WheelBaseIN_to",
+        "BatteryKWh_to",
+        "BatteryV_to",
+        "BatteryA_to",
+        "BatteryPacksPerVehicle",
+        "EngineBrakeHP_to",
+        "SeatBeltTypeId",
+        "SeatBeltType",
+        "SAEAutomationLevel_to"
+      ]
+    }
+  },
+  {
+    "question_id": 73,
+    "schema_links": {
+      "tbl_MacroHabitat": [
+        "MicroHab"
+      ],
+      "tbl_MicroHabitat": [
+        "Deciduous",
+        "Shrub",
+        "Herb",
+        "WoodyDebris",
+        "Litter",
+        "BareGround",
+        "Rock",
+        "CoverClass",
+        "Phenology",
+        "CoverPercent"
+      ]
+    }
+  },
+  {
+    "question_id": 74,
+    "schema_links": {
+      "ACC_EM_Chronic_Absenteeism": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "ABSENT_COUNT"
+      ],
+      "ACC_EM_Core_and_Weighted_Performance": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_EM_ELP": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "ELL_COUNT"
+      ],
+      "ACC_EM_NYSESLAT_for_Participation": [
+        "INSTITUTION_ID",
+        "YEAR"
+      ],
+      "ACC_EM_Participation_Rate": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "MET_95_PERCENT"
+      ],
+      "ACC_HS_Chronic_Absenteeism": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "ABSENT_COUNT"
+      ],
+      "ACC_HS_Core_and_Weighted_Performance": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_ELP": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "ELL_COUNT"
+      ],
+      "ACC_HS_Graduation_Rate": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "COHORT_COUNT",
+        "GRAD_COUNT"
+      ],
+      "ACC_HS_Participation_Rate": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "MET_95_PERCENT"
+      ],
+      "Accountability_Levels": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME"
+      ],
+      "Accountability_Status": [
+        "INSTITUTION_ID",
+        "YEAR"
+      ],
+      "Accountability_Status_by_Subgroup": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SCHOOL_TYPE",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_EM_ELA": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "TOTAL_COUNT",
+        "LEVEL1_COUNT",
+        "LEVEL2_COUNT",
+        "LEVEL3_COUNT",
+        "LEVEL4_COUNT",
+        "TOTAL_SCALE_SCORES"
+      ],
+      "Annual_EM_MATH": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "TOTAL_COUNT",
+        "LEVEL1_COUNT",
+        "LEVEL2_COUNT",
+        "LEVEL3_COUNT",
+        "LEVEL4_COUNT",
+        "LEVEL5_COUNT",
+        "TOTAL_SCALE_SCORES",
+        "TOTAL_EXEMPT"
+      ],
+      "Annual_EM_SCIENCE": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "TOTAL_COUNT",
+        "LEVEL1_COUNT",
+        "LEVEL2_COUNT",
+        "LEVEL3_COUNT",
+        "LEVEL4_COUNT",
+        "TOTAL_SCALE_SCORES",
+        "TOTAL_EXEMPT"
+      ],
+      "Annual_NYSAA": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "TOTAL",
+        "LEVEL1_COUNT",
+        "LEVEL2_COUNT",
+        "LEVEL3_COUNT",
+        "LEVEL4_COUNT",
+        "PROFICIENT_COUNT"
+      ],
+      "Annual_NYSESLAT": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "TOTAL"
+      ],
+      "Annual_Regents_Exams": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "TOTAL_EXEMPT"
+      ],
+      "BOCES_and_N/RC": [
+        "INSTITUTION_ID",
+        "SCHOOL_NAME",
+        "YEAR"
+      ],
+      "Expenditures_per_Pupil": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "PUPIL_COUNT_TOT",
+        "STATE_LOCAL_EXP",
+        "PER_STATE_LOCAL_EXP",
+        "FED_STATE_LOCAL_EXP",
+        "PER_FED_STATE_LOCAL_EXP"
+      ],
+      "Inexperienced_Teachers_and_Principals": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "TOT_TEACH_HIGH",
+        "NUM_TEACH_HIGH",
+        "PER_TEACH_HIGH",
+        "TOT_PRINC_HIGH",
+        "NUM_PRINC_HIGH",
+        "PER_PRINC_HIGH"
+      ],
+      "Institution_Grouping": [
+        "INSTITUTION_ID"
+      ],
+      "Postsecondary_Enrollment": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "SUBGROUP_NAME",
+        "TOTAL_GRAD_COUNT"
+      ],
+      "Teachers_Teaching_Out_of_Certification": [
+        "INSTITUTION_ID",
+        "YEAR",
+        "TOT_OUT_CERT_HIGH",
+        "NUM_OUT_CERT_HIGH",
+        "PER_OUT_CERT_HIGH",
+        "OUT_OF_CERT_DATA_REP_FLAG"
+      ],
+      "Total_Cohort_Regents_Exams": [
+        "INSTITUTION_ID",
+        "SUBGROUP_NAME",
+        "COHORT_COUNT",
+        "NTEST_COUNT",
+        "TEST_COUNT",
+        "LEVEL1_COUNT",
+        "LEVEL2_COUNT",
+        "LEVEL3_COUNT",
+        "LEVEL4_COUNT",
+        "PROF_COUNT",
+        "TOTAL_EXEMPT"
+      ]
+    }
+  },
+  {
+    "question_id": 75,
+    "schema_links": {
+      "ACC_EM_Core_and_Weighted_Performance": [],
+      "ACC_HS_Core_and_Weighted_Performance": [],
+      "BOCES_and_N/RC": [],
+      "Inexperienced_Teachers_and_Principals": [],
+      "Teachers_Teaching_Out_of_Certification": [
+        "OUT_OF_CERT_DATA_REP_FLAG"
+      ]
+    }
+  },
+  {
+    "question_id": 76,
+    "schema_links": {
+      "tbl_Events": [
+        "Location_ID"
+      ],
+      "tbl_Locations": [
+        "Location_ID",
+        "Topo_Position",
+        "QuadName",
+        "PlaceNameID",
+        "GIS_Location_ID"
+      ],
+      "tbl_Tree_Tags": [
+        "Location_ID"
+      ],
+      "tbl_WitnessTrees": [
+        "Location_ID"
+      ],
+      "tlu_Can_Pos": [
+        "CanPos_Name"
+      ],
+      "tlu_PlaceNames": [
+        "Name"
+      ],
+      "tlu_PlantSpecies": [
+        "CommonName"
+      ],
+      "tlu_R1_RestOfPlot": [],
+      "tlu_Roads_and_Trails": [
+        "ListedName",
+        "ValidName"
+      ],
+      "tlu_topo_position": [
+        "TopoPosition"
+      ],
+      "tsys_App_Defaults": [
+        "User_name"
+      ],
+      "tsys_App_Releases": [
+        "File_name",
+        "Author_org_name"
+      ],
+      "sysdiagrams": [
+        "name"
+      ]
+    }
+  },
+  {
+    "question_id": 77,
+    "schema_links": {
+      "tlu_Contacts": [
+        "City",
+        "Zip_Code"
+      ]
+    }
+  },
+  {
+    "question_id": 78,
+    "schema_links": {
+      "AIRBAG": [
+        "CATEGORY"
+      ],
+      "CHILDSEAT": [
+        "CATEGORY"
+      ],
+      "CRASH": [
+        "CATEGORY",
+        "VEHICLES"
+      ],
+      "CDC": [
+        "CATEGORY"
+      ],
+      "EVENT": [
+        "CATEGORY"
+      ],
+      "EDRPRECRASH": [
+        "CATEGORY"
+      ],
+      "GV": [
+        "CATEGORY"
+      ],
+      "EDRREST": [
+        "CATEGORY"
+      ],
+      "FIRE": [
+        "CATEGORY"
+      ],
+      "INTERIOR": [
+        "CATEGORY"
+      ],
+      "FUEL": [
+        "CATEGORY"
+      ],
+      "EDRPOSTCRASH": [
+        "CATEGORY"
+      ],
+      "OCC": [
+        "CATEGORY"
+      ],
+      "INJURY": [
+        "CATEGORY"
+      ],
+      "ICS": [
+        "CATEGORY"
+      ],
+      "LOCALIZER": [
+        "CATEGORY"
+      ],
+      "EJECT": [
+        "CATEGORY"
+      ],
+      "INTEGRITY": [
+        "CATEGORY"
+      ],
+      "EMSCARE": [
+        "CATEGORY"
+      ],
+      "GLAZING": [
+        "CATEGORY"
+      ],
+      "OCCONTACT": [
+        "CATEGORY"
+      ],
+      "ADAPT": [
+        "CATEGORY"
+      ],
+      "PRE_FHE": [
+        "CATEGORY"
+      ],
+      "INTRUSION": [
+        "CATEGORY",
+        "INTRUSION"
+      ],
+      "SEATXBAG": [
+        "CATEGORY"
+      ],
+      "JKWGT": [
+        "CATEGORY"
+      ],
+      "TIRE": [
+        "CATEGORY"
+      ],
+      "SEAT": [
+        "CATEGORY"
+      ],
+      "TIREDAMAGE": [
+        "CATEGORY"
+      ],
+      "DISTRACT": [
+        "CATEGORY"
+      ],
+      "TIREPLAC": [
+        "CATEGORY"
+      ],
+      "EDRCOLLECT": [
+        "CATEGORY"
+      ],
+      "VEHMEAS": [
+        "CATEGORY"
+      ],
+      "EDRSUMM": [
+        "CATEGORY"
+      ],
+      "VEHSPEC": [
+        "CATEGORY"
+      ],
+      "EDREVENT": [
+        "CATEGORY"
+      ],
+      "VPICDECODE": [
+        "CATEGORY",
+        "TrackWidthIN",
+        "WheelBaseIN_from",
+        "WheelBaseIN_to",
+        "WheelSizeFrontIN",
+        "WheelSizeRearIN",
+        "TruckBedLengthIN"
+      ],
+      "AVOID": [
+        "CATEGORY"
+      ]
+    }
+  },
+  {
+    "question_id": 79,
+    "schema_links": {
+      "sysdiagrams": [
+        "name"
+      ],
+      "ACC_EM_Chronic_Absenteeism": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_EM_Core_and_Weighted_Performance": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_EM_ELP": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_EM_NYSESLAT_for_Participation": [
+        "ENTITY_NAME"
+      ],
+      "ACC_EM_Participation_Rate": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_Chronic_Absenteeism": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_Core_and_Weighted_Performance": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_ELP": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_Graduation_Rate": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_Participation_Rate": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Accountability_Levels": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Accountability_Status": [
+        "ENTITY_NAME"
+      ],
+      "Accountability_Status_by_Subgroup": [
+        "ENTITY_NAME",
+        "SCHOOL_TYPE",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_EM_ELA": [
+        "ENTITY_NAME",
+        "ASSESSMENT_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_EM_MATH": [
+        "ENTITY_NAME",
+        "ASSESSMENT_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_EM_SCIENCE": [
+        "ENTITY_NAME",
+        "ASSESSMENT_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_NYSAA": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_NYSESLAT": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_Regents_Exams": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "BOCES_and_N/RC": [
+        "SCHOOL_NAME",
+        "DISTRICT_CD",
+        "DISTRICT_NAME",
+        "BOCES_NAME",
+        "COUNTY_NAME"
+      ],
+      "Expenditures_per_Pupil": [
+        "ENTITY_NAME"
+      ],
+      "Inexperienced_Teachers_and_Principals": [
+        "ENTITY_NAME"
+      ],
+      "Institution_Grouping": [
+        "GROUP_NAME",
+        "ENTITY_NAME"
+      ],
+      "Postsecondary_Enrollment": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Teachers_Teaching_Out_of_Certification": [
+        "ENTITY_NAME",
+        "OUT_OF_CERT_DATA_REP_FLAG"
+      ],
+      "Total_Cohort_Regents_Exams": [
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ]
+    }
+  },
+  {
+    "question_id": 80,
+    "schema_links": {
+      "tbl_Locations": []
+    }
+  },
+  {
+    "question_id": 81,
+    "schema_links": {
+      "OFPR": [
+        "Name"
+      ],
+      "UTX1": [
+        "CrditDebit",
+        "InPrice",
+        "InGrossRev",
+        "InFirstIns"
+      ],
+      "AACS": [
+        "Name"
+      ],
+      "OPRJ": [
+        "PrjName"
+      ],
+      "OFAA": [
+        "Name"
+      ],
+      "AFPR": [
+        "Name"
+      ],
+      "OFRC": [
+        "Name",
+        "FrgnName",
+        "SubName",
+        "CustName"
+      ],
+      "OACG": [
+        "Name"
+      ],
+      "OASC": [
+        "Name",
+        "ShortName"
+      ],
+      "OCFT": [
+        "Debit",
+        "Credit",
+        "SysCredit",
+        "SysDebit",
+        "FCDebit",
+        "FCCredit",
+        "Account"
+      ],
+      "FAA1": [
+        "AttrName"
+      ],
+      "RCR1": [
+        "Debit",
+        "Credit"
+      ],
+      "OJET": [
+        "ShortName"
+      ],
+      "OACT": [
+        "AcctName",
+        "Budget",
+        "FrgnName",
+        "ValidFor",
+        "FrozenFor",
+        "BPLName",
+        "SubLedgerN"
+      ],
+      "OGAR": [
+        "PeriodName",
+        "StkInTnAct"
+      ],
+      "OASG": [
+        "Name"
+      ],
+      "OACQ": [
+        "BPLName"
+      ],
+      "OFRT": [
+        "Name",
+        "ShowMiss"
+      ],
+      "OACS": [
+        "Name"
+      ],
+      "ODIM": [
+        "DimName"
+      ],
+      "AACT": [
+        "AcctName",
+        "Budget",
+        "FrgnName",
+        "ValidFor",
+        "FrozenFor",
+        "BPLName",
+        "SubLedgerN"
+      ],
+      "OBGS": [
+        "Name"
+      ],
+      "TAX1": [
+        "CrditDebit",
+        "InPrice",
+        "InGrossRev",
+        "InFirstIns"
+      ],
+      "OCFW": [
+        "CFWName"
+      ],
+      "ODPA": [
+        "CreditCtrl"
+      ],
+      "OACP": [
+        "PeriodName",
+        "DflInPrcss",
+        "DfltInCstm",
+        "StkInTnAct",
+        "ResExpense",
+        "ERDInARAct",
+        "ERDInAPAct",
+        "CSDInARAct",
+        "CSDInAPAct",
+        "GSTInAct"
+      ],
+      "OBGD": [
+        "BgdName"
+      ],
+      "JDT1": [
+        "Account",
+        "Debit",
+        "Credit",
+        "FCDebit",
+        "FCCredit",
+        "ShortName",
+        "ClsInTP",
+        "BPLName"
+      ],
+      "AACP": [
+        "PeriodName",
+        "DflInPrcss",
+        "DfltInCstm",
+        "StkInTnAct",
+        "ResExpense",
+        "ERDInARAct",
+        "ERDInAPAct",
+        "CSDInARAct",
+        "CSDInAPAct",
+        "GSTInAct"
+      ],
+      "OCFL": [
+        "Credit",
+        "Debit"
+      ]
+    }
+  },
+  {
+    "question_id": 82,
+    "schema_links": {
+      "OHLD": [
+        "HldCode",
+        "isCurYear"
+      ],
+      "HLD1": [
+        "HldCode"
+      ],
+      "AHE7": [
+        "ConName",
+        "BankName",
+        "BankCode"
+      ],
+      "AHEM": [
+        "lastName",
+        "firstName",
+        "middleName",
+        "jobTitle",
+        "bankCode",
+        "NamePos",
+        "EmTaxCCode",
+        "TaxOName",
+        "HeaInsName",
+        "HeaInsCode",
+        "StatusOfP",
+        "StatusOfE",
+        "BCodeDateV",
+        "FNameSP",
+        "JTCode",
+        "STDCode",
+        "FatherName",
+        "QualCode",
+        "Code"
+      ],
+      "OHPS": [
+        "name"
+      ],
+      "OHTM": [
+        "name"
+      ],
+      "OHST": [
+        "name"
+      ],
+      "OHTR": [
+        "name"
+      ],
+      "OHED": [
+        "name"
+      ],
+      "OHTY": [
+        "name"
+      ],
+      "HEM7": [
+        "ConName",
+        "BankName",
+        "BankCode"
+      ],
+      "OHEM": [
+        "lastName",
+        "firstName",
+        "middleName",
+        "jobTitle",
+        "bankCode",
+        "NamePos",
+        "EmTaxCCode",
+        "TaxOName",
+        "HeaInsName",
+        "HeaInsCode",
+        "StatusOfP",
+        "StatusOfE",
+        "BCodeDateV",
+        "FNameSP",
+        "JTCode",
+        "STDCode",
+        "FatherName",
+        "QualCode",
+        "Code"
+      ]
+    }
+  },
+  {
+    "question_id": 83,
+    "schema_links": {
+      "TIRE": [],
+      "VEHSPEC": [
+        "OVERHANG_REAR"
+      ],
+      "VPICDECODE": [
+        "TrackWidthIN",
+        "WheelBaseIN_from",
+        "WheelBaseIN_to",
+        "WheelSizeFrontIN",
+        "WheelSizeRearIN",
+        "TruckBedLengthIN",
+        "AirBagLocFrontId",
+        "AirBagLocFront",
+        "RearCrossTrafficAlertID",
+        "RearCrossTrafficAlert",
+        "RearAutomaticEmergencyBrakingID",
+        "RearAutomaticEmergencyBraking"
+      ]
+    }
+  },
+  {
+    "question_id": 84,
+    "schema_links": {
+      "ACC_EM_Chronic_Absenteeism": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_EM_Core_and_Weighted_Performance": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_EM_ELP": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_EM_NYSESLAT_for_Participation": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "ACC_EM_Participation_Rate": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_Chronic_Absenteeism": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_Core_and_Weighted_Performance": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_ELP": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_Graduation_Rate": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "ACC_HS_Participation_Rate": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Accountability_Levels": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Accountability_Status": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "OVERALL_STATUS"
+      ],
+      "Accountability_Status_by_Subgroup": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SCHOOL_TYPE",
+        "SUBGROUP_NAME",
+        "OVERALL_STATUS"
+      ],
+      "Annual_EM_ELA": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_EM_MATH": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_EM_SCIENCE": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_NYSAA": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_NYSESLAT": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Annual_Regents_Exams": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "BOCES_and_N/RC": [
+        "ENTITY_CD",
+        "SCHOOL_NAME"
+      ],
+      "Expenditures_per_Pupil": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Inexperienced_Teachers_and_Principals": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Institution_Grouping": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Postsecondary_Enrollment": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ],
+      "Teachers_Teaching_Out_of_Certification": [
+        "ENTITY_CD",
+        "ENTITY_NAME"
+      ],
+      "Total_Cohort_Regents_Exams": [
+        "ENTITY_CD",
+        "ENTITY_NAME",
+        "SUBGROUP_NAME"
+      ]
+    }
+  },
+  {
+    "question_id": 85,
+    "schema_links": {
+      "ITT1": [
+        "Price",
+        "PriceList",
+        "OrigPrice",
+        "ItemName"
+      ],
+      "OARG": [
+        "TotalTax"
+      ],
+      "ATT1": [
+        "Price",
+        "PriceList",
+        "OrigPrice",
+        "ItemName"
+      ],
+      "ITM10": [
+        "ItemCode",
+        "ISCommCode",
+        "ISSubMasUn",
+        "ISFactor",
+        "ISOrCSTImp",
+        "ISOrCSTExp",
+        "ISNaTraImp",
+        "ISNaTraExp",
+        "ISStProImp",
+        "ISStProExp",
+        "ISOriCntry",
+        "ISSerCode",
+        "ISItemType",
+        "ISSerSupMt",
+        "ISSerPayMt",
+        "ISOrCRYImp",
+        "ISOrCRYExp",
+        "ISUseWeigh",
+        "ISRelevant",
+        "ISStatCode"
+      ],
+      "ITL1": [
+        "ItemCode",
+        "SysNumber"
+      ],
+      "OBTQ": [
+        "ItemCode",
+        "SysNumber"
+      ],
+      "ITW1": [
+        "ItemCode"
+      ],
+      "ITM9": [
+        "ItemCode",
+        "PriceList",
+        "Price",
+        "PriceType"
+      ],
+      "OIBQ": [
+        "ItemCode"
+      ],
+      "WOR1": [
+        "ItemCode",
+        "CompTotal",
+        "ItemType",
+        "ItemName"
+      ],
+      "ITM7": [
+        "ItemCode",
+        "TotalUnits"
+      ],
+      "OCYC": [
+        "DayOfWeek"
+      ],
+      "OITT": [
+        "PriceList"
+      ],
+      "OBTN": [
+        "ItemCode",
+        "SysNumber",
+        "DistNumber",
+        "LotNumber",
+        "itemName",
+        "CostTotal",
+        "PriceDiff"
+      ],
+      "OITB": [
+        "PriceDifAc",
+        "ItemClass"
+      ],
+      "OBCD": [
+        "ItemCode"
+      ],
+      "ILM1": [
+        "ItemCode",
+        "SysNumber"
+      ],
+      "AWHS": [
+        "PriceDifAc",
+        "RecItemsBy"
+      ],
+      "OBTW": [
+        "ItemCode",
+        "SysNumber"
+      ],
+      "ITM8": [
+        "ItemCode",
+        "IsMaSalVal"
+      ],
+      "OSRN": [
+        "ItemCode",
+        "SysNumber",
+        "DistNumber",
+        "LotNumber",
+        "itemName",
+        "CostTotal",
+        "PriceDiff"
+      ],
+      "OITL": [
+        "ItemCode",
+        "ItemName"
+      ],
+      "ITM3": [
+        "ItemCode"
+      ],
+      "OILM": [
+        "TotalLC",
+        "TotalFC",
+        "TotalSC",
+        "ItemCode",
+        "DocPrice",
+        "PriceRate",
+        "PriceCurr",
+        "DocTotal",
+        "Price",
+        "AddTotalLC",
+        "IsNegLnQty"
+      ],
+      "OIMT": [
+        "Total"
+      ],
+      "OALI": [
+        "OrigItem",
+        "AltItem"
+      ],
+      "CIVI": [
+        "IsOILMUpd"
+      ],
+      "ITM4": [
+        "ItemCode",
+        "QtyPerPack"
+      ],
+      "OSRQ": [
+        "ItemCode",
+        "SysNumber"
+      ],
+      "ITM2": [
+        "ItemCode"
+      ],
+      "OWOR": [
+        "ItemCode"
+      ],
+      "OLCT": [
+        "NatOfBiz"
+      ],
+      "ITM13": [
+        "ItemCode"
+      ],
+      "IVL1": [
+        "CalcPrice",
+        "RevalTotal"
+      ],
+      "OIVL": [
+        "ItemCode",
+        "Price",
+        "PriceDifAc",
+        "PriceDiff"
+      ],
+      "ITM12": [
+        "ItemCode"
+      ],
+      "OWHS": [
+        "PriceDifAc",
+        "RecItemsBy"
+      ],
+      "OITM": [
+        "ItemCode",
+        "ItemName",
+        "PrchseItem",
+        "SellItem",
+        "InvntItem",
+        "IsCommited",
+        "CustomPer",
+        "ExitPrice",
+        "AssetItem",
+        "AvgPrice",
+        "validFor",
+        "frozenFor",
+        "ItemType",
+        "ItemClass",
+        "Number",
+        "PriceUnit"
+      ],
+      "AWO1": [
+        "ItemCode",
+        "CompTotal",
+        "ItemType",
+        "ItemName"
+      ],
+      "ITM1": [
+        "ItemCode",
+        "PriceList",
+        "Price",
+        "PriceType"
+      ],
+      "OPLN": [
+        "IsGrossPrc",
+        "ValidFor"
+      ],
+      "AWOR": [
+        "ItemCode"
+      ],
+      "UGP1": [
+        "IsActive"
+      ],
+      "OITW": [
+        "ItemCode",
+        "IsCommited",
+        "AvgPrice",
+        "PriceDifAc"
+      ]
+    }
+  },
+  {
+    "question_id": 86,
+    "schema_links": {
+      "tbl_Db_Revisions": [
+        "Revision_Contact_ID"
+      ],
+      "tbl_Event_Details": [
+        "Event_ID",
+        "Event_Notes"
+      ],
+      "tbl_Events": [
+        "Event_ID"
+      ],
+      "tbl_Locations": [
+        "Rnd_Plt_In"
+      ],
+      "tbl_MacroHabitat": [
+        "Event_ID"
+      ],
+      "tbl_MicroHabitat": [
+        "Event_ID"
+      ],
+      "tlu_Contacts": [
+        "Contact_ID",
+        "Last_Name",
+        "First_Name",
+        "Position_Title",
+        "Contact_Notes"
+      ],
+      "xref_Event_Contacts": [
+        "Event_ID",
+        "Contact_ID",
+        "Contact_Role"
+      ]
+    }
+  },
+  {
+    "question_id": 87,
+    "schema_links": {
+      "ITT1": [
+        "ItemName"
+      ],
+      "OARG": [
+        "GroupNum"
+      ],
+      "ATT1": [
+        "ItemName"
+      ],
+      "ITM10": [
+        "ItemCode",
+        "ISCommCode",
+        "ISSubMasUn",
+        "ISFactor",
+        "ISOrCSTImp",
+        "ISOrCSTExp",
+        "ISNaTraImp",
+        "ISNaTraExp",
+        "ISStProImp",
+        "ISStProExp",
+        "ISOriCntry",
+        "ISSerCode",
+        "ISItemType",
+        "ISSerSupMt",
+        "ISSerPayMt",
+        "ISOrCRYImp",
+        "ISOrCRYExp",
+        "ISUseWeigh",
+        "ISRelevant",
+        "ISStatCode"
+      ],
+      "ITL1": [
+        "ItemCode"
+      ],
+      "OBTQ": [
+        "ItemCode"
+      ],
+      "ITW1": [
+        "ItemCode"
+      ],
+      "OWGT": [
+        "WightInMG"
+      ],
+      "ITM9": [
+        "ItemCode"
+      ],
+      "OIBQ": [
+        "ItemCode"
+      ],
+      "WOR1": [
+        "ItemCode",
+        "ItemType",
+        "ItemName"
+      ],
+      "ITM7": [
+        "ItemCode"
+      ],
+      "OLGT": [
+        "SizeInMM"
+      ],
+      "OCYC": [
+        "DayInMonth",
+        "DayOfWeek"
+      ],
+      "OUOM": [
+        "Volume"
+      ],
+      "OBTN": [
+        "ItemCode",
+        "InDate",
+        "itemName"
+      ],
+      "OITB": [
+        "ItemClass",
+        "StkInTnAct"
+      ],
+      "OBCD": [
+        "ItemCode"
+      ],
+      "ILM1": [
+        "ItemCode"
+      ],
+      "AWHS": [
+        "VatGroup",
+        "StkInTnAct",
+        "RecItemsBy"
+      ],
+      "OBTW": [
+        "ItemCode"
+      ],
+      "ITM8": [
+        "ItemCode",
+        "IsMaSalVal"
+      ],
+      "OSRN": [
+        "ItemCode",
+        "InDate",
+        "itemName"
+      ],
+      "OITL": [
+        "ItemCode",
+        "ItemName"
+      ],
+      "ITM3": [
+        "ItemCode"
+      ],
+      "OILM": [
+        "ItemCode",
+        "IsNegLnQty"
+      ],
+      "OALI": [
+        "OrigItem",
+        "AltItem"
+      ],
+      "CIVI": [
+        "IsOILMUpd"
+      ],
+      "AUOM": [
+        "Volume"
+      ],
+      "ITM4": [
+        "ItemCode",
+        "Volume"
+      ],
+      "OSRQ": [
+        "ItemCode"
+      ],
+      "ITM2": [
+        "ItemCode"
+      ],
+      "OWOR": [
+        "ItemCode"
+      ],
+      "OLCT": [
+        "NatOfBiz"
+      ],
+      "ITM13": [
+        "ItemCode"
+      ],
+      "IVL1": [
+        "LayerInQty"
+      ],
+      "OIVL": [
+        "ItemCode",
+        "InQty"
+      ],
+      "ITM12": [
+        "ItemCode",
+        "Volume"
+      ],
+      "OWHS": [
+        "VatGroup",
+        "StkInTnAct",
+        "RecItemsBy"
+      ],
+      "OPKG": [
+        "Volume"
+      ],
+      "OITM": [
+        "ItemCode",
+        "ItemName",
+        "PrchseItem",
+        "SellItem",
+        "InvntItem",
+        "IsCommited",
+        "NumInBuy",
+        "NumInSale",
+        "QueryGroup",
+        "AssetItem",
+        "SVolume",
+        "BVolume",
+        "VatGroupPu",
+        "FrgnInAcct",
+        "ECInAcct",
+        "ItemType",
+        "ItemClass",
+        "AssetGroup",
+        "DeprGroup",
+        "NumInCnt",
+        "INUoMEntry",
+        "InCostRoll"
+      ],
+      "AWO1": [
+        "ItemCode",
+        "ItemType",
+        "ItemName"
+      ],
+      "ITM1": [
+        "ItemCode"
+      ],
+      "OPLN": [
+        "GroupCode",
+        "IsGrossPrc"
+      ],
+      "AWOR": [
+        "ItemCode"
+      ],
+      "UGP1": [
+        "IsActive"
+      ],
+      "OITW": [
+        "ItemCode",
+        "IsCommited",
+        "StkInTnAct"
+      ]
+    }
+  },
+  {
+    "question_id": 88,
+    "schema_links": {
+      "tbl_Deadwood": [
+        "Decay",
+        "Length"
+      ],
+      "tbl_Locations": [
+        "SiteDescription"
+      ],
+      "tlu_DecayStage": [
+        "DecayStage_ID",
+        "DecayStage_Descr"
+      ]
+    }
+  },
+  {
+    "question_id": 89,
+    "schema_links": {
+      "OCPN": [
+        "Name"
+      ],
+      "OCLA": [
+        "name"
+      ],
+      "OEGP": [
+        "EmlGrpName"
+      ],
+      "OTGG": [
+        "TargetName"
+      ],
+      "OCRD": [
+        "CardName",
+        "Address",
+        "InMatchNum",
+        "CardFName",
+        "DiscInRet",
+        "RepName",
+        "AliasName",
+        "Number",
+        "TypeOfOp",
+        "RepFName",
+        "RepSName",
+        "RepCmpName",
+        "EnERD4In"
+      ],
+      "TGG1": [
+        "CardName",
+        "Position",
+        "Address",
+        "FirstName",
+        "MiddleName",
+        "LastName",
+        "AddressID"
+      ],
+      "OCOG": [
+        "GroupName"
+      ],
+      "OCLS": [
+        "Name"
+      ],
+      "ACR1": [
+        "Address",
+        "AltCrdName"
+      ],
+      "ACRD": [
+        "CardName",
+        "Address",
+        "InMatchNum",
+        "CardFName",
+        "DiscInRet",
+        "RepName",
+        "AliasName",
+        "Number",
+        "TypeOfOp",
+        "RepFName",
+        "RepSName",
+        "RepCmpName",
+        "EnERD4In"
+      ],
+      "OOAT": [
+        "BpName",
+        "Number"
+      ],
+      "OCLG": [
+        "ContactPer",
+        "DayInMonth",
+        "DayOfWeek",
+        "AddrName"
+      ],
+      "OPRT": [
+        "Name"
+      ],
+      "ACPR": [
+        "Name",
+        "Position",
+        "Address",
+        "FirstName",
+        "MiddleName",
+        "LastName"
+      ],
+      "OBPL": [
+        "BPLName",
+        "BPLFrName",
+        "RepName",
+        "Address",
+        "AddressFr",
+        "DateOfInc",
+        "AliasName"
+      ],
+      "OCLT": [
+        "Name"
+      ],
+      "ODDT": [
+        "TrcName"
+      ],
+      "OTBP": [
+        "CardName",
+        "Position",
+        "Address"
+      ],
+      "OSLP": [
+        "SlpName",
+        "Email"
+      ],
+      "ACRB": [
+        "AliasName",
+        "AcctName",
+        "Phone"
+      ],
+      "OCPR": [
+        "Name",
+        "Position",
+        "Address",
+        "FirstName",
+        "MiddleName",
+        "LastName"
+      ],
+      "OCRB": [
+        "AliasName",
+        "AcctName",
+        "Phone"
+      ],
+      "OCLO": [
+        "Name"
+      ],
+      "OCRG": [
+        "GroupName"
+      ],
+      "OCQG": [
+        "GroupName"
+      ],
+      "CRD1": [
+        "Address",
+        "AltCrdName"
+      ]
+    }
+  },
+  {
+    "question_id": 90,
+    "schema_links": {
+      "tbl_Db_Meta": [
+        "Meta_File_Name"
+      ],
+      "tbl_Events": [
+        "Protocol_Name",
+        "Site_Treated"
+      ],
+      "tbl_Locations": [
+        "Site_ID",
+        "Loc_Name"
+      ],
+      "tbl_Sites": [
+        "Site_ID",
+        "Site_Name",
+        "Site_Desc",
+        "Site_Notes",
+        "Site_Start_X",
+        "Site_Start_Y",
+        "Site_End_X",
+        "Site_End_Y"
+      ],
+      "tlu_Contacts": [
+        "Last_Name",
+        "First_Name"
+      ]
+    }
+  },
+  {
+    "question_id": 91,
+    "schema_links": {
+      "INVERTEBRATES": [
+        "Common_Name",
+        "Observer",
+        "Notes"
+      ],
+      "VERTEBRATES": [
+        "Common_Name",
+        "Scientific_Name",
+        "Observer",
+        "Notes"
+      ],
+      "WILDLIFE_MASTERLIST": [
+        "COMMON_NAME",
+        "SCIENTIFIC_NAME"
+      ],
+      "sysdiagrams": [
+        "name"
+      ]
+    }
+  },
+  {
+    "question_id": 92,
+    "schema_links": {
+      "tbl_Deadwood": [
+        "Decay"
+      ],
+      "tlu_DecayStage": [
+        "DecayStage_ID",
+        "DecayStage_Descr"
+      ],
+      "tlu_Roads_and_Trails": []
+    }
+  },
+  {
+    "question_id": 93,
+    "schema_links": {
+      "CRASH": [
+        "EVENTS"
+      ],
+      "EVENT": [],
+      "VPICDECODE": [
+        "EventDataRecorderId",
+        "EventDataRecorder"
+      ]
+    }
+  },
+  {
+    "question_id": 94,
+    "schema_links": {
+      "tbl_Deadwood": [
+        "Module"
+      ],
+      "tbl_Locations": [
+        "SiteDescription"
+      ],
+      "tbl_Nests": [
+        "Module",
+        "Presence_First",
+        "Presence_Second"
+      ],
+      "tbl_Saplings": [
+        "Module"
+      ],
+      "tbl_Seedlings": [
+        "Module"
+      ],
+      "tbl_Tree_Tags": [
+        "Module"
+      ],
+      "tlu_Cover_Cls": [
+        "CoverClass_Num",
+        "CoverClass_Text"
+      ],
+      "tlu_Live_Dead": [
+        "Cond_Text"
+      ],
+      "tlu_PlantSpecies": [
+        "species",
+        "SpeciesCode",
+        "SpeciesNotes"
+      ],
+      "tlu_Presence": [
+        "Pres_Text"
+      ],
+      "tlu_R1_RestOfPlot": [
+        "Pres_Text"
+      ],
+      "tlu_Tree_Cond": [
+        "TreeCond_Text"
+      ]
+    }
+  },
+  {
+    "question_id": 95,
+    "schema_links": {
+      "CHO1": [
+        "Code"
+      ],
+      "PWZ4": [
+        "CardCode",
+        "CardName",
+        "GLAccCode",
+        "PymAmount",
+        "TBankCode",
+        "UIPCode"
+      ],
+      "OCTG": [
+        "Payments",
+        "DiscCode"
+      ],
+      "PDF3": [
+        "CreditCard",
+        "CrCardNum",
+        "CardValid",
+        "CrTypeCode"
+      ],
+      "DSC1": [
+        "BankCode",
+        "ZipCode",
+        "DaysInAdva",
+        "BranchName",
+        "AliasName",
+        "AcctName",
+        "TmpltName",
+        "InSeri",
+        "CollCode",
+        "Currency"
+      ],
+      "PWZ5": [
+        "Amount",
+        "CardCode",
+        "CardName",
+        "Currency"
+      ],
+      "OVPM": [
+        "CardCode",
+        "CardName",
+        "Address",
+        "ShowAtCard",
+        "CntctCode",
+        "BankCode",
+        "PrjCode",
+        "WtCode",
+        "PayToCode",
+        "IsPaytoBnk",
+        "PBnkCode",
+        "TransCode",
+        "SeqCode",
+        "BSRCode",
+        "LocCode",
+        "OperatCode",
+        "SupplCode",
+        "BPLName",
+        "OwnerCode"
+      ],
+      "OUDP": [
+        "Code",
+        "Name"
+      ],
+      "OPEX": [
+        "FiscalYear",
+        "PayeeName",
+        "PayBnkName",
+        "PayBnkCode",
+        "PymBnkCode",
+        "Currency",
+        "CompName",
+        "UserName",
+        "EuInTrnsfr",
+        "PymKeyCode",
+        "FormatName",
+        "PymBCACode",
+        "BoeOccCode",
+        "BoeMovCode",
+        "PymBnkName",
+        "UIPCode"
+      ],
+      "ORCT": [
+        "CardCode",
+        "CardName",
+        "Address",
+        "ShowAtCard",
+        "CntctCode",
+        "BankCode",
+        "PrjCode",
+        "WtCode",
+        "PayToCode",
+        "IsPaytoBnk",
+        "PBnkCode",
+        "TransCode",
+        "SeqCode",
+        "BSRCode",
+        "LocCode",
+        "OperatCode",
+        "SupplCode",
+        "BPLName",
+        "OwnerCode"
+      ],
+      "OCRV": [
+        "CreditCard",
+        "CrdCardNum",
+        "CardValid",
+        "PayAmount",
+        "AcctCode",
+        "CardCode",
+        "CrTypeCode",
+        "CardName"
+      ],
+      "VPM1": [
+        "BankCode",
+        "Currency"
+      ],
+      "OIST": [
+        "InstrCode",
+        "IsCancel"
+      ],
+      "OPYD": [
+        "Code",
+        "Name"
+      ],
+      "RCT2": [
+        "IsRateDiff",
+        "OcrCode",
+        "IsSelected"
+      ],
+      "OCHO": [
+        "BankName",
+        "VendorCode",
+        "Currency",
+        "CardOrAcct",
+        "VendorName",
+        "Address",
+        "AddrName",
+        "BPLName"
+      ],
+      "RCT3": [
+        "CreditCard",
+        "CrCardNum",
+        "CardValid",
+        "CrTypeCode"
+      ],
+      "PDF2": [
+        "IsRateDiff",
+        "OcrCode",
+        "IsSelected"
+      ],
+      "ODPS": [
+        "IsCard",
+        "SeqCode",
+        "OcrCode",
+        "SupplCode"
+      ],
+      "PYD1": [
+        "PYDCode",
+        "PYMCode"
+      ],
+      "VPM2": [
+        "IsRateDiff",
+        "OcrCode",
+        "IsSelected"
+      ],
+      "ODSC": [
+        "BankCode",
+        "BankName",
+        "AliasName",
+        "BnkOpCode"
+      ],
+      "OITR": [
+        "IsCard",
+        "IsSystem",
+        "IsMultiBP",
+        "BPLName",
+        "IsElectr"
+      ],
+      "PWZ3": [
+        "CardCode",
+        "CardName",
+        "GLAccCode",
+        "GLAccName",
+        "PymAmount",
+        "PayAmount",
+        "CardType",
+        "IsTax",
+        "IsFreight",
+        "IsOrigMeth",
+        "NumAtCard",
+        "PayToCode",
+        "OcrCode",
+        "PrjCode",
+        "BnkCode",
+        "TBankCode",
+        "BoeOccCode",
+        "BoeMovCode",
+        "PymIsUpdat",
+        "OriPymCode",
+        "ReasonCode",
+        "OriActCode",
+        "OriActName",
+        "WtIsPym",
+        "UIPCode",
+        "VatAmount"
+      ],
+      "ITR1": [
+        "ShortName",
+        "IsCredit"
+      ],
+      "OPWZ": [
+        "WizardName",
+        "SeriesIn",
+        "TotalIn",
+        "ShowAtCard"
+      ],
+      "PEX1": [
+        "FiscalYear"
+      ],
+      "OCRH": [
+        "CreditCard",
+        "CrdCardNum",
+        "CardValid",
+        "CrTypeCode",
+        "AcctCode",
+        "CardCode",
+        "CardName"
+      ],
+      "OUBR": [
+        "Code",
+        "Name"
+      ],
+      "OCHH": [
+        "BankCode",
+        "CardCode",
+        "Currency",
+        "CardName"
+      ],
+      "PWZ1": [
+        "CardCode",
+        "CardName",
+        "CardType",
+        "BPCurrency"
+      ],
+      "OPYM": [
+        "Address",
+        "MinAmount",
+        "MaxAmount",
+        "KeyCode",
+        "PtfCode",
+        "CurCode",
+        "OccurCode",
+        "MovmntCode",
+        "NegPymCode"
+      ],
+      "PWZ2": [
+        "PymCode",
+        "BnkCode"
+      ],
+      "RCT1": [
+        "BankCode",
+        "Currency"
+      ],
+      "TPW1": [
+        "LocCode"
+      ],
+      "VPM3": [
+        "CreditCard",
+        "CrCardNum",
+        "CardValid",
+        "CrTypeCode"
+      ]
+    }
+  },
+  {
+    "question_id": 96,
+    "schema_links": {
+      "Breeding_Codes": [
+        "Definition"
+      ],
+      "Code": [],
+      "HABITAT_CODES": [
+        "Code",
+        "Definition"
+      ],
+      "INVERTEBRATES": [
+        "Common_Name",
+        "Genus_species"
+      ],
+      "Paste_Errors": [
+        "Species"
+      ],
+      "Roadkill": [
+        "Species"
+      ],
+      "VERTEBRATES": [
+        "Species",
+        "Common_Name",
+        "Scientific_Name"
+      ],
+      "WILDLIFE_MASTERLIST": [
+        "SPECIES",
+        "COMMON_NAME",
+        "SCIENTIFIC_NAME"
+      ],
+      "sysdiagrams": [
+        "name",
+        "definition"
+      ]
+    }
+  },
+  {
+    "question_id": 97,
+    "schema_links": {
+      "tbl_Density": [
+        "Density_ID",
+        "Half_meter",
+        "One_meter",
+        "One_half_meter",
+        "Two_meter"
+      ],
+      "tbl_Events": []
+    }
+  },
+  {
+    "question_id": 98,
+    "schema_links": {
+      "AHEM": [
+        "lastName",
+        "firstName",
+        "salesPrson",
+        "StatusOfP",
+        "StatusOfE"
+      ],
+      "OHTM": [
+        "teamID"
+      ],
+      "HTM1": [
+        "teamID"
+      ],
+      "OHEM": [
+        "lastName",
+        "firstName",
+        "salesPrson",
+        "StatusOfP",
+        "StatusOfE"
+      ],
+      "HEM5": [
+        "Team"
+      ]
+    }
+  },
+  {
+    "question_id": 99,
+    "schema_links": {
+      "AOC1": [
+        "OcrCode",
+        "PrcCode"
+      ],
+      "APRC": [
+        "PrcCode",
+        "GrpCode",
+        "DimCode",
+        "CCTypeCode"
+      ],
+      "OPRC": [
+        "PrcCode",
+        "GrpCode",
+        "DimCode",
+        "CCTypeCode"
+      ],
+      "OPR1": [
+        "SlpCode",
+        "CntctCode",
+        "ChnCrdCode",
+        "DocNumber"
+      ],
+      "AOCR": [
+        "OcrCode",
+        "DimCode"
+      ],
+      "OOND": [
+        "IndCode"
+      ],
+      "ACEM": [
+        "CemCode"
+      ],
+      "OOCR": [
+        "OcrCode",
+        "DimCode"
+      ],
+      "OORL": [
+        "OrlCode"
+      ],
+      "ODOR": [
+        "NumOfDays",
+        "Percentage"
+      ],
+      "OCEM": [
+        "CemCode"
+      ],
+      "AOPR": [
+        "CardCode",
+        "SlpCode",
+        "CprCode",
+        "IntRate",
+        "ChnCrdCode",
+        "PrjCode"
+      ],
+      "OPR2": [
+        "OrlCode"
+      ],
+      "OOPR": [
+        "CardCode",
+        "SlpCode",
+        "CprCode",
+        "IntRate",
+        "ChnCrdCode",
+        "PrjCode"
+      ],
+      "OOST": [
+        "SalesStage"
+      ],
+      "OCR1": [
+        "OcrCode",
+        "PrcCode"
+      ]
+    }
+  },
+  {
+    "question_id": 100,
+    "schema_links": {
+      "sysdiagrams": [
+        "name"
+      ],
+      "~TMPCLP650861": [
+        "Noted_Canopy_Spp_Common"
+      ],
+      "tbl_Events": [
+        "Station_ID",
+        "Protocol_Name"
+      ],
+      "tbl_Habitat": [
+        "Noted_Canopy_Spp_Common"
+      ],
+      "tbl_Locations": [
+        "Loc_Name"
+      ],
+      "tbl_Observations": [
+        "Species_ID"
+      ],
+      "tbl_Plot": [
+        "Station_ID"
+      ],
+      "tbl_Sites": [
+        "Site_Name"
+      ],
+      "tbl_Stations": [
+        "Station_ID",
+        "Station"
+      ],
+      "tbl_Stations_Updates": [
+        "Station_ID"
+      ],
+      "tbl_Stations_UTMs": [
+        "Station_ID"
+      ],
+      "tlu_Contacts": [
+        "Last_Name",
+        "First_Name"
+      ],
+      "tlu_Species": [
+        "Species_ID",
+        "Scientific_Name",
+        "Common_Name",
+        "Species_Code"
+      ],
+      "xref_Species_Alternate_Names": [
+        "Species_ID",
+        "Alternate_Name"
+      ]
+    }
+  },
+  {
+    "question_id": 101,
+    "schema_links": {
+      "ACC_EM_Chronic_Absenteeism": [
+        "SUBJECT",
+        "LEVEL"
+      ],
+      "ACC_EM_Core_and_Weighted_Performance": [
+        "SUBJECT",
+        "CORE_LEVEL",
+        "WGT_LEVEL"
+      ],
+      "ACC_EM_ELP": [
+        "SUBJECT",
+        "LEVEL"
+      ],
+      "ACC_EM_NYSESLAT_for_Participation": [
+        "SUBJECT"
+      ],
+      "ACC_EM_Participation_Rate": [
+        "SUBJECT",
+        "MET_95_PERCENT"
+      ],
+      "ACC_HS_Chronic_Absenteeism": [
+        "SUBJECT",
+        "LEVEL"
+      ],
+      "ACC_HS_Core_and_Weighted_Performance": [
+        "SUBJECT",
+        "CORE_LEVEL",
+        "WGT_LEVEL"
+      ],
+      "ACC_HS_ELP": [
+        "SUBJECT",
+        "LEVEL"
+      ],
+      "ACC_HS_Graduation_Rate": [
+        "COHORT_LEVEL"
+      ],
+      "ACC_HS_Participation_Rate": [
+        "SUBJECT",
+        "MET_95_PERCENT"
+      ],
+      "Accountability_Levels": [
+        "LEVEL"
+      ],
+      "Annual_EM_ELA": [
+        "MEAN_SCORE"
+      ],
+      "Annual_EM_MATH": [
+        "MEAN_SCORE",
+        "NUM_EXEMPT_TEST",
+        "PCT_EXEMPT_TEST"
+      ],
+      "Annual_EM_SCIENCE": [
+        "MEAN_SCORE",
+        "NUM_EXEMPT_TEST",
+        "PCT_EXEMPT_TEST"
+      ],
+      "Annual_NYSAA": [
+        "SUBJECT"
+      ],
+      "Annual_NYSESLAT": [
+        "SUBJECT",
+        "PER_TEST"
+      ],
+      "Annual_Regents_Exams": [
+        "SUBJECT",
+        "NUM_EXEMPT_TEST",
+        "PCT_EXEMPT_TEST"
+      ],
+      "Expenditures_per_Pupil": [
+        "STATE_LOCAL_EXP",
+        "PER_STATE_LOCAL_EXP",
+        "FED_STATE_LOCAL_EXP",
+        "PER_FED_STATE_LOCAL_EXP"
+      ],
+      "Teachers_Teaching_Out_of_Certification": [
+        "OUT_OF_CERT_DATA_REP_FLAG"
+      ],
+      "Total_Cohort_Regents_Exams": [
+        "SUBJECT",
+        "TEST_COUNT",
+        "TEST_%COHORT",
+        "NUM_EXEMPT_TEST",
+        "PCT_EXEMPT_TEST"
+      ]
+    }
+  }
+]
