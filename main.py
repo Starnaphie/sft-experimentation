@@ -232,7 +232,8 @@ def serialize_schema(schema: dict, fmt: str = 'compact',
         return "Schema:\n" + "\n".join(lines)
 
     # ── Exp2: alphabetically sorted typed schema ──
-    if fmt == 'schema_sorted':
+    # schema_sorted_2stage uses identical serialization — only the completion format differs.
+    if fmt in ('schema_sorted', 'schema_sorted_2stage'):
         lines = []
         for table in sorted(schema.keys()):
             cols    = sorted(schema[table])
@@ -461,6 +462,17 @@ def _get_system_prompt(schema_format: str) -> str:
         )
     if schema_format == 'schema_sorted_pkfk':
         return SYSTEM_PROMPT_PKFK
+    if schema_format == 'schema_sorted_2stage':
+        return (
+            "You are a database assistant. "
+            "Given a database schema (column types shown as col:type) and a natural language question, "
+            "first output the relevant table names as a JSON array on one line prefixed with 'Tables: ', "
+            "then output the complete schema links as a JSON object on the next line: "
+            "{\"TableName\": [\"col1\", \"col2\"]}. "
+            "Use ONLY table and column names (without the :type suffix) from the schema. "
+            "Include only the tables and columns needed to answer the question. "
+            "Output exactly two lines. No extra text."
+        )
     if schema_format in ('typed', 'fewshot_typed', 'schema_sorted', 'schema_top10',
                          'col_filtered', 'sorted_desc', 'sorted_5ep',
                          'sorted_table_orig_col', 'schema_sorted_origcol'):
@@ -534,6 +546,15 @@ class ModelPredictor:
         if self.schema_format == 'col_hint_output':
             lines = [l.strip() for l in raw.strip().splitlines() if l.strip()]
             raw = next((l for l in lines if l.startswith('{')), raw)
+        elif self.schema_format == 'schema_sorted_2stage':
+            # Parse only the JSON object line; ignore the "Tables: [...]" line
+            lines = [l.strip() for l in raw.strip().splitlines() if l.strip()]
+            json_lines = [l for l in lines if l.startswith('{')]
+            if json_lines:
+                raw = json_lines[0]
+            else:
+                m = re.search(r'\{.*\}', raw, re.DOTALL)
+                raw = m.group() if m else '{}'
         return raw, _parse_json(raw)
 
     def predict(self, question: str, schema: dict, debug: bool = False,
@@ -614,7 +635,7 @@ _TYPED_FORMATS = frozenset({
     'typed', 'fewshot_typed', 'schema_abbrev', 'schema_sorted', 'schema_top10',
     'sorted_abbrev', 'question_hint', 'col_filtered', 'sorted_desc',
     'col_hint_output', 'sorted_5ep', 'sorted_table_orig_col', 'schema_sorted_pkfk',
-    'schema_sorted_origcol',
+    'schema_sorted_origcol', 'schema_sorted_2stage',
 })
 _PKFK_FORMATS = frozenset({'schema_sorted_pkfk'})
 _FULL_SCHEMA_FORMATS = frozenset({'schema_top10', 'question_hint'})
@@ -662,7 +683,7 @@ def main():
                              'sorted_abbrev', 'question_hint', 'col_filtered',
                              'sorted_desc', 'col_hint_output', 'sorted_5ep',
                              'sorted_table_orig_col', 'schema_sorted_pkfk',
-                             'schema_sorted_origcol'],
+                             'schema_sorted_origcol', 'schema_sorted_2stage'],
                     help='Schema serialization format — must match what was used at training time')
     ap.add_argument('--debug', type=int, default=0, metavar='N',
                     help='Print raw model output for the first N predictions (0 = off)')
