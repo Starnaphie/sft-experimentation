@@ -316,11 +316,10 @@ def run_training(exp: dict, train_data: list) -> bool:
             fp16=False,
             bf16=False,           # quantised model: compute dtype set in BNB_CONFIG
             gradient_checkpointing=True,
-            gradient_checkpointing_kwargs={"use_reentrant": False},
             logging_steps=25,
-            save_strategy="epoch",
-            save_total_limit=1,
+            save_strategy="no",        # skip mid-training saves; we save manually after train()
             report_to="none",
+            dataloader_num_workers=0,  # avoid multiprocessing deadlocks on this host
             optim="paged_adamw_8bit",
             warmup_ratio=0.05,
             lr_scheduler_type="cosine",
