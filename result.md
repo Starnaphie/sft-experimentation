@@ -265,6 +265,7 @@ F1_C        : 0.2378
 Column Score: 0.2753     ((P+R+F1)/3)
 
 ==> Leaderboard Score : 0.3638   (0.5Table + 0.5Column)
+
 Method 14: test10
 Description: Training on the full token sequence (prompt + completion) rather than only the completion tokens. This may improve generalization by providing the model with more gradient signals about how the schema relates to the question. Changed completion_only_loss=False from the Method 3 baseline (which uses True).
 
@@ -282,6 +283,7 @@ F1_C        : 0.2333
 Column Score: 0.2828     ((P+R+F1)/3)
 
 ==> Leaderboard Score : 0.3744   (0.5Table + 0.5Column)
+
 Method 15: test11
 Description: Increased max_length=2048 (baseline uses 1024) to fit longer schemas without truncation. Set lora_alpha=16 (baseline uses 32), adopting the standard "no scaling" configuration where alpha == r.
 
@@ -299,6 +301,7 @@ F1_C        : 0.3227
 Column Score: 0.3629     ((P+R+F1)/3)
 
 ==> Leaderboard Score : 0.4278   (0.5Table + 0.5Column)
+
 Method 16: test12-a
 Description: Experiment with Qwen3-1.7B, schema_sorted format, and aug_v2 data. Configured with a higher LoRA capacity (r=64, alpha=128), learning rate of 2e-4, trained over 3 epochs.
 
@@ -316,6 +319,7 @@ F1_C        : 0.2564
 Column Score: 0.2754     ((P+R+F1)/3)
 
 ==> Leaderboard Score : 0.3357   (0.5Table + 0.5Column)
+
 Method 17: test12-b
 Description: Experiment with Qwen3-1.7B, schema_sorted format, and aug_v2 data. Configured with a moderate LoRA capacity (r=32, alpha=64), learning rate of 2e-4, trained for an extended 5 epochs.
 
@@ -333,3 +337,59 @@ F1_C        : 0.2159
 Column Score: 0.2325     ((P+R+F1)/3)
 
 ==> Leaderboard Score : 0.2695   (0.5Table + 0.5Column)
+
+Method 18: test13-a
+Description: Qwen3-1.7B  schema_sorted  aug_v2  r=16 alpha=16  max_length=2048  3 epochs
+Method 19: test13-b
+escription: identical to test13-a but 4 epochs
+
+Method 20: test14-a
+Description: Qwen3-1.7B QLoRA  schema_sorted  aug_v2  r=16 alpha=16  2048  3ep
+---- Table-level (macro-averaged across questions) ----
+  Precision_T : 0.5176
+  Recall_T    : 0.4645
+  F1_T        : 0.4626
+  Table Score : 0.4816     ((P+R+F1)/3)
+
+---- Column-level (Table.Column pairs, macro-averaged) ----
+  Precision_C : 0.3474
+  Recall_C    : 0.3218
+  F1_C        : 0.2935
+  Column Score: 0.3209     ((P+R+F1)/3)
+
+==> Leaderboard Score : 0.4012   (0.5*Table + 0.5*Column)
+
+Method 21: test14-b
+Description: identical to test14-a but alpha=32  (isolates alpha effect)
+---- Table-level (macro-averaged across questions) ----
+  Precision_T : 0.4587
+  Recall_T    : 0.5083
+  F1_T        : 0.4418
+  Table Score : 0.4696     ((P+R+F1)/3)
+
+---- Column-level (Table.Column pairs, macro-averaged) ----
+  Precision_C : 0.3328
+  Recall_C    : 0.3567
+  F1_C        : 0.3001
+  Column Score: 0.3299     ((P+R+F1)/3)
+
+==> Leaderboard Score : 0.3997   (0.5*Table + 0.5*Column)
+
+Method 22: test15-a
+Method 23: test15-b
+Method 24: test15-b
+
+Method 25: test16-a
+Descriotion: lr=5e-5  dropout=0.10  epochs=3  len=1024  (slow lr + mild dropout)
+
+Method 26: test16-b  
+Descriotion: lr=2e-4  dropout=0.10  epochs=2  len=1024  (early stop before overfit)
+  
+Method 27: test16-c  
+Descriotion: lr=5e-5  dropout=0.20  epochs=3  len=2048  (strong reg + long ctx)
+
+Method 28: test17-a  
+Descriotion: alpha=24  lr=2e-4   (intermediate alpha to balance P and R)
+  
+Method 29: test17-b  
+Descriotion: alpha=16  lr=1e-4   (alpha=16 kept; lower lr to recover recall)
