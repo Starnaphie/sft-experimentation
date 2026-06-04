@@ -381,12 +381,52 @@ Method 24: test15-b
 
 Method 25: test16-a
 Descriotion: lr=5e-5  dropout=0.10  epochs=3  len=1024  (slow lr + mild dropout)
+---- Table-level (macro-averaged across questions) ----                                                                                        
+  Precision_T : 0.3026                                                                                                                         
+  Recall_T    : 0.3515                                                                                                                         
+  F1_T        : 0.2877                                                                                                                         
+  Table Score : 0.3139     ((P+R+F1)/3)                                                                                                        
+                                                                                                                                               
+---- Column-level (Table.Column pairs, macro-averaged) ----                                                                                    
+  Precision_C : 0.2086                                                                                                                         
+  Recall_C    : 0.1834
+  F1_C        : 0.1704
+  Column Score: 0.1875     ((P+R+F1)/3)
+
+==> Leaderboard Score : 0.2507   (0.5*Table + 0.5*Column)
 
 Method 26: test16-b  
 Descriotion: lr=2e-4  dropout=0.10  epochs=2  len=1024  (early stop before overfit)
   
+---- Table-level (macro-averaged across questions) ----
+  Precision_T : 0.2436
+  Recall_T    : 0.2805
+  F1_T        : 0.2213
+  Table Score : 0.2485     ((P+R+F1)/3)
+
+---- Column-level (Table.Column pairs, macro-averaged) ----
+  Precision_C : 0.1949
+  Recall_C    : 0.1841
+  F1_C        : 0.1608
+  Column Score: 0.1799     ((P+R+F1)/3)
+
+==> Leaderboard Score : 0.2142   (0.5*Table + 0.5*Column)
+
 Method 27: test16-c  
 Descriotion: lr=5e-5  dropout=0.20  epochs=3  len=2048  (strong reg + long ctx)
+--- Table-level (macro-averaged across questions) ----
+  Precision_T : 0.4540
+  Recall_T    : 0.4827
+  F1_T        : 0.4257
+  Table Score : 0.4541     ((P+R+F1)/3)
+
+---- Column-level (Table.Column pairs, macro-averaged) ----
+  Precision_C : 0.3435
+  Recall_C    : 0.3016
+  F1_C        : 0.2713
+  Column Score: 0.3055     ((P+R+F1)/3)
+
+==> Leaderboard Score : 0.3798   (0.5*Table + 0.5*Column)
 
 Method 28: test17-a  
 Descriotion: alpha=24  lr=2e-4   (intermediate alpha to balance P and R)
