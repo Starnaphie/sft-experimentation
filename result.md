@@ -4,24 +4,40 @@
 
 | Experiment ID | Core Strategy Summary | Leaderboard Score | Rank |
 | :--- | :--- | :--- | :--- |
-| **test1-3** | Qwen2.5-1.5B + aug_v2 + LoRA r=16 **(+ PK/FK hints)** | **0.4415** | 👑 1 |
-| **test11** | max_length=2048, lora_alpha=16 (alpha==r strategy) | **0.4278** | 🥈 2 |
-| **test7-1** | Qwen3-1.7B + PK/FK annotations | **0.3926** | 🥉 3 |
-| **test1-1** | Qwen2.5-1.5B + aug_v2 + schema_sorted | **0.3884** | 4 |
-| **test10** | completion_only_loss=False (Full-sequence training) | **0.3744** | 5 |
-| **test5** | Qwen3-1.7B + aug_v3 (5,000 examples) | **0.3645** | 6 |
-| **test9** | Two-Stage / Chain-of-Thought (Table -> Column) | **0.3638** | 7 |
-| **test2-2** | SmolLM2-1.7B (Alternative architecture) | **0.3615** | 8 |
-| **test6** | Qwen2.5-1.5B + aug_v4 + PK/FK | **0.3534** | 9 |
-| **test2-1** | Qwen2.5-1.5B + QLoRA 4-bit r=32 | **0.3485** | 10 |
-| **test7-3** | Qwen3-1.7B + warmup doubled to 0.10 | **0.3415** | 11 |
-| **baseline** | Un-finetuned reference model | **0.3385** | 12 |
-| **test1-2** | Qwen2.5-1.5B + PK/FK (Potential info overload) | **0.3380** | 13 |
-| **test12-a** | Qwen3-1.7B + LoRA r=64, alpha=128 (High capacity) | **0.3357** | 14 |
-| **test7-2** | Qwen3-1.7B + Learning Rate halved (1e-4) | **0.3223** | 15 |
-| **test8** | schema_sorted_origcol (Original DB column order) | **0.3174** | 16 |
-| **test2-3** | Qwen2.5-0.5B + 5 epochs (Tiny model) | **0.3105** | 17 |
-| **test12-b** | Qwen3-1.7B + LoRA r=32, alpha=64 + 5 epochs | **0.2695** | 18 |
+| **test19-b** | Qwen3-1.7B + pkfk + alpha=16 + len=2048 + aug_v2+CED | **0.4486** | 👑 1 (Overall Winner) |
+| **test19-a** | Qwen2.5-1.5B + pkfk + alpha=32 + len=2048 + aug_v2+CED | **0.4427** | 2 |
+| **test1-3** | Qwen2.5-1.5B + aug_v2 + LoRA r=16 (+ PK/FK hints) | **0.4415** | 3 |
+| **test18-b** | Qwen3-1.7B + pkfk + alpha=16 + len=2048 | **0.4405** | 4 |
+| **test11** | max_length=2048, lora_alpha=16 (alpha==r strategy) | **0.4278** | 5 |
+| **test14-a** | Qwen3-1.7B + QLoRA + r=16 + len=2048 | **0.4012** | 6 |
+| **test14-b** | Qwen3-1.7B + QLoRA + r=16 + alpha=32 | **0.3997** | 7 |
+| **test18-a** | Qwen2.5-1.5B + pkfk + alpha=16 + len=2048 | **0.3990** | 8 |
+| **test7-1** | Qwen3-1.7B + PK/FK annotations | **0.3926** | 9 |
+| **test1-1** | Qwen2.5-1.5B + aug_v2 + schema_sorted | **0.3884** | 10 |
+| **test16-c** | lr=5e-5 + dropout=0.20 + len=2048 | **0.3798** | 11 |
+| **test10** | completion_only_loss=False (Full-sequence training) | **0.3744** | 12 |
+| **test5** | Qwen3-1.7B + aug_v3 (5,000 examples) | **0.3645** | 13 |
+| **test9** | Two-Stage / Chain-of-Thought (Table -> Column) | **0.3638** | 14 |
+| **test2-2** | SmolLM2-1.7B (Alternative architecture) | **0.3615** | 15 |
+| **test6** | Qwen2.5-1.5B + aug_v4 + PK/FK | **0.3534** | 16 |
+| **test2-1** | Qwen2.5-1.5B + QLoRA 4-bit r=32 | **0.3485** | 17 |
+| **test7-3** | Qwen3-1.7B + warmup doubled to 0.10 | **0.3415** | 18 |
+| **baseline** | Un-finetuned reference model | **0.3385** | 19 |
+| **test1-2** | Qwen2.5-1.5B + PK/FK (Potential info overload) | **0.3380** | 20 |
+| **test12-a** | Qwen3-1.7B + LoRA r=64, alpha=128 (High capacity) | **0.3357** | 21 |
+| **test7-2** | Qwen3-1.7B + Learning Rate halved (1e-4) | **0.3223** | 22 |
+| **test8** | schema_sorted_origcol (Original DB column order) | **0.3174** | 23 |
+| **test2-3** | Qwen2.5-0.5B + 5 epochs (Tiny model) | **0.3105** | 24 |
+| **test16-a** | lr=5e-5 + dropout=0.10 + len=1024 | **0.2507** | 25 |
+| **test12-b** | Qwen3-1.7B + LoRA r=32, alpha=64 + 5 epochs | **0.2695** | 26 |
+| **test16-b** | lr=2e-4 + dropout=0.10 + len=1024 | **0.2142** | 27 |
+
+***Note:***
+* 👑 **Overall Leader:** `test19-b` (0.4486)
+* 🎯 **Table-level Record:** `test1-3` (0.5538)
+* 🧩 **Column-level Record:** `test19-b` (0.3791)
+
+---
 
 ---
 
@@ -34,7 +50,7 @@
 Precision_T : 0.3871
 Recall_T    : 0.4752
 F1_T        : 0.3647
-Table Score : 0.4090     ((P+R+F1)/3)
+ : 0.4090     ((P+R+F1)/3)
 
 ---- Column-level (Table.Column pairs, macro-averaged) ----
 Precision_C : 0.2608
@@ -346,32 +362,32 @@ escription: identical to test13-a but 4 epochs
 Method 20: test14-a
 Description: Qwen3-1.7B QLoRA  schema_sorted  aug_v2  r=16 alpha=16  2048  3ep
 ---- Table-level (macro-averaged across questions) ----
-  Precision_T : 0.5176
-  Recall_T    : 0.4645
-  F1_T        : 0.4626
-  Table Score : 0.4816     ((P+R+F1)/3)
+Precision_T : 0.5176
+Recall_T    : 0.4645
+F1_T        : 0.4626
+Table Score : 0.4816     ((P+R+F1)/3)
 
 ---- Column-level (Table.Column pairs, macro-averaged) ----
-  Precision_C : 0.3474
-  Recall_C    : 0.3218
-  F1_C        : 0.2935
-  Column Score: 0.3209     ((P+R+F1)/3)
+Precision_C : 0.3474
+Recall_C    : 0.3218
+F1_C        : 0.2935
+Column Score: 0.3209     ((P+R+F1)/3)
 
 ==> Leaderboard Score : 0.4012   (0.5*Table + 0.5*Column)
 
 Method 21: test14-b
 Description: identical to test14-a but alpha=32  (isolates alpha effect)
 ---- Table-level (macro-averaged across questions) ----
-  Precision_T : 0.4587
-  Recall_T    : 0.5083
-  F1_T        : 0.4418
-  Table Score : 0.4696     ((P+R+F1)/3)
+Precision_T : 0.4587
+Recall_T    : 0.5083
+F1_T        : 0.4418
+Table Score : 0.4696     ((P+R+F1)/3)
 
 ---- Column-level (Table.Column pairs, macro-averaged) ----
-  Precision_C : 0.3328
-  Recall_C    : 0.3567
-  F1_C        : 0.3001
-  Column Score: 0.3299     ((P+R+F1)/3)
+Precision_C : 0.3328
+Recall_C    : 0.3567
+F1_C        : 0.3001
+Column Score: 0.3299     ((P+R+F1)/3)
 
 ==> Leaderboard Score : 0.3997   (0.5*Table + 0.5*Column)
 
@@ -382,16 +398,16 @@ Method 24: test15-b
 Method 25: test16-a
 Descriotion: lr=5e-5  dropout=0.10  epochs=3  len=1024  (slow lr + mild dropout)
 ---- Table-level (macro-averaged across questions) ----                                                                                        
-  Precision_T : 0.3026                                                                                                                         
-  Recall_T    : 0.3515                                                                                                                         
-  F1_T        : 0.2877                                                                                                                         
-  Table Score : 0.3139     ((P+R+F1)/3)                                                                                                        
-                                                                                                                                               
+Precision_T : 0.3026                                                                                                                         
+Recall_T    : 0.3515                                                                                                                         
+F1_T        : 0.2877                                                                                                                         
+Table Score : 0.3139     ((P+R+F1)/3)                                                                                                        
+                                                                                                                                            
 ---- Column-level (Table.Column pairs, macro-averaged) ----                                                                                    
-  Precision_C : 0.2086                                                                                                                         
-  Recall_C    : 0.1834
-  F1_C        : 0.1704
-  Column Score: 0.1875     ((P+R+F1)/3)
+Precision_C : 0.2086                                                                                                                         
+Recall_C    : 0.1834
+F1_C        : 0.1704
+Column Score: 0.1875     ((P+R+F1)/3)
 
 ==> Leaderboard Score : 0.2507   (0.5*Table + 0.5*Column)
 
@@ -399,32 +415,32 @@ Method 26: test16-b
 Descriotion: lr=2e-4  dropout=0.10  epochs=2  len=1024  (early stop before overfit)
   
 ---- Table-level (macro-averaged across questions) ----
-  Precision_T : 0.2436
-  Recall_T    : 0.2805
-  F1_T        : 0.2213
-  Table Score : 0.2485     ((P+R+F1)/3)
+Precision_T : 0.2436
+Recall_T    : 0.2805
+F1_T        : 0.2213
+Table Score : 0.2485     ((P+R+F1)/3)
 
 ---- Column-level (Table.Column pairs, macro-averaged) ----
-  Precision_C : 0.1949
-  Recall_C    : 0.1841
-  F1_C        : 0.1608
-  Column Score: 0.1799     ((P+R+F1)/3)
+Precision_C : 0.1949
+Recall_C    : 0.1841
+F1_C        : 0.1608
+Column Score: 0.1799     ((P+R+F1)/3)
 
 ==> Leaderboard Score : 0.2142   (0.5*Table + 0.5*Column)
 
 Method 27: test16-c  
 Descriotion: lr=5e-5  dropout=0.20  epochs=3  len=2048  (strong reg + long ctx)
 --- Table-level (macro-averaged across questions) ----
-  Precision_T : 0.4540
-  Recall_T    : 0.4827
-  F1_T        : 0.4257
-  Table Score : 0.4541     ((P+R+F1)/3)
+Precision_T : 0.4540
+Recall_T    : 0.4827
+F1_T        : 0.4257
+Table Score : 0.4541     ((P+R+F1)/3)
 
 ---- Column-level (Table.Column pairs, macro-averaged) ----
-  Precision_C : 0.3435
-  Recall_C    : 0.3016
-  F1_C        : 0.2713
-  Column Score: 0.3055     ((P+R+F1)/3)
+Precision_C : 0.3435
+Recall_C    : 0.3016
+F1_C        : 0.2713
+Column Score: 0.3055     ((P+R+F1)/3)
 
 ==> Leaderboard Score : 0.3798   (0.5*Table + 0.5*Column)
 
@@ -439,7 +455,68 @@ Descriotion: Qwen2.5-1.5B-Instruct + pkfk + alpha=16 + max_length=2048
             = test1-3's winning model & format  +  test11's alpha/context
             Hypothesis: best table recall from pkfk × best column score from alpha=16
 
+---- Table-level (macro-averaged across questions) ----
+Precision_T : 0.5173
+Recall_T    : 0.4835
+F1_T        : 0.4751
+Table Score : 0.4919     ((P+R+F1)/3)
+
+---- Column-level (Table.Column pairs, macro-averaged) ----
+Precision_C : 0.3643
+Recall_C    : 0.2723
+F1_C        : 0.2818
+Column Score: 0.3061     ((P+R+F1)/3)
+
+==> Leaderboard Score : 0.3990   (0.5*Table + 0.5*Column)
+
 Method 31: test18-b
 Descriotion: Qwen3-1.7B + pkfk + alpha=16 + max_length=2048
-            = test7-1's pkfk Qwen3 config  +  test11's alpha/context
-            Hypothesis: Qwen3's stronger base + pkfk + alpha=16 combo
+        = test7-1's pkfk Qwen3 config  +  test11's alpha/context
+        Hypothesis: Qwen3's stronger base + pkfk + alpha=16 combo
+
+---- Table-level (macro-averaged across questions) ----
+Precision_T : 0.5100
+Recall_T    : 0.5751
+F1_T        : 0.4980
+Table Score : 0.5277     ((P+R+F1)/3)
+
+---- Column-level (Table.Column pairs, macro-averaged) ----
+Precision_C : 0.3619
+Recall_C    : 0.3709
+F1_C        : 0.3274
+Column Score: 0.3534     ((P+R+F1)/3)
+
+==> Leaderboard Score : 0.4405   (0.5*Table + 0.5*Column)
+
+Method 32: test19-a
+Description: Qwen2.5-1.5B-Instruct  pkfk  alpha=32  len=2048  aug_v2+CED
+---- Table-level (macro-averaged across questions) ----
+Precision_T : 0.5330
+Recall_T    : 0.5272
+F1_T        : 0.5046
+Table Score : 0.5216     ((P+R+F1)/3)
+
+---- Column-level (Table.Column pairs, macro-averaged) ----
+Precision_C : 0.3994
+Recall_C    : 0.3536
+F1_C        : 0.3384
+Column Score: 0.3638     ((P+R+F1)/3)
+
+==> Leaderboard Score : 0.4427   (0.5*Table + 0.5*Column)
+
+Method 33: test19-b
+Description: Qwen3-1.7B              pkfk  alpha=16  len=2048  aug_v2+CED
+---- Table-level (macro-
+averaged across questions) ----
+Precision_T : 0.5176
+Recall_T    : 0.5413
+F1_T        : 0.4955
+Table Score : 0.5181     ((P+R+F1)/3)
+
+---- Column-level (Table.Column pairs, macro-averaged) ----
+Precision_C : 0.3832
+Recall_C    : 0.4013
+F1_C        : 0.3527
+Column Score: 0.3791     ((P+R+F1)/3)
+
+==> Leaderboard Score : 0.4486   (0.5*Table + 0.5*Column)
