@@ -433,3 +433,13 @@ Descriotion: alpha=24  lr=2e-4   (intermediate alpha to balance P and R)
   
 Method 29: test17-b  
 Descriotion: alpha=16  lr=1e-4   (alpha=16 kept; lower lr to recover recall)
+
+Method 30: test18-a
+Descriotion: Qwen2.5-1.5B-Instruct + pkfk + alpha=16 + max_length=2048
+            = test1-3's winning model & format  +  test11's alpha/context
+            Hypothesis: best table recall from pkfk × best column score from alpha=16
+
+Method 31: test18-b
+Descriotion: Qwen3-1.7B + pkfk + alpha=16 + max_length=2048
+            = test7-1's pkfk Qwen3 config  +  test11's alpha/context
+            Hypothesis: Qwen3's stronger base + pkfk + alpha=16 combo
