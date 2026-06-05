@@ -520,3 +520,36 @@ F1_C        : 0.3527
 Column Score: 0.3791     ((P+R+F1)/3)
 
 ==> Leaderboard Score : 0.4486   (0.5*Table + 0.5*Column)
+
+test20-a
+Description: Qwen3-1.7B  pkfk  r=16  alpha=32  CED-v2  4 epochs  lr=2e-4
+---- Table-level (macro-averaged across questions) ----
+  Precision_T : 0.5675
+  Recall_T    : 0.6444
+  F1_T        : 0.5647
+  Table Score : 0.5922     ((P+R+F1)/3)
+
+---- Column-level (Table.Column pairs, macro-averaged) ----
+  Precision_C : 0.4015
+  Recall_C    : 0.4430
+  F1_C        : 0.3727
+  Column Score: 0.4057     ((P+R+F1)/3)
+
+==> Leaderboard Score : 0.4990   (0.5*Table + 0.5*Column)
+
+test20-b
+Description: r=32 doubles LoRA rank, potentially better for the large
+  new schema space; 3 epochs with lower lr avoids overfitting
+---- Table-level (macro-averaged across questions) ----
+  Precision_T : 0.2594
+  Recall_T    : 0.2731
+  F1_T        : 0.2394
+  Table Score : 0.2573     ((P+R+F1)/3)
+
+---- Column-level (Table.Column pairs, macro-averaged) ----
+  Precision_C : 0.2789
+  Recall_C    : 0.2117
+  F1_C        : 0.2100
+  Column Score: 0.2335     ((P+R+F1)/3)
+
+==> Leaderboard Score : 0.2454   (0.5*Table + 0.5*Column)
