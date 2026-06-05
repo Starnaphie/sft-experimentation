@@ -521,7 +521,7 @@ Column Score: 0.3791     ((P+R+F1)/3)
 
 ==> Leaderboard Score : 0.4486   (0.5*Table + 0.5*Column)
 
-test20-a
+Method 34: test20-a
 Description: Qwen3-1.7B  pkfk  r=16  alpha=32  CED-v2  4 epochs  lr=2e-4
 ---- Table-level (macro-averaged across questions) ----
   Precision_T : 0.5675
@@ -537,7 +537,7 @@ Description: Qwen3-1.7B  pkfk  r=16  alpha=32  CED-v2  4 epochs  lr=2e-4
 
 ==> Leaderboard Score : 0.4990   (0.5*Table + 0.5*Column)
 
-test20-b
+Method 35: test20-b
 Description: r=32 doubles LoRA rank, potentially better for the large
   new schema space; 3 epochs with lower lr avoids overfitting
 ---- Table-level (macro-averaged across questions) ----
@@ -553,3 +553,49 @@ Description: r=32 doubles LoRA rank, potentially better for the large
   Column Score: 0.2335     ((P+R+F1)/3)
 
 ==> Leaderboard Score : 0.2454   (0.5*Table + 0.5*Column)
+
+Method 36: test21
+---- Table-level (macro-averaged across questions) ----
+  Precision_T : 0.4989
+  Recall_T    : 0.5611
+  F1_T        : 0.4876
+  Table Score : 0.5158     ((P+R+F1)/3)
+
+---- Column-level (Table.Column pairs, macro-averaged) ----
+  Precision_C : 0.3668
+  Recall_C    : 0.3982
+  F1_C        : 0.3368
+  Column Score: 0.3673     ((P+R+F1)/3)
+
+==> Leaderboard Score : 0.4416   (0.5*Table + 0.5*Column)
+
+Method 37: test22
+Description:
+---- Table-level (macro-averaged across questions) ----
+  Precision_T : 0.4683
+  Recall_T    : 0.5809
+  F1_T        : 0.4728
+  Table Score : 0.5073     ((P+R+F1)/3)
+
+---- Column-level (Table.Column pairs, macro-averaged) ----
+  Precision_C : 0.3590
+  Recall_C    : 0.4339
+  F1_C        : 0.3514
+  Column Score: 0.3814     ((P+R+F1)/3)
+
+==> Leaderboard Score : 0.4444   (0.5*Table + 0.5*Column)
+
+Method 38: test23
+---- Table-level (macro-averaged across questions) ----
+  Precision_T : 0.5284
+  Recall_T    : 0.5338
+  F1_T        : 0.5050
+  Table Score : 0.5224     ((P+R+F1)/3)
+
+---- Column-level (Table.Column pairs, macro-averaged) ----
+  Precision_C : 0.4239
+  Recall_C    : 0.4013
+  F1_C        : 0.3824
+  Column Score: 0.4025     ((P+R+F1)/3)
+
+==> Leaderboard Score : 0.4625   (0.5*Table + 0.5*Column)
