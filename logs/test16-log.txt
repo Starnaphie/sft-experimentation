@@ -1,0 +1,99 @@
+test16.py  started 2026-06-03 23:41:52
+base_model=Qwen/Qwen3-1.7B  quant=none (full bf16 LoRA)
+schema=schema_sorted  train=./augmented_train_v2.json  hardware=RTX-PRO-6000-48GB
+
+  test16-a: lr=5e-05  dropout=0.1  epochs=3  max_length=1024
+    hypothesis: slow lr + mild dropout prevents early overfit
+  test16-b: lr=0.0002  dropout=0.1  epochs=2  max_length=1024
+    hypothesis: stop early before overfit kicks in ~epoch 0.5
+  test16-c: lr=5e-05  dropout=0.2  epochs=3  max_length=2048
+    hypothesis: strong regularisation + longer context combined
+
+[2026-06-03 23:41:52] =================================================================
+[2026-06-03 23:41:52]   test16.py  —  RTX PRO 6000 48GB  —  full bf16 LoRA  —  regularisation sweep
+[2026-06-03 23:41:52] =================================================================
+[2026-06-03 23:41:52] Loaded 3000 training examples from ./augmented_train_v2.json
+[2026-06-03 23:41:52] Validation: 101 questions
+[2026-06-03 23:41:52] =================================================================
+[2026-06-03 23:41:52]   PHASE 1 — TRAINING
+[2026-06-03 23:41:52] =================================================================
+[2026-06-03 23:41:52] 
+>>> Starting training: test16-a  at 2026-06-03 23:41:52
+[2026-06-03 23:41:52] =================================================================
+[2026-06-03 23:41:52]   TRAINING  test16-a
+[2026-06-03 23:41:52] =================================================================
+[2026-06-03 23:41:52]   Full bf16 LoRA (no quantisation)  r=16  alpha=32
+[2026-06-03 23:41:52]   dropout=0.1  lr=5e-05  epochs=3
+[2026-06-03 23:41:52]   batch=2  grad_accum=2  max_length=1024
+[2026-06-03 23:41:52]   hypothesis: slow lr + mild dropout prevents early overfit
+[2026-06-03 23:41:52]   adapter → ./adapters/test16-a
+[2026-06-04 00:29:39]   Training complete. Adapter saved → ./adapters/test16-a
+[2026-06-04 00:29:39] >>> Finished training: test16-a  OK  at 2026-06-04 00:29:39
+[2026-06-04 00:29:39] 
+>>> Starting training: test16-b  at 2026-06-04 00:29:39
+[2026-06-04 00:29:39] =================================================================
+[2026-06-04 00:29:39]   TRAINING  test16-b
+[2026-06-04 00:29:39] =================================================================
+[2026-06-04 00:29:39]   Full bf16 LoRA (no quantisation)  r=16  alpha=32
+[2026-06-04 00:29:39]   dropout=0.1  lr=0.0002  epochs=2
+[2026-06-04 00:29:39]   batch=2  grad_accum=2  max_length=1024
+[2026-06-04 00:29:39]   hypothesis: stop early before overfit kicks in ~epoch 0.5
+[2026-06-04 00:29:39]   adapter → ./adapters/test16-b
+[2026-06-04 01:01:19]   Training complete. Adapter saved → ./adapters/test16-b
+[2026-06-04 01:01:19] >>> Finished training: test16-b  OK  at 2026-06-04 01:01:19
+[2026-06-04 01:01:19] 
+>>> Starting training: test16-c  at 2026-06-04 01:01:19
+[2026-06-04 01:01:19] =================================================================
+[2026-06-04 01:01:19]   TRAINING  test16-c
+[2026-06-04 01:01:19] =================================================================
+[2026-06-04 01:01:19]   Full bf16 LoRA (no quantisation)  r=16  alpha=32
+[2026-06-04 01:01:19]   dropout=0.2  lr=5e-05  epochs=3
+[2026-06-04 01:01:19]   batch=2  grad_accum=2  max_length=2048
+[2026-06-04 01:01:19]   hypothesis: strong regularisation + longer context combined
+[2026-06-04 01:01:19]   adapter → ./adapters/test16-c
+[2026-06-04 02:52:49]   Training complete. Adapter saved → ./adapters/test16-c
+[2026-06-04 02:52:49] >>> Finished training: test16-c  OK  at 2026-06-04 02:52:49
+[2026-06-04 02:52:49] =================================================================
+[2026-06-04 02:52:49]   PHASE 2 — INFERENCE + POST-PROCESSING
+[2026-06-04 02:52:49] =================================================================
+[2026-06-04 02:52:49] 
+>>> Starting inference: test16-a  at 2026-06-04 02:52:49
+[2026-06-04 02:52:49] =================================================================
+[2026-06-04 02:52:49]   INFERENCE  test16-a
+[2026-06-04 02:52:49] =================================================================
+[2026-06-04 02:52:49]   adapter : ./adapters/test16-a
+[2026-06-04 02:52:49]   output  : ./test16-a-preds.json
+[2026-06-04 03:11:12]   Wrote 101 predictions → ./test16-a-preds.json
+[2026-06-04 03:11:12] >>> Finished inference: test16-a  OK  at 2026-06-04 03:11:12
+[2026-06-04 03:11:12] 
+>>> Starting inference: test16-b  at 2026-06-04 03:11:12
+[2026-06-04 03:11:12] =================================================================
+[2026-06-04 03:11:12]   INFERENCE  test16-b
+[2026-06-04 03:11:12] =================================================================
+[2026-06-04 03:11:12]   adapter : ./adapters/test16-b
+[2026-06-04 03:11:12]   output  : ./test16-b-preds.json
+[2026-06-04 03:18:58]   Wrote 101 predictions → ./test16-b-preds.json
+[2026-06-04 03:18:58] >>> Finished inference: test16-b  OK  at 2026-06-04 03:18:58
+[2026-06-04 03:18:58] 
+>>> Starting inference: test16-c  at 2026-06-04 03:18:58
+[2026-06-04 03:18:58] =================================================================
+[2026-06-04 03:18:58]   INFERENCE  test16-c
+[2026-06-04 03:18:58] =================================================================
+[2026-06-04 03:18:58]   adapter : ./adapters/test16-c
+[2026-06-04 03:18:58]   output  : ./test16-c-preds.json
+[2026-06-04 03:30:52]   Wrote 101 predictions → ./test16-c-preds.json
+[2026-06-04 03:30:52] >>> Finished inference: test16-c  OK  at 2026-06-04 03:30:52
+[2026-06-04 03:30:52] =================================================================
+[2026-06-04 03:30:52]   SUMMARY
+[2026-06-04 03:30:52] =================================================================
+[2026-06-04 03:30:52]   experiment      train   infer   preds_file
+[2026-06-04 03:30:52]   test16-a        OK      OK      ./test16-a-preds.json
+[2026-06-04 03:30:52]   test16-b        OK      OK      ./test16-b-preds.json
+[2026-06-04 03:30:52]   test16-c        OK      OK      ./test16-c-preds.json
+[2026-06-04 03:30:52] 
+To evaluate:
+[2026-06-04 03:30:52]   python eval.py --predictions ./test16-a-preds.json --gold validation_gold_schema_links.json --schemas_dir schemas/ --questions_input validation_input.json
+[2026-06-04 03:30:52]   python eval.py --predictions ./test16-b-preds.json --gold validation_gold_schema_links.json --schemas_dir schemas/ --questions_input validation_input.json
+[2026-06-04 03:30:52]   python eval.py --predictions ./test16-c-preds.json --gold validation_gold_schema_links.json --schemas_dir schemas/ --questions_input validation_input.json
+[2026-06-04 03:30:52] 
+Done. Full log → ./test16-log.txt

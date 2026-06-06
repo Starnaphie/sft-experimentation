@@ -1,0 +1,76 @@
+test19.py  started 2026-06-04 07:36:01
+schema=pkfk  hardware=RTX-PRO-6000-48GB
+
+[2026-06-04 07:36:01] =================================================================
+[2026-06-04 07:36:01]   test19.py  —  Coverage Extension Data + pkfk  —  RTX PRO 6000
+[2026-06-04 07:36:01] =================================================================
+[2026-06-04 07:36:01] Loaded 3000 base training examples from ./augmented_train_v2.json
+[2026-06-04 07:36:01] Generating Coverage Extension Data (CED) ...
+[2026-06-04 07:36:01]   CED generated: 2411 examples
+[2026-06-04 07:36:01] Combined training set: 5411 examples (aug_v2=3000, CED=2411)
+[2026-06-04 07:36:01]   (table,col) pairs covered: 1223 → 3961
+[2026-06-04 07:36:01] Validation: 101 questions
+[2026-06-04 07:36:01] =================================================================
+[2026-06-04 07:36:01]   PHASE 1 — TRAINING
+[2026-06-04 07:36:01] =================================================================
+[2026-06-04 07:36:01] 
+>>> Starting training: test19-a  at 2026-06-04 07:36:01
+[2026-06-04 07:36:01] =================================================================
+[2026-06-04 07:36:01]   TRAINING  test19-a
+[2026-06-04 07:36:01] =================================================================
+[2026-06-04 07:36:01]   model=Qwen/Qwen2.5-1.5B-Instruct  schema=pkfk
+[2026-06-04 07:36:01]   r=16  alpha=32  dropout=0.05
+[2026-06-04 07:36:01]   lr=0.0002  epochs=3  max_length=2048
+[2026-06-04 07:36:01]   batch=2  grad_accum=2
+[2026-06-04 07:36:01]   train_size=5411
+[2026-06-04 07:36:01]   hypothesis: Qwen2.5+pkfk+alpha=32 (best1-3 combo) + CED + len=2048
+[2026-06-04 07:36:01]   adapter → ./adapters/test19-a
+[2026-06-04 09:59:07]   Training complete. Adapter saved → ./adapters/test19-a
+[2026-06-04 09:59:07] >>> Finished training: test19-a  OK  at 2026-06-04 09:59:07
+[2026-06-04 09:59:07] 
+>>> Starting training: test19-b  at 2026-06-04 09:59:07
+[2026-06-04 09:59:07] =================================================================
+[2026-06-04 09:59:07]   TRAINING  test19-b
+[2026-06-04 09:59:07] =================================================================
+[2026-06-04 09:59:07]   model=Qwen/Qwen3-1.7B  schema=pkfk
+[2026-06-04 09:59:07]   r=16  alpha=16  dropout=0.05
+[2026-06-04 09:59:07]   lr=0.0002  epochs=3  max_length=2048
+[2026-06-04 09:59:07]   batch=2  grad_accum=2
+[2026-06-04 09:59:07]   train_size=5411
+[2026-06-04 09:59:07]   hypothesis: Qwen3+pkfk+alpha=16 (test18-b config) + CED column coverage
+[2026-06-04 09:59:07]   adapter → ./adapters/test19-b
+[2026-06-04 13:15:52]   Training complete. Adapter saved → ./adapters/test19-b
+[2026-06-04 13:15:52] >>> Finished training: test19-b  OK  at 2026-06-04 13:15:52
+[2026-06-04 13:15:52] =================================================================
+[2026-06-04 13:15:52]   PHASE 2 — INFERENCE + POST-PROCESSING
+[2026-06-04 13:15:52] =================================================================
+[2026-06-04 13:15:52] 
+>>> Starting inference: test19-a  at 2026-06-04 13:15:52
+[2026-06-04 13:15:52] =================================================================
+[2026-06-04 13:15:52]   INFERENCE  test19-a
+[2026-06-04 13:15:52] =================================================================
+[2026-06-04 13:15:52]   adapter : ./adapters/test19-a
+[2026-06-04 13:15:52]   output  : ./test19-a-preds.json
+[2026-06-04 13:17:49]   Wrote 101 predictions → ./test19-a-preds.json
+[2026-06-04 13:17:49] >>> Finished inference: test19-a  OK  at 2026-06-04 13:17:49
+[2026-06-04 13:17:49] 
+>>> Starting inference: test19-b  at 2026-06-04 13:17:49
+[2026-06-04 13:17:49] =================================================================
+[2026-06-04 13:17:49]   INFERENCE  test19-b
+[2026-06-04 13:17:49] =================================================================
+[2026-06-04 13:17:49]   adapter : ./adapters/test19-b
+[2026-06-04 13:17:49]   output  : ./test19-b-preds.json
+[2026-06-04 13:25:50]   Wrote 101 predictions → ./test19-b-preds.json
+[2026-06-04 13:25:50] >>> Finished inference: test19-b  OK  at 2026-06-04 13:25:50
+[2026-06-04 13:25:50] =================================================================
+[2026-06-04 13:25:50]   SUMMARY
+[2026-06-04 13:25:50] =================================================================
+[2026-06-04 13:25:50]   experiment      train   infer   preds_file
+[2026-06-04 13:25:50]   test19-a        OK      OK      ./test19-a-preds.json
+[2026-06-04 13:25:50]   test19-b        OK      OK      ./test19-b-preds.json
+[2026-06-04 13:25:50] 
+To evaluate:
+[2026-06-04 13:25:50]   python eval.py --predictions ./test19-a-preds.json --gold validation_gold_schema_links.json --schemas_dir schemas/ --questions_input validation_input.json
+[2026-06-04 13:25:50]   python eval.py --predictions ./test19-b-preds.json --gold validation_gold_schema_links.json --schemas_dir schemas/ --questions_input validation_input.json
+[2026-06-04 13:25:50] 
+Done. Full log → ./test19-log.txt

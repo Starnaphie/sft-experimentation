@@ -1,0 +1,63 @@
+test23.py  started 2026-06-05 16:17:20
+schema=pkfk  hardware=RTX-4070-12GB  bf16-no-quant  CED-v3  max_length=3072
+
+[2026-06-05 16:17:20] =================================================================
+[2026-06-05 16:17:20]   test23.py  —  long-schema fix (max_length=3072)  —  RTX 4070
+[2026-06-05 16:17:20] =================================================================
+[2026-06-05 16:17:20] Loaded 3000 examples from ./augmented_train_v2.json
+[2026-06-05 16:17:20] Filtered 81 zero-col examples → 2919 remain
+[2026-06-05 16:17:20] Validation: 101 questions
+[2026-06-05 16:17:20] Generating CED v3 ...
+[2026-06-05 16:17:20]   CED v3: 2741 examples
+[2026-06-05 16:17:20] Combined: 5692 (aug_v2=2919, CED=2741, hardcoded=32)
+[2026-06-05 16:17:20]   Val table coverage: 615/615 (100.0%)
+[2026-06-05 16:17:20]   NTSB: 14 shared cols excluded from CED (e.g. ['caseid', 'caseno', 'casenumber', 'casewgt'])
+[2026-06-05 16:17:20]   NYSED_SRC2022: 34 shared cols excluded from CED (e.g. ['assessment_name', 'cohort', 'entity_cd', 'entity_name'])
+[2026-06-05 16:17:20] =================================================================
+[2026-06-05 16:17:20]   TRAINING
+[2026-06-05 16:17:20] =================================================================
+[2026-06-05 16:17:20] 
+>>> Starting test23  at 2026-06-05 16:17:20
+[2026-06-05 16:17:20] =================================================================
+[2026-06-05 16:17:20]   TRAINING  test23  (bf16, RTX 4070 12 GB)
+[2026-06-05 16:17:20] =================================================================
+[2026-06-05 16:17:20]   model=Qwen/Qwen3-1.7B  schema=pkfk
+[2026-06-05 16:17:20]   r=16  alpha=32  dropout=0.05
+[2026-06-05 16:17:20]   lr=0.0002  epochs=4  max_length=3072
+[2026-06-05 16:17:20]   batch=1  grad_accum=8
+[2026-06-05 16:17:20]   train_size=5692
+[2026-06-05 21:32:12]   Training complete. Adapter → ./adapters/test23
+[2026-06-05 21:32:13] >>> Finished test23  OK  at 2026-06-05 21:32:13
+[2026-06-05 21:32:13] =================================================================
+[2026-06-05 21:32:13]   INFERENCE
+[2026-06-05 21:32:13] =================================================================
+[2026-06-05 21:32:13] 
+>>> Starting inference  at 2026-06-05 21:32:13
+[2026-06-05 21:32:13] =================================================================
+[2026-06-05 21:32:13]   INFERENCE  test23
+[2026-06-05 21:32:13] =================================================================
+[2026-06-05 21:32:24]   qid=2 [NTSB] empty model output → keyword fallback {'JKCOEFF': ['REPLICATE', 'JKCOEFFICIENT']}
+[2026-06-05 21:32:42]   qid=22 [SBODemoUS-Finance] empty model output → keyword fallback {'ORTT': ['Currency', 'Rate']}
+[2026-06-05 21:32:46]   qid=26 [NTSB] empty model output → keyword fallback {'GV': ['MAKE']}
+[2026-06-05 21:32:52]   qid=29 [NTSB] empty model output → keyword fallback {'TIRE': ['CASEID', 'PSU', 'CASENO']}
+[2026-06-05 21:32:56]   qid=33 [NTSB] empty model output → keyword fallback {'OCC': ['CATEGORY', 'MORTALITY']}
+[2026-06-05 21:33:13]   qid=47 [NYSED_SRC2022] empty model output → keyword fallback {'Institution_Grouping': ['GROUP_CODE', 'GROUP_NAME']}
+[2026-06-05 21:33:49]   qid=65 [NTSB] empty model output → keyword fallback {'JKCOEFF': ['REPLICATE', 'JKCOEFFICIENT']}
+[2026-06-05 21:33:51]   qid=67 [NTSB] empty model output → keyword fallback {'JKCOEFF': ['REPLICATE', 'JKCOEFFICIENT']}
+[2026-06-05 21:33:56]   qid=72 [NTSB] empty model output → keyword fallback {'JKCOEFF': ['REPLICATE', 'JKCOEFFICIENT']}
+[2026-06-05 21:34:34]   qid=83 [NTSB] empty model output → keyword fallback {'TIRE': ['CASEID', 'PSU', 'CASENO']}
+[2026-06-05 21:34:42]   qid=89 [SBODemoUS-Business Partners] empty model output → keyword fallback {'TGG1': ['Position', 'Address']}
+[2026-06-05 21:35:17]   qid=100 [PacificIslandLandbirds] empty model output → keyword fallback {'tlu_Species': ['Species_ID', 'Common_Name', 'Species_Code']}
+[2026-06-05 21:35:19]   Wrote 101 predictions → ./test23-preds.json
+[2026-06-05 21:35:19] >>> Finished inference  OK  at 2026-06-05 21:35:19
+[2026-06-05 21:35:19] =================================================================
+[2026-06-05 21:35:19]   SUMMARY
+[2026-06-05 21:35:19] =================================================================
+[2026-06-05 21:35:19]   train: OK
+[2026-06-05 21:35:19]   infer: OK
+[2026-06-05 21:35:19]   preds: ./test23-preds.json
+[2026-06-05 21:35:19] 
+To evaluate:
+[2026-06-05 21:35:19]   python eval.py --predictions ./test23-preds.json --gold validation_gold_schema_links.json --schemas_dir schemas/ --questions_input validation_input.json
+[2026-06-05 21:35:19] 
+Done. Full log → ./test23-log.txt

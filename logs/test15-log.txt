@@ -1,0 +1,301 @@
+test15.py  started 2026-06-04 01:28:05
+base_model=Qwen/Qwen3-1.7B  schema=schema_sorted
+train=./augmented_train_v2.json  hardware=L4-24GB  quant=none
+Baseline overfit profile: loss hits 0.05 / acc 99% by epoch 0.4
+
+[2026-06-04 01:28:05] =================================================================
+[2026-06-04 01:28:05]   test15.py  —  L4 GPU  —  Regularisation sweep (lr / dropout / epochs)
+[2026-06-04 01:28:05] =================================================================
+[2026-06-04 01:28:05]   test15-a      lr=5e-05     dropout=0.1  epochs=3  max_len=1024
+[2026-06-04 01:28:05]   test15-b      lr=0.0002    dropout=0.1  epochs=2  max_len=1024
+[2026-06-04 01:28:05]   test15-c      lr=5e-05     dropout=0.2  epochs=3  max_len=2048
+[2026-06-04 01:28:05] 
+[2026-06-04 01:28:05] Loaded 3000 training examples from ./augmented_train_v2.json
+[2026-06-04 01:28:05] Validation: 101 questions
+
+[2026-06-04 01:28:05] =================================================================
+[2026-06-04 01:28:05]   PHASE 1 — TRAINING  (loss curves written to this log file)
+[2026-06-04 01:28:05] =================================================================
+[2026-06-04 01:28:05] 
+>>> test15-a  start  2026-06-04 01:28:05
+[2026-06-04 01:28:05] =================================================================
+[2026-06-04 01:28:05]   TRAINING  test15-a
+[2026-06-04 01:28:05] =================================================================
+[2026-06-04 01:28:05]   lr=5e-05  lora_dropout=0.1  epochs=3  max_length=1024
+[2026-06-04 01:28:05]   r=16  alpha=32  batch=2  grad_accum=2
+[2026-06-04 01:28:05]   adapter → ./adapters/test15-a
+[2026-06-04 01:28:05]   Per-step loss will be written to ./test15-log.txt (file only).
+[2026-06-04 01:29:08]   [LOSS test15-a] step=  25  epoch=0.0333  loss=2.56571  acc=0.6157  lr=1.062e-05  gnorm=2.9669
+[2026-06-04 01:29:49]   [LOSS test15-a] step=  50  epoch=0.0667  loss=2.24270  acc=0.6195  lr=2.168e-05  gnorm=0.8401
+[2026-06-04 01:30:30]   [LOSS test15-a] step=  75  epoch=0.1000  loss=1.87502  acc=0.6388  lr=3.274e-05  gnorm=0.4125
+[2026-06-04 01:31:12]   [LOSS test15-a] step= 100  epoch=0.1333  loss=1.65318  acc=0.6676  lr=4.381e-05  gnorm=0.5566
+[2026-06-04 01:31:53]   [LOSS test15-a] step= 125  epoch=0.1667  loss=1.39150  acc=0.7139  lr=5.000e-05  gnorm=0.3766
+[2026-06-04 01:32:36]   [LOSS test15-a] step= 150  epoch=0.2000  loss=1.24510  acc=0.7335  lr=4.996e-05  gnorm=0.7792
+[2026-06-04 01:33:17]   [LOSS test15-a] step= 175  epoch=0.2333  loss=1.10798  acc=0.7580  lr=4.990e-05  gnorm=1.0059
+[2026-06-04 01:33:59]   [LOSS test15-a] step= 200  epoch=0.2667  loss=0.92106  acc=0.7996  lr=4.980e-05  gnorm=1.4163
+[2026-06-04 01:34:41]   [LOSS test15-a] step= 225  epoch=0.3000  loss=0.70111  acc=0.8477  lr=4.967e-05  gnorm=1.7381
+[2026-06-04 01:35:24]   [LOSS test15-a] step= 250  epoch=0.3333  loss=0.59618  acc=0.8707  lr=4.950e-05  gnorm=2.8977
+[2026-06-04 01:36:05]   [LOSS test15-a] step= 275  epoch=0.3667  loss=0.42886  acc=0.9090  lr=4.930e-05  gnorm=2.7191
+[2026-06-04 01:36:47]   [LOSS test15-a] step= 300  epoch=0.4000  loss=0.31686  acc=0.9362  lr=4.907e-05  gnorm=3.4869
+[2026-06-04 01:37:28]   [LOSS test15-a] step= 325  epoch=0.4333  loss=0.29296  acc=0.9431  lr=4.881e-05  gnorm=4.0519
+[2026-06-04 01:38:10]   [LOSS test15-a] step= 350  epoch=0.4667  loss=0.20900  acc=0.9601  lr=4.851e-05  gnorm=1.7599
+[2026-06-04 01:38:52]   [LOSS test15-a] step= 375  epoch=0.5000  loss=0.18236  acc=0.9658  lr=4.818e-05  gnorm=2.1136
+[2026-06-04 01:39:34]   [LOSS test15-a] step= 400  epoch=0.5333  loss=0.13462  acc=0.9757  lr=4.782e-05  gnorm=4.3789
+[2026-06-04 01:40:16]   [LOSS test15-a] step= 425  epoch=0.5667  loss=0.10148  acc=0.9826  lr=4.743e-05  gnorm=1.4556
+[2026-06-04 01:40:58]   [LOSS test15-a] step= 450  epoch=0.6000  loss=0.06207  acc=0.9910  lr=4.701e-05  gnorm=2.9417
+[2026-06-04 01:41:40]   [LOSS test15-a] step= 475  epoch=0.6333  loss=0.08349  acc=0.9861  lr=4.656e-05  gnorm=2.0723
+[2026-06-04 01:42:22]   [LOSS test15-a] step= 500  epoch=0.6667  loss=0.05622  acc=0.9920  lr=4.608e-05  gnorm=1.6769
+[2026-06-04 01:43:04]   [LOSS test15-a] step= 525  epoch=0.7000  loss=0.04690  acc=0.9939  lr=4.557e-05  gnorm=2.2351
+[2026-06-04 01:43:46]   [LOSS test15-a] step= 550  epoch=0.7333  loss=0.03314  acc=0.9961  lr=4.504e-05  gnorm=4.4813
+[2026-06-04 01:44:28]   [LOSS test15-a] step= 575  epoch=0.7667  loss=0.03749  acc=0.9950  lr=4.448e-05  gnorm=1.7257
+[2026-06-04 01:45:10]   [LOSS test15-a] step= 600  epoch=0.8000  loss=0.03096  acc=0.9962  lr=4.389e-05  gnorm=0.4392
+[2026-06-04 01:45:51]   [LOSS test15-a] step= 625  epoch=0.8333  loss=0.02868  acc=0.9966  lr=4.327e-05  gnorm=0.3698
+[2026-06-04 01:46:33]   [LOSS test15-a] step= 650  epoch=0.8667  loss=0.02365  acc=0.9971  lr=4.263e-05  gnorm=0.8452
+[2026-06-04 01:47:15]   [LOSS test15-a] step= 675  epoch=0.9000  loss=0.02346  acc=0.9969  lr=4.197e-05  gnorm=1.0394
+[2026-06-04 01:47:57]   [LOSS test15-a] step= 700  epoch=0.9333  loss=0.02063  acc=0.9970  lr=4.128e-05  gnorm=0.6556
+[2026-06-04 01:48:39]   [LOSS test15-a] step= 725  epoch=0.9667  loss=0.02413  acc=0.9963  lr=4.057e-05  gnorm=0.4179
+[2026-06-04 01:49:21]   [LOSS test15-a] step= 750  epoch=1.0000  loss=0.02288  acc=0.9965  lr=3.985e-05  gnorm=0.3904
+[2026-06-04 01:50:03]   [LOSS test15-a] step= 775  epoch=1.0333  loss=0.02102  acc=0.9968  lr=3.910e-05  gnorm=0.6866
+[2026-06-04 01:50:45]   [LOSS test15-a] step= 800  epoch=1.0667  loss=0.02149  acc=0.9961  lr=3.833e-05  gnorm=0.6292
+[2026-06-04 01:51:27]   [LOSS test15-a] step= 825  epoch=1.1000  loss=0.01649  acc=0.9973  lr=3.754e-05  gnorm=1.2480
+[2026-06-04 01:52:09]   [LOSS test15-a] step= 850  epoch=1.1333  loss=0.01470  acc=0.9972  lr=3.674e-05  gnorm=0.4090
+[2026-06-04 01:52:51]   [LOSS test15-a] step= 875  epoch=1.1667  loss=0.01238  acc=0.9977  lr=3.592e-05  gnorm=0.3288
+[2026-06-04 01:53:33]   [LOSS test15-a] step= 900  epoch=1.2000  loss=0.00767  acc=0.9987  lr=3.509e-05  gnorm=0.1912
+[2026-06-04 01:54:14]   [LOSS test15-a] step= 925  epoch=1.2333  loss=0.00716  acc=0.9985  lr=3.424e-05  gnorm=0.1273
+[2026-06-04 01:54:56]   [LOSS test15-a] step= 950  epoch=1.2667  loss=0.01133  acc=0.9973  lr=3.338e-05  gnorm=0.1579
+[2026-06-04 01:55:38]   [LOSS test15-a] step= 975  epoch=1.3000  loss=0.00847  acc=0.9982  lr=3.251e-05  gnorm=0.1426
+[2026-06-04 01:56:20]   [LOSS test15-a] step=1000  epoch=1.3333  loss=0.00938  acc=0.9979  lr=3.163e-05  gnorm=0.1322
+[2026-06-04 01:57:01]   [LOSS test15-a] step=1025  epoch=1.3667  loss=0.00671  acc=0.9982  lr=3.074e-05  gnorm=0.1026
+[2026-06-04 01:57:43]   [LOSS test15-a] step=1050  epoch=1.4000  loss=0.00628  acc=0.9986  lr=2.984e-05  gnorm=0.1647
+[2026-06-04 01:58:25]   [LOSS test15-a] step=1075  epoch=1.4333  loss=0.00996  acc=0.9974  lr=2.893e-05  gnorm=0.7664
+[2026-06-04 01:59:07]   [LOSS test15-a] step=1100  epoch=1.4667  loss=0.00808  acc=0.9981  lr=2.802e-05  gnorm=0.2155
+[2026-06-04 01:59:49]   [LOSS test15-a] step=1125  epoch=1.5000  loss=0.00627  acc=0.9985  lr=2.711e-05  gnorm=0.5740
+[2026-06-04 02:00:31]   [LOSS test15-a] step=1150  epoch=1.5333  loss=0.00692  acc=0.9984  lr=2.619e-05  gnorm=0.0803
+[2026-06-04 02:01:13]   [LOSS test15-a] step=1175  epoch=1.5667  loss=0.00781  acc=0.9982  lr=2.528e-05  gnorm=0.1252
+[2026-06-04 02:01:55]   [LOSS test15-a] step=1200  epoch=1.6000  loss=0.00736  acc=0.9982  lr=2.436e-05  gnorm=0.0762
+[2026-06-04 02:02:37]   [LOSS test15-a] step=1225  epoch=1.6333  loss=0.00645  acc=0.9984  lr=2.344e-05  gnorm=0.1029
+[2026-06-04 02:03:19]   [LOSS test15-a] step=1250  epoch=1.6667  loss=0.00942  acc=0.9977  lr=2.252e-05  gnorm=0.0940
+[2026-06-04 02:04:01]   [LOSS test15-a] step=1275  epoch=1.7000  loss=0.00477  acc=0.9988  lr=2.161e-05  gnorm=0.0869
+[2026-06-04 02:04:42]   [LOSS test15-a] step=1300  epoch=1.7333  loss=0.00666  acc=0.9982  lr=2.070e-05  gnorm=0.1100
+[2026-06-04 02:05:24]   [LOSS test15-a] step=1325  epoch=1.7667  loss=0.00715  acc=0.9981  lr=1.980e-05  gnorm=0.1073
+[2026-06-04 02:06:06]   [LOSS test15-a] step=1350  epoch=1.8000  loss=0.00829  acc=0.9978  lr=1.891e-05  gnorm=0.2439
+[2026-06-04 02:06:48]   [LOSS test15-a] step=1375  epoch=1.8333  loss=0.00629  acc=0.9982  lr=1.802e-05  gnorm=0.1279
+[2026-06-04 02:07:30]   [LOSS test15-a] step=1400  epoch=1.8667  loss=0.00719  acc=0.9981  lr=1.714e-05  gnorm=0.1504
+[2026-06-04 02:08:12]   [LOSS test15-a] step=1425  epoch=1.9000  loss=0.00818  acc=0.9978  lr=1.628e-05  gnorm=0.2573
+[2026-06-04 02:08:55]   [LOSS test15-a] step=1450  epoch=1.9333  loss=0.00711  acc=0.9981  lr=1.542e-05  gnorm=0.0977
+[2026-06-04 02:09:36]   [LOSS test15-a] step=1475  epoch=1.9667  loss=0.00905  acc=0.9976  lr=1.458e-05  gnorm=0.1135
+[2026-06-04 02:10:18]   [LOSS test15-a] step=1500  epoch=2.0000  loss=0.01041  acc=0.9975  lr=1.375e-05  gnorm=0.1099
+[2026-06-04 02:11:00]   [LOSS test15-a] step=1525  epoch=2.0333  loss=0.00686  acc=0.9982  lr=1.294e-05  gnorm=0.1056
+[2026-06-04 02:11:42]   [LOSS test15-a] step=1550  epoch=2.0667  loss=0.00836  acc=0.9978  lr=1.214e-05  gnorm=0.0988
+[2026-06-04 02:12:24]   [LOSS test15-a] step=1575  epoch=2.1000  loss=0.00488  acc=0.9987  lr=1.136e-05  gnorm=0.1791
+[2026-06-04 02:13:06]   [LOSS test15-a] step=1600  epoch=2.1333  loss=0.00567  acc=0.9984  lr=1.060e-05  gnorm=0.0845
+[2026-06-04 02:13:47]   [LOSS test15-a] step=1625  epoch=2.1667  loss=0.00653  acc=0.9982  lr=9.860e-06  gnorm=0.3206
+[2026-06-04 02:14:28]   [LOSS test15-a] step=1650  epoch=2.2000  loss=0.00611  acc=0.9981  lr=9.139e-06  gnorm=0.3362
+[2026-06-04 02:15:10]   [LOSS test15-a] step=1675  epoch=2.2333  loss=0.00692  acc=0.9980  lr=8.440e-06  gnorm=0.1873
+[2026-06-04 02:15:52]   [LOSS test15-a] step=1700  epoch=2.2667  loss=0.00546  acc=0.9984  lr=7.763e-06  gnorm=0.0823
+[2026-06-04 02:16:33]   [LOSS test15-a] step=1725  epoch=2.3000  loss=0.00638  acc=0.9983  lr=7.109e-06  gnorm=0.1103
+[2026-06-04 02:17:15]   [LOSS test15-a] step=1750  epoch=2.3333  loss=0.00732  acc=0.9982  lr=6.480e-06  gnorm=0.1129
+[2026-06-04 02:17:57]   [LOSS test15-a] step=1775  epoch=2.3667  loss=0.00573  acc=0.9984  lr=5.875e-06  gnorm=0.1125
+[2026-06-04 02:18:38]   [LOSS test15-a] step=1800  epoch=2.4000  loss=0.00459  acc=0.9987  lr=5.296e-06  gnorm=0.0863
+[2026-06-04 02:19:20]   [LOSS test15-a] step=1825  epoch=2.4333  loss=0.00671  acc=0.9980  lr=4.744e-06  gnorm=0.2386
+[2026-06-04 02:20:02]   [LOSS test15-a] step=1850  epoch=2.4667  loss=0.00657  acc=0.9980  lr=4.220e-06  gnorm=0.0853
+[2026-06-04 02:20:44]   [LOSS test15-a] step=1875  epoch=2.5000  loss=0.00554  acc=0.9984  lr=3.723e-06  gnorm=0.1398
+[2026-06-04 02:21:25]   [LOSS test15-a] step=1900  epoch=2.5333  loss=0.00569  acc=0.9983  lr=3.255e-06  gnorm=0.0975
+[2026-06-04 02:22:07]   [LOSS test15-a] step=1925  epoch=2.5667  loss=0.00740  acc=0.9978  lr=2.816e-06  gnorm=0.1132
+[2026-06-04 02:22:48]   [LOSS test15-a] step=1950  epoch=2.6000  loss=0.00703  acc=0.9980  lr=2.408e-06  gnorm=0.1128
+[2026-06-04 02:23:30]   [LOSS test15-a] step=1975  epoch=2.6333  loss=0.00515  acc=0.9986  lr=2.030e-06  gnorm=0.0869
+[2026-06-04 02:24:12]   [LOSS test15-a] step=2000  epoch=2.6667  loss=0.00681  acc=0.9983  lr=1.683e-06  gnorm=0.1313
+[2026-06-04 02:24:54]   [LOSS test15-a] step=2025  epoch=2.7000  loss=0.00596  acc=0.9983  lr=1.367e-06  gnorm=0.1926
+[2026-06-04 02:25:36]   [LOSS test15-a] step=2050  epoch=2.7333  loss=0.00533  acc=0.9985  lr=1.084e-06  gnorm=0.1795
+[2026-06-04 02:26:18]   [LOSS test15-a] step=2075  epoch=2.7667  loss=0.00679  acc=0.9979  lr=8.322e-07  gnorm=0.1564
+[2026-06-04 02:27:00]   [LOSS test15-a] step=2100  epoch=2.8000  loss=0.00633  acc=0.9982  lr=6.134e-07  gnorm=0.1004
+[2026-06-04 02:27:41]   [LOSS test15-a] step=2125  epoch=2.8333  loss=0.00712  acc=0.9981  lr=4.277e-07  gnorm=0.0957
+[2026-06-04 02:28:23]   [LOSS test15-a] step=2150  epoch=2.8667  loss=0.00606  acc=0.9983  lr=2.751e-07  gnorm=0.1028
+[2026-06-04 02:29:05]   [LOSS test15-a] step=2175  epoch=2.9000  loss=0.00488  acc=0.9986  lr=1.559e-07  gnorm=0.1657
+[2026-06-04 02:29:47]   [LOSS test15-a] step=2200  epoch=2.9333  loss=0.00664  acc=0.9982  lr=7.023e-08  gnorm=0.1030
+[2026-06-04 02:30:29]   [LOSS test15-a] step=2225  epoch=2.9667  loss=0.00615  acc=0.9983  lr=1.826e-08  gnorm=0.1202
+[2026-06-04 02:31:11]   [LOSS test15-a] step=2250  epoch=3.0000  loss=0.00595  acc=0.9984  lr=2.701e-11  gnorm=0.0992
+[2026-06-04 02:31:11]   Training complete → ./adapters/test15-a
+[2026-06-04 02:31:11] >>> test15-a  OK  2026-06-04 02:31:11
+[2026-06-04 02:31:11] 
+>>> test15-b  start  2026-06-04 02:31:11
+[2026-06-04 02:31:11] =================================================================
+[2026-06-04 02:31:11]   TRAINING  test15-b
+[2026-06-04 02:31:11] =================================================================
+[2026-06-04 02:31:11]   lr=0.0002  lora_dropout=0.1  epochs=2  max_length=1024
+[2026-06-04 02:31:11]   r=16  alpha=32  batch=2  grad_accum=2
+[2026-06-04 02:31:11]   adapter → ./adapters/test15-b
+[2026-06-04 02:31:11]   Per-step loss will be written to ./test15-log.txt (file only).
+[2026-06-04 02:32:14]   [LOSS test15-b] step=  25  epoch=0.0333  loss=2.35177  acc=0.6192  lr=6.400e-05  gnorm=0.5435
+[2026-06-04 02:32:55]   [LOSS test15-b] step=  50  epoch=0.0667  loss=1.75960  acc=0.6528  lr=1.307e-04  gnorm=0.4262
+[2026-06-04 02:33:37]   [LOSS test15-b] step=  75  epoch=0.1000  loss=1.29722  acc=0.7249  lr=1.973e-04  gnorm=0.7382
+[2026-06-04 02:34:18]   [LOSS test15-b] step= 100  epoch=0.1333  loss=0.87839  acc=0.8041  lr=1.999e-04  gnorm=1.6215
+[2026-06-04 02:35:00]   [LOSS test15-b] step= 125  epoch=0.1667  loss=0.55454  acc=0.8759  lr=1.994e-04  gnorm=1.3222
+[2026-06-04 02:35:42]   [LOSS test15-b] step= 150  epoch=0.2000  loss=0.35569  acc=0.9197  lr=1.987e-04  gnorm=1.5166
+[2026-06-04 02:36:22]   [LOSS test15-b] step= 175  epoch=0.2333  loss=0.23419  acc=0.9489  lr=1.976e-04  gnorm=1.2599
+[2026-06-04 02:37:03]   [LOSS test15-b] step= 200  epoch=0.2667  loss=0.12499  acc=0.9749  lr=1.963e-04  gnorm=1.2608
+[2026-06-04 02:37:45]   [LOSS test15-b] step= 225  epoch=0.3000  loss=0.06218  acc=0.9891  lr=1.947e-04  gnorm=0.5227
+[2026-06-04 02:38:27]   [LOSS test15-b] step= 250  epoch=0.3333  loss=0.03829  acc=0.9939  lr=1.927e-04  gnorm=0.6743
+[2026-06-04 02:39:09]   [LOSS test15-b] step= 275  epoch=0.3667  loss=0.02149  acc=0.9963  lr=1.905e-04  gnorm=0.5920
+[2026-06-04 02:39:50]   [LOSS test15-b] step= 300  epoch=0.4000  loss=0.01707  acc=0.9970  lr=1.881e-04  gnorm=0.2072
+[2026-06-04 02:40:31]   [LOSS test15-b] step= 325  epoch=0.4333  loss=0.01343  acc=0.9973  lr=1.853e-04  gnorm=0.3013
+[2026-06-04 02:41:13]   [LOSS test15-b] step= 350  epoch=0.4667  loss=0.00936  acc=0.9981  lr=1.823e-04  gnorm=0.0546
+[2026-06-04 02:41:54]   [LOSS test15-b] step= 375  epoch=0.5000  loss=0.00801  acc=0.9982  lr=1.790e-04  gnorm=0.0500
+[2026-06-04 02:42:36]   [LOSS test15-b] step= 400  epoch=0.5333  loss=0.00793  acc=0.9981  lr=1.756e-04  gnorm=0.0669
+[2026-06-04 02:43:18]   [LOSS test15-b] step= 425  epoch=0.5667  loss=0.00607  acc=0.9986  lr=1.718e-04  gnorm=0.0425
+[2026-06-04 02:44:00]   [LOSS test15-b] step= 450  epoch=0.6000  loss=0.00957  acc=0.9976  lr=1.679e-04  gnorm=0.1018
+[2026-06-04 02:44:42]   [LOSS test15-b] step= 475  epoch=0.6333  loss=0.01215  acc=0.9970  lr=1.637e-04  gnorm=0.0362
+[2026-06-04 02:45:23]   [LOSS test15-b] step= 500  epoch=0.6667  loss=0.00523  acc=0.9986  lr=1.594e-04  gnorm=0.0573
+[2026-06-04 02:46:03]   [LOSS test15-b] step= 525  epoch=0.7000  loss=0.00701  acc=0.9981  lr=1.549e-04  gnorm=0.0530
+[2026-06-04 02:46:44]   [LOSS test15-b] step= 550  epoch=0.7333  loss=0.00471  acc=0.9988  lr=1.502e-04  gnorm=0.0595
+[2026-06-04 02:47:26]   [LOSS test15-b] step= 575  epoch=0.7667  loss=0.00736  acc=0.9981  lr=1.453e-04  gnorm=0.0476
+[2026-06-04 02:48:08]   [LOSS test15-b] step= 600  epoch=0.8000  loss=0.00609  acc=0.9984  lr=1.404e-04  gnorm=0.0387
+[2026-06-04 02:48:50]   [LOSS test15-b] step= 625  epoch=0.8333  loss=0.00440  acc=0.9987  lr=1.353e-04  gnorm=0.0391
+[2026-06-04 02:49:31]   [LOSS test15-b] step= 650  epoch=0.8667  loss=0.00439  acc=0.9987  lr=1.301e-04  gnorm=0.0461
+[2026-06-04 02:50:13]   [LOSS test15-b] step= 675  epoch=0.9000  loss=0.00577  acc=0.9984  lr=1.248e-04  gnorm=0.1336
+[2026-06-04 02:50:55]   [LOSS test15-b] step= 700  epoch=0.9333  loss=0.00560  acc=0.9985  lr=1.194e-04  gnorm=0.0691
+[2026-06-04 02:51:37]   [LOSS test15-b] step= 725  epoch=0.9667  loss=0.00706  acc=0.9980  lr=1.140e-04  gnorm=0.0389
+[2026-06-04 02:52:19]   [LOSS test15-b] step= 750  epoch=1.0000  loss=0.00644  acc=0.9981  lr=1.085e-04  gnorm=0.0389
+[2026-06-04 02:53:01]   [LOSS test15-b] step= 775  epoch=1.0333  loss=0.00560  acc=0.9985  lr=1.030e-04  gnorm=0.1943
+[2026-06-04 02:53:43]   [LOSS test15-b] step= 800  epoch=1.0667  loss=0.00724  acc=0.9980  lr=9.746e-05  gnorm=0.1620
+[2026-06-04 02:54:25]   [LOSS test15-b] step= 825  epoch=1.1000  loss=0.00476  acc=0.9987  lr=9.196e-05  gnorm=0.0422
+[2026-06-04 02:55:06]   [LOSS test15-b] step= 850  epoch=1.1333  loss=0.00437  acc=0.9987  lr=8.648e-05  gnorm=0.0518
+[2026-06-04 02:55:48]   [LOSS test15-b] step= 875  epoch=1.1667  loss=0.00442  acc=0.9988  lr=8.105e-05  gnorm=0.0426
+[2026-06-04 02:56:30]   [LOSS test15-b] step= 900  epoch=1.2000  loss=0.00355  acc=0.9989  lr=7.567e-05  gnorm=0.0406
+[2026-06-04 02:57:12]   [LOSS test15-b] step= 925  epoch=1.2333  loss=0.00470  acc=0.9987  lr=7.036e-05  gnorm=0.0342
+[2026-06-04 02:57:53]   [LOSS test15-b] step= 950  epoch=1.2667  loss=0.00664  acc=0.9980  lr=6.514e-05  gnorm=0.0419
+[2026-06-04 02:58:35]   [LOSS test15-b] step= 975  epoch=1.3000  loss=0.00525  acc=0.9986  lr=6.003e-05  gnorm=0.0331
+[2026-06-04 02:59:17]   [LOSS test15-b] step=1000  epoch=1.3333  loss=0.00558  acc=0.9983  lr=5.504e-05  gnorm=0.0352
+[2026-06-04 02:59:58]   [LOSS test15-b] step=1025  epoch=1.3667  loss=0.00430  acc=0.9987  lr=5.019e-05  gnorm=0.0359
+[2026-06-04 03:00:39]   [LOSS test15-b] step=1050  epoch=1.4000  loss=0.00484  acc=0.9987  lr=4.549e-05  gnorm=0.0316
+[2026-06-04 03:01:21]   [LOSS test15-b] step=1075  epoch=1.4333  loss=0.00560  acc=0.9982  lr=4.095e-05  gnorm=0.0431
+[2026-06-04 03:02:03]   [LOSS test15-b] step=1100  epoch=1.4667  loss=0.00573  acc=0.9984  lr=3.660e-05  gnorm=0.0725
+[2026-06-04 03:02:45]   [LOSS test15-b] step=1125  epoch=1.5000  loss=0.00415  acc=0.9987  lr=3.243e-05  gnorm=0.0356
+[2026-06-04 03:03:26]   [LOSS test15-b] step=1150  epoch=1.5333  loss=0.00480  acc=0.9986  lr=2.848e-05  gnorm=0.0297
+[2026-06-04 03:04:08]   [LOSS test15-b] step=1175  epoch=1.5667  loss=0.00510  acc=0.9984  lr=2.473e-05  gnorm=0.0397
+[2026-06-04 03:04:50]   [LOSS test15-b] step=1200  epoch=1.6000  loss=0.00475  acc=0.9986  lr=2.122e-05  gnorm=0.0326
+[2026-06-04 03:05:32]   [LOSS test15-b] step=1225  epoch=1.6333  loss=0.00447  acc=0.9987  lr=1.795e-05  gnorm=0.4730
+[2026-06-04 03:06:14]   [LOSS test15-b] step=1250  epoch=1.6667  loss=0.00736  acc=0.9980  lr=1.492e-05  gnorm=0.0349
+[2026-06-04 03:06:56]   [LOSS test15-b] step=1275  epoch=1.7000  loss=0.00358  acc=0.9988  lr=1.216e-05  gnorm=0.0318
+[2026-06-04 03:07:38]   [LOSS test15-b] step=1300  epoch=1.7333  loss=0.00477  acc=0.9985  lr=9.659e-06  gnorm=0.0428
+[2026-06-04 03:08:19]   [LOSS test15-b] step=1325  epoch=1.7667  loss=0.00482  acc=0.9986  lr=7.434e-06  gnorm=0.0371
+[2026-06-04 03:09:01]   [LOSS test15-b] step=1350  epoch=1.8000  loss=0.00557  acc=0.9983  lr=5.490e-06  gnorm=0.1170
+[2026-06-04 03:09:43]   [LOSS test15-b] step=1375  epoch=1.8333  loss=0.00424  acc=0.9986  lr=3.833e-06  gnorm=0.0488
+[2026-06-04 03:10:24]   [LOSS test15-b] step=1400  epoch=1.8667  loss=0.00462  acc=0.9985  lr=2.469e-06  gnorm=0.1072
+[2026-06-04 03:11:06]   [LOSS test15-b] step=1425  epoch=1.9000  loss=0.00584  acc=0.9982  lr=1.400e-06  gnorm=0.0971
+[2026-06-04 03:11:49]   [LOSS test15-b] step=1450  epoch=1.9333  loss=0.00489  acc=0.9984  lr=6.314e-07  gnorm=0.0450
+[2026-06-04 03:12:30]   [LOSS test15-b] step=1475  epoch=1.9667  loss=0.00661  acc=0.9981  lr=1.642e-07  gnorm=0.0362
+[2026-06-04 03:13:11]   [LOSS test15-b] step=1500  epoch=2.0000  loss=0.00700  acc=0.9981  lr=2.430e-10  gnorm=0.0350
+[2026-06-04 03:13:12]   Training complete → ./adapters/test15-b
+[2026-06-04 03:13:12] >>> test15-b  OK  2026-06-04 03:13:12
+[2026-06-04 03:13:12] 
+>>> test15-c  start  2026-06-04 03:13:12
+[2026-06-04 03:13:12] =================================================================
+[2026-06-04 03:13:12]   TRAINING  test15-c
+[2026-06-04 03:13:12] =================================================================
+[2026-06-04 03:13:12]   lr=5e-05  lora_dropout=0.2  epochs=3  max_length=2048
+[2026-06-04 03:13:12]   r=16  alpha=32  batch=2  grad_accum=2
+[2026-06-04 03:13:12]   adapter → ./adapters/test15-c
+[2026-06-04 03:13:12]   Per-step loss will be written to ./test15-log.txt (file only).
+[2026-06-04 03:15:11]   [LOSS test15-c] step=  25  epoch=0.0333  loss=2.18329  acc=0.6598  lr=1.062e-05  gnorm=2.6054
+[2026-06-04 03:16:48]   [LOSS test15-c] step=  50  epoch=0.0667  loss=1.88961  acc=0.6666  lr=2.168e-05  gnorm=0.7369
+[2026-06-04 03:18:28]   [LOSS test15-c] step=  75  epoch=0.1000  loss=1.60529  acc=0.6825  lr=3.274e-05  gnorm=0.3172
+[2026-06-04 03:20:11]   [LOSS test15-c] step= 100  epoch=0.1333  loss=1.52663  acc=0.6877  lr=4.381e-05  gnorm=0.3600
+[2026-06-04 03:21:50]   [LOSS test15-c] step= 125  epoch=0.1667  loss=1.35976  acc=0.7164  lr=5.000e-05  gnorm=0.3654
+[2026-06-04 03:23:30]   [LOSS test15-c] step= 150  epoch=0.2000  loss=1.21636  acc=0.7366  lr=4.996e-05  gnorm=0.4726
+[2026-06-04 03:25:08]   [LOSS test15-c] step= 175  epoch=0.2333  loss=1.16094  acc=0.7464  lr=4.990e-05  gnorm=0.4589
+[2026-06-04 03:26:49]   [LOSS test15-c] step= 200  epoch=0.2667  loss=1.04135  acc=0.7705  lr=4.980e-05  gnorm=1.2614
+[2026-06-04 03:28:26]   [LOSS test15-c] step= 225  epoch=0.3000  loss=0.86163  acc=0.8050  lr=4.967e-05  gnorm=1.4806
+[2026-06-04 03:30:07]   [LOSS test15-c] step= 250  epoch=0.3333  loss=0.75904  acc=0.8310  lr=4.950e-05  gnorm=1.9467
+[2026-06-04 03:31:45]   [LOSS test15-c] step= 275  epoch=0.3667  loss=0.58000  acc=0.8723  lr=4.930e-05  gnorm=2.7123
+[2026-06-04 03:33:24]   [LOSS test15-c] step= 300  epoch=0.4000  loss=0.44652  acc=0.9040  lr=4.907e-05  gnorm=1.2776
+[2026-06-04 03:34:58]   [LOSS test15-c] step= 325  epoch=0.4333  loss=0.46019  acc=0.9038  lr=4.881e-05  gnorm=6.9687
+[2026-06-04 03:36:35]   [LOSS test15-c] step= 350  epoch=0.4667  loss=0.36850  acc=0.9193  lr=4.851e-05  gnorm=1.7006
+[2026-06-04 03:38:14]   [LOSS test15-c] step= 375  epoch=0.5000  loss=0.33005  acc=0.9298  lr=4.818e-05  gnorm=2.7425
+[2026-06-04 03:39:53]   [LOSS test15-c] step= 400  epoch=0.5333  loss=0.29214  acc=0.9379  lr=4.782e-05  gnorm=2.9818
+[2026-06-04 03:41:34]   [LOSS test15-c] step= 425  epoch=0.5667  loss=0.25405  acc=0.9467  lr=4.743e-05  gnorm=2.0144
+[2026-06-04 03:43:15]   [LOSS test15-c] step= 450  epoch=0.6000  loss=0.14264  acc=0.9717  lr=4.701e-05  gnorm=4.0821
+[2026-06-04 03:44:53]   [LOSS test15-c] step= 475  epoch=0.6333  loss=0.22295  acc=0.9535  lr=4.656e-05  gnorm=3.0995
+[2026-06-04 03:46:30]   [LOSS test15-c] step= 500  epoch=0.6667  loss=0.17579  acc=0.9639  lr=4.608e-05  gnorm=4.2476
+[2026-06-04 03:48:07]   [LOSS test15-c] step= 525  epoch=0.7000  loss=0.15885  acc=0.9679  lr=4.557e-05  gnorm=2.7472
+[2026-06-04 03:49:48]   [LOSS test15-c] step= 550  epoch=0.7333  loss=0.11776  acc=0.9779  lr=4.504e-05  gnorm=3.0014
+[2026-06-04 03:51:25]   [LOSS test15-c] step= 575  epoch=0.7667  loss=0.09756  acc=0.9812  lr=4.448e-05  gnorm=4.3254
+[2026-06-04 03:52:59]   [LOSS test15-c] step= 600  epoch=0.8000  loss=0.09216  acc=0.9820  lr=4.389e-05  gnorm=1.7594
+[2026-06-04 03:54:38]   [LOSS test15-c] step= 625  epoch=0.8333  loss=0.08445  acc=0.9850  lr=4.327e-05  gnorm=0.8028
+[2026-06-04 03:56:19]   [LOSS test15-c] step= 650  epoch=0.8667  loss=0.07553  acc=0.9868  lr=4.263e-05  gnorm=3.2867
+[2026-06-04 03:57:58]   [LOSS test15-c] step= 675  epoch=0.9000  loss=0.07771  acc=0.9868  lr=4.197e-05  gnorm=2.8855
+[2026-06-04 03:59:39]   [LOSS test15-c] step= 700  epoch=0.9333  loss=0.05781  acc=0.9906  lr=4.128e-05  gnorm=1.5363
+[2026-06-04 04:01:19]   [LOSS test15-c] step= 725  epoch=0.9667  loss=0.05616  acc=0.9908  lr=4.057e-05  gnorm=2.1284
+[2026-06-04 04:02:56]   [LOSS test15-c] step= 750  epoch=1.0000  loss=0.05924  acc=0.9907  lr=3.985e-05  gnorm=1.3764
+[2026-06-04 04:04:37]   [LOSS test15-c] step= 775  epoch=1.0333  loss=0.05266  acc=0.9915  lr=3.910e-05  gnorm=0.7742
+[2026-06-04 04:06:15]   [LOSS test15-c] step= 800  epoch=1.0667  loss=0.04476  acc=0.9921  lr=3.833e-05  gnorm=1.5436
+[2026-06-04 04:07:57]   [LOSS test15-c] step= 825  epoch=1.1000  loss=0.04007  acc=0.9939  lr=3.754e-05  gnorm=1.7783
+[2026-06-04 04:09:37]   [LOSS test15-c] step= 850  epoch=1.1333  loss=0.03877  acc=0.9939  lr=3.674e-05  gnorm=1.6832
+[2026-06-04 04:11:17]   [LOSS test15-c] step= 875  epoch=1.1667  loss=0.03506  acc=0.9950  lr=3.592e-05  gnorm=1.3166
+[2026-06-04 04:12:58]   [LOSS test15-c] step= 900  epoch=1.2000  loss=0.03858  acc=0.9937  lr=3.509e-05  gnorm=1.5012
+[2026-06-04 04:14:37]   [LOSS test15-c] step= 925  epoch=1.2333  loss=0.03808  acc=0.9934  lr=3.424e-05  gnorm=0.5368
+[2026-06-04 04:16:18]   [LOSS test15-c] step= 950  epoch=1.2667  loss=0.03344  acc=0.9940  lr=3.338e-05  gnorm=1.1500
+[2026-06-04 04:17:58]   [LOSS test15-c] step= 975  epoch=1.3000  loss=0.03141  acc=0.9947  lr=3.251e-05  gnorm=0.4257
+[2026-06-04 04:19:34]   [LOSS test15-c] step=1000  epoch=1.3333  loss=0.02945  acc=0.9946  lr=3.163e-05  gnorm=0.6327
+[2026-06-04 04:21:10]   [LOSS test15-c] step=1025  epoch=1.3667  loss=0.02934  acc=0.9943  lr=3.074e-05  gnorm=0.5542
+[2026-06-04 04:22:50]   [LOSS test15-c] step=1050  epoch=1.4000  loss=0.02871  acc=0.9944  lr=2.984e-05  gnorm=0.7262
+[2026-06-04 04:24:27]   [LOSS test15-c] step=1075  epoch=1.4333  loss=0.02698  acc=0.9943  lr=2.893e-05  gnorm=0.9506
+[2026-06-04 04:26:06]   [LOSS test15-c] step=1100  epoch=1.4667  loss=0.03028  acc=0.9943  lr=2.802e-05  gnorm=0.3930
+[2026-06-04 04:27:41]   [LOSS test15-c] step=1125  epoch=1.5000  loss=0.02578  acc=0.9951  lr=2.711e-05  gnorm=0.8098
+[2026-06-04 04:29:18]   [LOSS test15-c] step=1150  epoch=1.5333  loss=0.02459  acc=0.9950  lr=2.619e-05  gnorm=0.3060
+[2026-06-04 04:30:56]   [LOSS test15-c] step=1175  epoch=1.5667  loss=0.02667  acc=0.9948  lr=2.528e-05  gnorm=0.2398
+[2026-06-04 04:32:31]   [LOSS test15-c] step=1200  epoch=1.6000  loss=0.02474  acc=0.9949  lr=2.436e-05  gnorm=0.2832
+[2026-06-04 04:34:09]   [LOSS test15-c] step=1225  epoch=1.6333  loss=0.02322  acc=0.9952  lr=2.344e-05  gnorm=0.7168
+[2026-06-04 04:35:46]   [LOSS test15-c] step=1250  epoch=1.6667  loss=0.02737  acc=0.9942  lr=2.252e-05  gnorm=0.2504
+[2026-06-04 04:37:21]   [LOSS test15-c] step=1275  epoch=1.7000  loss=0.01987  acc=0.9958  lr=2.161e-05  gnorm=0.1940
+[2026-06-04 04:38:59]   [LOSS test15-c] step=1300  epoch=1.7333  loss=0.01550  acc=0.9966  lr=2.070e-05  gnorm=0.3050
+[2026-06-04 04:40:42]   [LOSS test15-c] step=1325  epoch=1.7667  loss=0.02335  acc=0.9949  lr=1.980e-05  gnorm=0.2486
+[2026-06-04 04:42:19]   [LOSS test15-c] step=1350  epoch=1.8000  loss=0.01821  acc=0.9959  lr=1.891e-05  gnorm=0.2344
+[2026-06-04 04:43:58]   [LOSS test15-c] step=1375  epoch=1.8333  loss=0.02139  acc=0.9950  lr=1.802e-05  gnorm=0.2396
+[2026-06-04 04:45:37]   [LOSS test15-c] step=1400  epoch=1.8667  loss=0.02074  acc=0.9952  lr=1.714e-05  gnorm=0.1756
+[2026-06-04 04:47:17]   [LOSS test15-c] step=1425  epoch=1.9000  loss=0.01956  acc=0.9957  lr=1.628e-05  gnorm=0.2946
+[2026-06-04 04:48:57]   [LOSS test15-c] step=1450  epoch=1.9333  loss=0.01774  acc=0.9961  lr=1.542e-05  gnorm=0.1217
+[2026-06-04 04:50:32]   [LOSS test15-c] step=1475  epoch=1.9667  loss=0.02756  acc=0.9936  lr=1.458e-05  gnorm=0.1464
+[2026-06-04 04:52:10]   [LOSS test15-c] step=1500  epoch=2.0000  loss=0.01769  acc=0.9958  lr=1.375e-05  gnorm=0.2764
+[2026-06-04 04:53:49]   [LOSS test15-c] step=1525  epoch=2.0333  loss=0.01798  acc=0.9956  lr=1.294e-05  gnorm=0.1865
+[2026-06-04 04:55:28]   [LOSS test15-c] step=1550  epoch=2.0667  loss=0.01374  acc=0.9968  lr=1.214e-05  gnorm=0.3399
+[2026-06-04 04:57:07]   [LOSS test15-c] step=1575  epoch=2.1000  loss=0.01727  acc=0.9957  lr=1.136e-05  gnorm=0.2116
+[2026-06-04 04:58:45]   [LOSS test15-c] step=1600  epoch=2.1333  loss=0.01572  acc=0.9963  lr=1.060e-05  gnorm=0.1666
+[2026-06-04 05:00:20]   [LOSS test15-c] step=1625  epoch=2.1667  loss=0.01823  acc=0.9955  lr=9.860e-06  gnorm=0.2712
+[2026-06-04 05:01:57]   [LOSS test15-c] step=1650  epoch=2.2000  loss=0.01571  acc=0.9960  lr=9.139e-06  gnorm=0.2113
+[2026-06-04 05:03:35]   [LOSS test15-c] step=1675  epoch=2.2333  loss=0.01980  acc=0.9953  lr=8.440e-06  gnorm=0.2452
+[2026-06-04 05:05:12]   [LOSS test15-c] step=1700  epoch=2.2667  loss=0.01889  acc=0.9954  lr=7.763e-06  gnorm=0.4244
+[2026-06-04 05:06:50]   [LOSS test15-c] step=1725  epoch=2.3000  loss=0.01497  acc=0.9963  lr=7.109e-06  gnorm=0.2217
+[2026-06-04 05:08:31]   [LOSS test15-c] step=1750  epoch=2.3333  loss=0.01982  acc=0.9955  lr=6.480e-06  gnorm=1.3555
+[2026-06-04 05:10:08]   [LOSS test15-c] step=1775  epoch=2.3667  loss=0.01585  acc=0.9960  lr=5.875e-06  gnorm=0.2463
+[2026-06-04 05:11:48]   [LOSS test15-c] step=1800  epoch=2.4000  loss=0.01851  acc=0.9954  lr=5.296e-06  gnorm=0.1414
+[2026-06-04 05:13:29]   [LOSS test15-c] step=1825  epoch=2.4333  loss=0.01777  acc=0.9958  lr=4.744e-06  gnorm=0.2574
+[2026-06-04 05:15:10]   [LOSS test15-c] step=1850  epoch=2.4667  loss=0.01882  acc=0.9954  lr=4.220e-06  gnorm=0.1467
+[2026-06-04 05:16:49]   [LOSS test15-c] step=1875  epoch=2.5000  loss=0.01580  acc=0.9961  lr=3.723e-06  gnorm=0.4774
+[2026-06-04 05:18:27]   [LOSS test15-c] step=1900  epoch=2.5333  loss=0.01554  acc=0.9961  lr=3.255e-06  gnorm=0.2074
+[2026-06-04 05:20:05]   [LOSS test15-c] step=1925  epoch=2.5667  loss=0.01662  acc=0.9959  lr=2.816e-06  gnorm=0.2221
+[2026-06-04 05:21:38]   [LOSS test15-c] step=1950  epoch=2.6000  loss=0.02000  acc=0.9951  lr=2.408e-06  gnorm=0.1943
+[2026-06-04 05:23:17]   [LOSS test15-c] step=1975  epoch=2.6333  loss=0.01563  acc=0.9963  lr=2.030e-06  gnorm=0.1703
+[2026-06-04 05:24:55]   [LOSS test15-c] step=2000  epoch=2.6667  loss=0.01716  acc=0.9958  lr=1.683e-06  gnorm=0.3082
+[2026-06-04 05:26:34]   [LOSS test15-c] step=2025  epoch=2.7000  loss=0.01617  acc=0.9961  lr=1.367e-06  gnorm=0.3709
+[2026-06-04 05:28:12]   [LOSS test15-c] step=2050  epoch=2.7333  loss=0.01590  acc=0.9962  lr=1.084e-06  gnorm=0.2531
+[2026-06-04 05:29:50]   [LOSS test15-c] step=2075  epoch=2.7667  loss=0.01786  acc=0.9955  lr=8.322e-07  gnorm=0.3215
+[2026-06-04 05:31:26]   [LOSS test15-c] step=2100  epoch=2.8000  loss=0.01982  acc=0.9947  lr=6.134e-07  gnorm=0.1929
+[2026-06-04 05:33:02]   [LOSS test15-c] step=2125  epoch=2.8333  loss=0.01811  acc=0.9950  lr=4.277e-07  gnorm=0.2999
+[2026-06-04 05:34:38]   [LOSS test15-c] step=2150  epoch=2.8667  loss=0.01710  acc=0.9956  lr=2.751e-07  gnorm=0.1659
+[2026-06-04 05:36:17]   [LOSS test15-c] step=2175  epoch=2.9000  loss=0.01397  acc=0.9966  lr=1.559e-07  gnorm=0.1536
+[2026-06-04 05:37:51]   [LOSS test15-c] step=2200  epoch=2.9333  loss=0.01664  acc=0.9959  lr=7.023e-08  gnorm=0.2163
+[2026-06-04 05:39:33]   [LOSS test15-c] step=2225  epoch=2.9667  loss=0.01544  acc=0.9963  lr=1.826e-08  gnorm=0.2122
+[2026-06-04 05:41:11]   [LOSS test15-c] step=2250  epoch=3.0000  loss=0.01535  acc=0.9962  lr=2.701e-11  gnorm=0.3834
+[2026-06-04 05:41:12]   Training complete → ./adapters/test15-c
+[2026-06-04 05:41:12] >>> test15-c  OK  2026-06-04 05:41:12
+[2026-06-04 05:41:12] =================================================================
+[2026-06-04 05:41:12]   PHASE 2 — INFERENCE + POST-PROCESSING
+[2026-06-04 05:41:12] =================================================================
+[2026-06-04 05:41:12] 
+>>> test15-a  inference start  2026-06-04 05:41:12
+[2026-06-04 05:41:12] =================================================================
+[2026-06-04 05:41:12]   INFERENCE  test15-a
+[2026-06-04 05:41:12] =================================================================
+[2026-06-04 05:41:12]   adapter : ./adapters/test15-a
+[2026-06-04 05:41:12]   output  : ./test15-a-preds.json

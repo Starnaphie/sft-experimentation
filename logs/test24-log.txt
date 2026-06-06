@@ -1,0 +1,30 @@
+test24.py  started 2026-06-05 12:16:24
+schema=pkfk  hardware=RTX-PRO-6000-MIG-1g.24gb
+
+[2026-06-05 12:16:24] =================================================================
+[2026-06-05 12:16:24]   test24.py  —  CED-v2 + recall post-proc + pkfk  —  RTX PRO 6000 MIG 24GB
+[2026-06-05 12:16:24] =================================================================
+[2026-06-05 12:16:24] Loaded 3000 base training examples from ./augmented_train_v2.json
+[2026-06-05 12:16:24] Filtered 79 zero-column aug_v2 examples → 2921 remain
+[2026-06-05 12:16:24] Validation: 101 questions
+[2026-06-05 12:16:24] Generating CED v2 (full validation DB coverage) ...
+[2026-06-05 12:16:25]   CED v2 generated: 3917 examples
+[2026-06-05 12:16:25] Combined training set: 6838 examples (aug_v2=2921, CED=3917)
+[2026-06-05 12:16:25]   (table,col) pairs covered: 1223 → 5701
+[2026-06-05 12:16:25]   Val table coverage: 615/615 (100.0%)
+[2026-06-05 12:16:25] =================================================================
+[2026-06-05 12:16:25]   PHASE 1 — TRAINING
+[2026-06-05 12:16:25] =================================================================
+[2026-06-05 12:16:25] 
+>>> Starting training: test24  at 2026-06-05 12:16:25
+[2026-06-05 12:16:25] =================================================================
+[2026-06-05 12:16:25]   TRAINING  test24
+[2026-06-05 12:16:25] =================================================================
+[2026-06-05 12:16:25]   model=Qwen/Qwen3-1.7B  schema=pkfk
+[2026-06-05 12:16:25]   r=16  alpha=64  dropout=0.05
+[2026-06-05 12:16:25]   lr=0.0002  epochs=5  max_length=2048
+[2026-06-05 12:16:25]   batch=2  grad_accum=2
+[2026-06-05 12:16:25]   train_size=6838
+[2026-06-05 12:16:25]   hypothesis: CED-v2 + stronger/longer training (alpha=64, 5ep) + recall post-proc
+[2026-06-05 12:16:25]   adapter → ./adapters/test24
+[2026-06-05 12:17:17]   No checkpoint found, training from scratch

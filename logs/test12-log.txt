@@ -1,0 +1,72 @@
+test12.py  started at 2026-06-03 10:53:47
+base_model=Qwen/Qwen3-1.7B  schema_fmt=schema_sorted
+train_data=./augmented_train_v2.json
+
+[2026-06-03 10:53:47] === test12.py starting — 2 experiments ===
+[2026-06-03 10:53:47] Loading training data from ./augmented_train_v2.json ...
+[2026-06-03 10:53:47]   3000 examples with schema_links
+[2026-06-03 10:53:47] Validation set: 101 questions
+[2026-06-03 10:53:47] 
+=================================================================
+[2026-06-03 10:53:47]   PHASE 1: TRAINING
+[2026-06-03 10:53:47] =================================================================
+[2026-06-03 10:53:47] 
+Starting training for test12-a at 2026-06-03 10:53:47
+[2026-06-03 10:53:47] =================================================================
+[2026-06-03 10:53:47]   TRAINING  test12-a
+[2026-06-03 10:53:47] =================================================================
+[2026-06-03 10:53:47]   base_model : Qwen/Qwen3-1.7B
+[2026-06-03 10:53:47]   schema_fmt : schema_sorted
+[2026-06-03 10:53:47]   train_data : ./augmented_train_v2.json  (3000 examples)
+[2026-06-03 10:53:47]   LoRA       : r=64  alpha=128
+[2026-06-03 10:53:47]   lr=0.0002  epochs=3  batch=2  grad_accum=2  max_length=1024
+[2026-06-03 10:53:47]   adapter_dir: ./adapter_test12_a
+[2026-06-03 11:56:58]   Training complete. Adapter saved → ./adapter_test12_a
+[2026-06-03 11:56:58] Training test12-a → SUCCESS  (finished at 2026-06-03 11:56:58)
+[2026-06-03 11:56:58] 
+Starting training for test12-b at 2026-06-03 11:56:58
+[2026-06-03 11:56:58] =================================================================
+[2026-06-03 11:56:58]   TRAINING  test12-b
+[2026-06-03 11:56:58] =================================================================
+[2026-06-03 11:56:58]   base_model : Qwen/Qwen3-1.7B
+[2026-06-03 11:56:58]   schema_fmt : schema_sorted
+[2026-06-03 11:56:58]   train_data : ./augmented_train_v2.json  (3000 examples)
+[2026-06-03 11:56:58]   LoRA       : r=32  alpha=64
+[2026-06-03 11:56:58]   lr=0.0002  epochs=5  batch=2  grad_accum=2  max_length=1024
+[2026-06-03 11:56:58]   adapter_dir: ./adapter_test12_b
+[2026-06-03 13:41:50]   Training complete. Adapter saved → ./adapter_test12_b
+[2026-06-03 13:41:50] Training test12-b → SUCCESS  (finished at 2026-06-03 13:41:50)
+[2026-06-03 13:41:50] 
+=================================================================
+[2026-06-03 13:41:50]   PHASE 2: INFERENCE + POST-PROCESSING
+[2026-06-03 13:41:50] =================================================================
+[2026-06-03 13:41:50] 
+Starting inference for test12-a at 2026-06-03 13:41:50
+[2026-06-03 13:41:50] =================================================================
+[2026-06-03 13:41:50]   INFERENCE  test12-a
+[2026-06-03 13:41:50] =================================================================
+[2026-06-03 13:41:50]   adapter_dir : ./adapter_test12_a
+[2026-06-03 13:41:50]   preds_file  : ./test12-a-preds.json
+[2026-06-03 13:44:54]   Wrote 101 predictions → ./test12-a-preds.json
+[2026-06-03 13:44:54] Inference test12-a → SUCCESS  (finished at 2026-06-03 13:44:54)
+[2026-06-03 13:44:54] 
+Starting inference for test12-b at 2026-06-03 13:44:54
+[2026-06-03 13:44:54] =================================================================
+[2026-06-03 13:44:54]   INFERENCE  test12-b
+[2026-06-03 13:44:54] =================================================================
+[2026-06-03 13:44:54]   adapter_dir : ./adapter_test12_b
+[2026-06-03 13:44:54]   preds_file  : ./test12-b-preds.json
+[2026-06-03 13:49:30]   Wrote 101 predictions → ./test12-b-preds.json
+[2026-06-03 13:49:30] Inference test12-b → SUCCESS  (finished at 2026-06-03 13:49:30)
+[2026-06-03 13:49:30] =================================================================
+[2026-06-03 13:49:30]   SUMMARY
+[2026-06-03 13:49:30] =================================================================
+[2026-06-03 13:49:30] experiment            training    inference   preds_file
+[2026-06-03 13:49:30]   test12-a            OK          OK          ./test12-a-preds.json
+[2026-06-03 13:49:30]   test12-b            OK          OK          ./test12-b-preds.json
+[2026-06-03 13:49:30] 
+[2026-06-03 13:49:30] To evaluate predictions, run:
+[2026-06-03 13:49:30]   conda run -n cse234 python eval.py --predictions ./test12-a-preds.json --gold validation_gold_schema_links.json --schemas_dir schemas/ --questions_input validation_input.json
+[2026-06-03 13:49:30]   conda run -n cse234 python eval.py --predictions ./test12-b-preds.json --gold validation_gold_schema_links.json --schemas_dir schemas/ --questions_input validation_input.json
+[2026-06-03 13:49:30] 
+All done at 2026-06-03 13:49:30. Full log → ./test12-log.txt

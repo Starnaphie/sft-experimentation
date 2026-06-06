@@ -1,0 +1,75 @@
+test18.py  started 2026-06-04 03:41:57
+schema=pkfk  train=./augmented_train_v2.json  hardware=RTX-PRO-6000-48GB
+
+  test18-a: Qwen/Qwen2.5-1.5B-Instruct  alpha=16  lr=0.0002  max_length=2048
+    hypothesis: test1-3 winning model+pkfk × test11 alpha=16+len=2048
+  test18-b: Qwen/Qwen3-1.7B  alpha=16  lr=0.0002  max_length=2048
+    hypothesis: test7-1 Qwen3+pkfk × test11 alpha=16+len=2048
+
+[2026-06-04 03:41:57] =================================================================
+[2026-06-04 03:41:57]   test18.py  —  RTX PRO 6000 48GB  —  pkfk × alpha=16 × len=2048
+[2026-06-04 03:41:57] =================================================================
+[2026-06-04 03:41:57] Loaded 3000 training examples from ./augmented_train_v2.json
+[2026-06-04 03:41:57] Validation: 101 questions
+[2026-06-04 03:41:57] =================================================================
+[2026-06-04 03:41:57]   PHASE 1 — TRAINING
+[2026-06-04 03:41:57] =================================================================
+[2026-06-04 03:41:57] 
+>>> Starting training: test18-a  at 2026-06-04 03:41:57
+[2026-06-04 03:41:57] =================================================================
+[2026-06-04 03:41:57]   TRAINING  test18-a
+[2026-06-04 03:41:57] =================================================================
+[2026-06-04 03:41:57]   model=Qwen/Qwen2.5-1.5B-Instruct  schema=pkfk
+[2026-06-04 03:41:57]   r=16  alpha=16  dropout=0.05
+[2026-06-04 03:41:57]   lr=0.0002  epochs=3  max_length=2048
+[2026-06-04 03:41:57]   batch=2  grad_accum=2
+[2026-06-04 03:41:57]   hypothesis: test1-3 winning model+pkfk × test11 alpha=16+len=2048
+[2026-06-04 03:41:57]   adapter → ./adapters/test18-a
+[2026-06-04 05:04:48]   Training complete. Adapter saved → ./adapters/test18-a
+[2026-06-04 05:04:48] >>> Finished training: test18-a  OK  at 2026-06-04 05:04:48
+[2026-06-04 05:04:48] 
+>>> Starting training: test18-b  at 2026-06-04 05:04:48
+[2026-06-04 05:04:48] =================================================================
+[2026-06-04 05:04:48]   TRAINING  test18-b
+[2026-06-04 05:04:48] =================================================================
+[2026-06-04 05:04:48]   model=Qwen/Qwen3-1.7B  schema=pkfk
+[2026-06-04 05:04:48]   r=16  alpha=16  dropout=0.05
+[2026-06-04 05:04:48]   lr=0.0002  epochs=3  max_length=2048
+[2026-06-04 05:04:48]   batch=2  grad_accum=2
+[2026-06-04 05:04:48]   hypothesis: test7-1 Qwen3+pkfk × test11 alpha=16+len=2048
+[2026-06-04 05:04:48]   adapter → ./adapters/test18-b
+[2026-06-04 06:54:13]   Training complete. Adapter saved → ./adapters/test18-b
+[2026-06-04 06:54:13] >>> Finished training: test18-b  OK  at 2026-06-04 06:54:13
+[2026-06-04 06:54:13] =================================================================
+[2026-06-04 06:54:13]   PHASE 2 — INFERENCE + POST-PROCESSING
+[2026-06-04 06:54:13] =================================================================
+[2026-06-04 06:54:13] 
+>>> Starting inference: test18-a  at 2026-06-04 06:54:13
+[2026-06-04 06:54:13] =================================================================
+[2026-06-04 06:54:13]   INFERENCE  test18-a
+[2026-06-04 06:54:13] =================================================================
+[2026-06-04 06:54:13]   adapter : ./adapters/test18-a
+[2026-06-04 06:54:13]   output  : ./test18-a-preds.json
+[2026-06-04 06:56:31]   Wrote 101 predictions → ./test18-a-preds.json
+[2026-06-04 06:56:31] >>> Finished inference: test18-a  OK  at 2026-06-04 06:56:31
+[2026-06-04 06:56:31] 
+>>> Starting inference: test18-b  at 2026-06-04 06:56:31
+[2026-06-04 06:56:31] =================================================================
+[2026-06-04 06:56:31]   INFERENCE  test18-b
+[2026-06-04 06:56:31] =================================================================
+[2026-06-04 06:56:31]   adapter : ./adapters/test18-b
+[2026-06-04 06:56:31]   output  : ./test18-b-preds.json
+[2026-06-04 07:03:28]   Wrote 101 predictions → ./test18-b-preds.json
+[2026-06-04 07:03:28] >>> Finished inference: test18-b  OK  at 2026-06-04 07:03:28
+[2026-06-04 07:03:28] =================================================================
+[2026-06-04 07:03:28]   SUMMARY
+[2026-06-04 07:03:28] =================================================================
+[2026-06-04 07:03:28]   experiment      train   infer   preds_file
+[2026-06-04 07:03:28]   test18-a        OK      OK      ./test18-a-preds.json
+[2026-06-04 07:03:28]   test18-b        OK      OK      ./test18-b-preds.json
+[2026-06-04 07:03:28] 
+To evaluate:
+[2026-06-04 07:03:28]   python eval.py --predictions ./test18-a-preds.json --gold validation_gold_schema_links.json --schemas_dir schemas/ --questions_input validation_input.json
+[2026-06-04 07:03:28]   python eval.py --predictions ./test18-b-preds.json --gold validation_gold_schema_links.json --schemas_dir schemas/ --questions_input validation_input.json
+[2026-06-04 07:03:28] 
+Done. Full log → ./test18-log.txt

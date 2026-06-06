@@ -1,0 +1,77 @@
+test21.py  started 2026-06-04 23:31:05
+schema=pkfk  hardware=RTX-PRO-6000  CED-v3-shared-col-fix
+
+[2026-06-04 23:31:05] =================================================================
+[2026-06-04 23:31:05]   test21.py  —  CED-v3 shared-col fix  —  RTX PRO 6000
+[2026-06-04 23:31:05] =================================================================
+[2026-06-04 23:31:05] Loaded 3000 examples from ./augmented_train_v2.json
+[2026-06-04 23:31:05] Filtered 79 zero-col examples → 2921 remain
+[2026-06-04 23:31:05] Validation: 101 questions
+[2026-06-04 23:31:05] Generating CED v3 (shared-column fix) ...
+[2026-06-04 23:31:05]   CED v3 generated: 2724 examples
+[2026-06-04 23:31:05]   Adding 32 hardcoded problem examples
+[2026-06-04 23:31:05] Combined: 5677 examples (aug_v2=2921, CED=2724, hardcoded=32)
+[2026-06-04 23:31:05]   Val table coverage: 615/615 (100.0%)
+[2026-06-04 23:31:05]   NTSB: 14 shared cols excluded from CED (e.g. ['caseid', 'caseno', 'casenumber', 'casewgt', 'category']); 40 tables
+[2026-06-04 23:31:05]   NYSED_SRC2022: 34 shared cols excluded from CED (e.g. ['assessment_name', 'cohort', 'entity_cd', 'entity_name', 'institution_id']); 27 tables
+[2026-06-04 23:31:05] =================================================================
+[2026-06-04 23:31:05]   TRAINING
+[2026-06-04 23:31:05] =================================================================
+[2026-06-04 23:31:05] 
+>>> Starting test21  at 2026-06-04 23:31:05
+[2026-06-04 23:31:05] =================================================================
+[2026-06-04 23:31:05]   TRAINING  test21  (bf16, RTX PRO 6000)
+[2026-06-04 23:31:05] =================================================================
+[2026-06-04 23:31:05]   model=Qwen/Qwen3-1.7B  schema=pkfk
+[2026-06-04 23:31:05]   r=16  alpha=32  dropout=0.05
+[2026-06-04 23:31:05]   lr=0.0002  epochs=4  max_length=2048
+[2026-06-04 23:31:05]   batch=2  grad_accum=2
+[2026-06-04 23:31:05]   train_size=5677
+[2026-06-04 23:31:05]   hypothesis: CED-v3 shared-col fix: skip CATEGORY/CASEID/PSU/ENTITY_CD etc. from CED so model learns table-specific cols not boilerplate; plus hardcoded examples for GV.LIGHTCOND, CDC.CMAX, AVOID, ICS.SOE, OCC belt
+[2026-06-04 23:31:51]   No checkpoint found, training from scratch
+[2026-06-05 08:24:10]   Training complete. Adapter → ./adapters/test21
+[2026-06-05 08:24:10] >>> Finished test21  OK  at 2026-06-05 08:24:10
+[2026-06-05 08:24:10] =================================================================
+[2026-06-05 08:24:10]   INFERENCE
+[2026-06-05 08:24:10] =================================================================
+[2026-06-05 08:24:10] 
+>>> Starting inference  at 2026-06-05 08:24:10
+[2026-06-05 08:24:10] =================================================================
+[2026-06-05 08:24:10]   INFERENCE  test21
+[2026-06-05 08:24:10] =================================================================
+[2026-06-05 08:35:40]   Wrote 101 predictions → ./test21-preds.json
+[2026-06-05 08:35:40] >>> Finished inference  OK  at 2026-06-05 08:35:40
+[2026-06-05 08:35:40] =================================================================
+[2026-06-05 08:35:40]   SUMMARY
+[2026-06-05 08:35:40] =================================================================
+[2026-06-05 08:35:40]   train: OK
+[2026-06-05 08:35:40]   infer: OK
+[2026-06-05 08:35:40]   preds: ./test21-preds.json
+[2026-06-05 08:35:40] 
+To evaluate:
+[2026-06-05 08:35:40]   python eval.py --predictions ./test21-preds.json --gold validation_gold_schema_links.json --schemas_dir schemas/ --questions_input validation_input.json
+[2026-06-05 08:35:40] 
+Done. Full log → ./test21-log.txt
+[2026-06-05 08:47:18]   Training complete. Adapter → ./adapters/test21
+[2026-06-05 08:47:19] >>> Finished test21  OK  at 2026-06-05 08:47:19
+[2026-06-05 08:47:19] =================================================================
+[2026-06-05 08:47:19]   INFERENCE
+[2026-06-05 08:47:19] =================================================================
+[2026-06-05 08:47:19] 
+>>> Starting inference  at 2026-06-05 08:47:19
+[2026-06-05 08:47:19] =================================================================
+[2026-06-05 08:47:19]   INFERENCE  test21
+[2026-06-05 08:47:19] =================================================================
+[2026-06-05 08:56:59]   Wrote 101 predictions → ./test21-preds.json
+[2026-06-05 08:56:59] >>> Finished inference  OK  at 2026-06-05 08:56:59
+[2026-06-05 08:56:59] =================================================================
+[2026-06-05 08:56:59]   SUMMARY
+[2026-06-05 08:56:59] =================================================================
+[2026-06-05 08:56:59]   train: OK
+[2026-06-05 08:56:59]   infer: OK
+[2026-06-05 08:56:59]   preds: ./test21-preds.json
+[2026-06-05 08:56:59] 
+To evaluate:
+[2026-06-05 08:56:59]   python eval.py --predictions ./test21-preds.json --gold validation_gold_schema_links.json --schemas_dir schemas/ --questions_input validation_input.json
+[2026-06-05 08:56:59] 
+Done. Full log → ./test21-log.txt

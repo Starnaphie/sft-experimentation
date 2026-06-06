@@ -1,0 +1,41 @@
+test17.py  started 2026-06-04 21:09:55
+base_model=Qwen/Qwen3-1.7B  quant=4bit-nf4  schema=schema_sorted
+train=./augmented_train_v2.json  hardware=RTX4070-12GB
+
+  test17-a: alpha=24  lr=0.0002  dropout=0.05  epochs=3
+    hypothesis: intermediate alpha balances precision and recall
+  test17-b: alpha=16  lr=0.0001  dropout=0.05  epochs=3
+    hypothesis: alpha=16 best precision; lower lr may recover recall
+
+[2026-06-04 21:09:55] =================================================================
+[2026-06-04 21:09:55]   test17.py  —  RTX 4070 12GB  —  QLoRA 4-bit  —  alpha/lr sweep
+[2026-06-04 21:09:55] =================================================================
+[2026-06-04 21:09:55] Loaded 3000 training examples from ./augmented_train_v2.json
+[2026-06-04 21:09:55] Validation: 101 questions
+[2026-06-04 21:09:55] =================================================================
+[2026-06-04 21:09:55]   PHASE 1 — TRAINING
+[2026-06-04 21:09:55] =================================================================
+[2026-06-04 21:09:55] 
+>>> Starting training: test17-a  at 2026-06-04 21:09:55
+[2026-06-04 21:09:55] =================================================================
+[2026-06-04 21:09:55]   TRAINING  test17-a
+[2026-06-04 21:09:55] =================================================================
+[2026-06-04 21:09:55]   QLoRA 4-bit (nf4 + double-quant + bf16 compute)
+[2026-06-04 21:09:55]   r=16  alpha=24  dropout=0.05
+[2026-06-04 21:09:55]   lr=0.0002  epochs=3
+[2026-06-04 21:09:55]   batch=1  grad_accum=8  max_length=2048
+[2026-06-04 21:09:55]   hypothesis: intermediate alpha balances precision and recall
+[2026-06-04 21:09:55]   adapter → ./adapters/test17-a
+[2026-06-05 03:35:52]   Training complete. Adapter saved → ./adapters/test17-a
+[2026-06-05 03:35:53] >>> Finished training: test17-a  OK  at 2026-06-05 03:35:53
+[2026-06-05 03:35:53] 
+>>> Starting training: test17-b  at 2026-06-05 03:35:53
+[2026-06-05 03:35:53] =================================================================
+[2026-06-05 03:35:53]   TRAINING  test17-b
+[2026-06-05 03:35:53] =================================================================
+[2026-06-05 03:35:53]   QLoRA 4-bit (nf4 + double-quant + bf16 compute)
+[2026-06-05 03:35:53]   r=16  alpha=16  dropout=0.05
+[2026-06-05 03:35:53]   lr=0.0001  epochs=3
+[2026-06-05 03:35:53]   batch=1  grad_accum=8  max_length=2048
+[2026-06-05 03:35:53]   hypothesis: alpha=16 best precision; lower lr may recover recall
+[2026-06-05 03:35:53]   adapter → ./adapters/test17-b
